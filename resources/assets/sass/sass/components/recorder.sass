@@ -1,0 +1,25 @@
+.is-recorder-flex
+  display: flex
+  justify-content: center
+  align-items: center
+  .is-record-circle
+    display: flex
+    justify-content: center
+    align-items: center
+    border: none
+    height: 100px
+    width: 100px
+    border-radius: 50%
+    background: #ff4c4c
+    color: #fff
+    cursor: pointer
+    outline: none;
+    &.is-recording
+      animation: recording .5s infinite alternate
+
+
+@keyframes recording
+  from
+    box-shadow: 0px 1px 13px #ff4c4c
+  to
+    box-shadow: 0

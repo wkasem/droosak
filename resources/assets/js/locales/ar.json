@@ -1,0 +1,86 @@
+{
+  "hour" : "ساعة",
+  "min" : "دقيقة",
+  "sec" : "ثانية",
+  "next" :"التالى",
+  "finish" :"أنتهاء",
+  "views" : "مشاهدات %s",
+  "watch" : "مشاهدة",
+  "comment" : "تعليق",
+  "more_comments" : "مزيد من التعليقات",
+  "send" : "أرسال",
+  "no-messages" : "لا توجد رسائل",
+  "record" : "تسجيل",
+
+  "badges_teacher" :"مدرس",
+  "badges_student" : "طالب",
+  "badges_admin"  : "مدير " ,
+
+
+  "empty_comment" : "برجاء كتابة التعليق",
+
+  "liveNow" : "بث حى",
+  "liveBtn" : "مشاهدة",
+  "liveCancel" : "غير مهتم",
+
+  "new_course_list" : "قائمة كورسات جديدة",
+  "add" : "أضافة",
+  "live" : "بث حى",
+  "promotion" : "دعاية",
+
+    "newAnswer" : "أجابة جديدة",
+    "newQuestion" : "سؤال جديد",
+    "titleError" : "أدخل عنوان السؤال",
+    "moreAnswer" : "أدخل أكثر من اجابة واحدة",
+    "save" : "حفظ",
+    "take" : "أخذ",
+    "pass" : "ناجح",
+    "fail" : "راسب",
+    "publish" : "نشر",
+    "points" : "نقاط",
+    "time" : "الوقت",
+    "videos" : "%s فيديوهات",
+    "schedule_updated" : "%s تم تحديث الجدول الخاص ب",
+
+    "1": "السبت",
+    "2": "الاحد",
+    "3": "الاثنين",
+    "4": "الثلاثاء",
+    "5": "الاربعاء",
+    "6": "الخميس",
+    "7": "الجمعة",
+
+    "id" : "رقم",
+    "username" : "الاسم",
+    "email" : "عنوان البريد",
+    "password":"كلمة السر",
+    "mobile" : "رقم الهاتف",
+    "bio" : "عن",
+    "image" : "صورة",
+    "points" : "النقاط",
+    "searchby" : "بحث",
+    "update" : "تحديث",
+    "admin_pass" : "كلمة سر الادمن",
+    "chat" : "محادثة",
+    "points_add" : "أضافة نقاط",
+    "updated" : "تم التحديث",
+    "wrong_pass" : "كلمة مرور خاطئة",
+    "actions" : "تحكم",
+    "new_teacher" : "مدرس جديد",
+
+    "new_event" : "جدول جديد",
+    "event_title" : "أسم الحدث",
+    "day" : "يوم",
+    "from" : "من",
+    "to" : "الى",
+    "add_time" : "أضافة وقت",
+
+    "noAnswer": "الاجابة%sغير ممتلئة",
+
+    "new_video" : "فيديو جديد",
+    "title" : "العنوان",
+    "discription" : "تفاصيل",
+    "video_poster" : "صورة"
+
+
+}

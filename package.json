@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "scripts": {
+    "prod": "gulp --production",
+    "dev": "gulp watch"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "laravel-elixir": "^6.0.0-14",
+    "laravel-elixir-vue-2": "^0.2.0",
+    "laravel-elixir-webpack-official": "^1.0.2",
+    "vue": "^2.0.1"
+  },
+  "dependencies": {
+    "json-loader": "^0.5.4",
+    "laravel-echo": "^1.2.3",
+    "perfect-scrollbar": "^0.6.16",
+    "pusher-js": "^4.0.0",
+    "screenfull": "^3.0.2",
+    "vue-count-down": "^0.2.2",
+    "vue-resource": "^1.1.2",
+    "vue-time-picker": "^0.2.6",
+    "vue-timeago": "^3.1.5"
+  }
+}

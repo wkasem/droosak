@@ -1,0 +1,63 @@
+.messages__wrapper{
+
+  .contacts__wrapper{
+    position: relative;
+    height: 45rem;
+  }
+
+  &.mobile{
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    right: 0;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 0;
+    display: none;
+  }
+
+
+  .contact{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 0;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+
+    .details{width: 50%;}
+
+    &:hover,
+    &.active{
+      background-color: #f6f6f8;
+    }
+  }
+}
+
+
+.messages{
+  position: relative;
+  height: 410px;
+.msg{
+  padding: 10px;
+  align-items: center;
+  border:none !important;
+  .content{
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+  }
+  &.other{
+   flex-direction: row-reverse;
+
+     .content{
+       text-align: right;
+       background: #3a84f3;
+       color: #fff;
+       i{
+         color: #363636;
+       }
+     }
+ }
+ }
+}

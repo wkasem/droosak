@@ -1,0 +1,10 @@
+{
+  "name": "echo",
+  "script": "laravel-echo-server",
+  "args": "start"
+},
+{
+  "name": "queue",
+  "script": "artisan",
+  "args": "queue:listen"
+}

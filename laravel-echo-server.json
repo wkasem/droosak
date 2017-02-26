@@ -1,0 +1,24 @@
+{
+	"authHost": "https://droosak.dev",
+	"authEndpoint": "/broadcasting/auth",
+	"clients": [
+		{
+			"appId": "9b09f207b9dbb1f4",
+			"key": "f26fbd7790362e573ba6f13be0a375e5"
+		}
+	],
+	"database": "redis",
+	"databaseConfig": {
+		"redis": {},
+		"sqlite": {
+			"databasePath": "/database/laravel-echo-server.sqlite"
+		}
+	},
+	"devMode": true,
+	"host": null,
+	"port": "6001",
+	"protocol": "https",
+	"socketio": {},
+	"sslCertPath": "/etc/nginx/ssl/droosak.dev.crt",
+	"sslKeyPath": "/etc/nginx/ssl/droosak.dev.key"
+}

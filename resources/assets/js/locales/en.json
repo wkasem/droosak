@@ -1,0 +1,95 @@
+{
+  "hour" : "hr",
+  "min" : "min",
+  "sec" : "sec",
+  "next" :"Next",
+  "finish" :"Finish",
+  "views" : "%s Views",
+  "watch" : "Watch",
+  "comment" : "Comment",
+  "more_comments" : "Load More Comments",
+  "send" : "Send",
+  "no-messages" : "No Messages",
+  "record" : "Record",
+
+  "badges_teacher" :"Teacher",
+   "badges_student" : "Student",
+   "badges_admin"  : "Admin" ,
+
+   "new_course_list" : "New Courses List",
+   "add" : "Add",
+   "live" : "Live Recording",
+   "promotion" : "Promotion",
+
+   "empty_comment" : "Please Type Some Text..",
+
+   "liveNow" : "Is Live Now",
+   "liveBtn" : "Watch",
+   "liveCancel" : "Cancel",
+
+
+     "newAnswer" : "New Answer",
+     "newQuestion" : "New Question",
+     "titleError" : "Please Enter Question Title",
+     "moreAnswer" : "Question must have more than one answer",
+     "save" : "Save",
+     "take" : "Take",
+     "pass" : "Pass",
+     "fail" : "Fail",
+     "publish" : "Publish",
+     "points" : "Points",
+     "time" : "Time",
+     "videos" : "%s Videos",
+     "schedule_updated" : "Schedule Updated For %s",
+
+
+     "1": "Saturday",
+     "2": "Sunday",
+     "3": "Monday",
+     "4": "Tuesday",
+     "5": "Wednesday",
+     "6": "Thursday",
+     "7": "Friday",
+
+     "id" : "ID",
+     "username" : "Username",
+     "email" : "Email",
+     "password" : "Password",
+     "mobile" : "Mobile",
+     "image" : "Image",
+     "points" : "Points",
+     "bio" : "About",
+     "searchby" : "Search..",
+     "update" : "Update",
+     "admin_pass" : "Admin Password",
+     "chat" : "Chat",
+     "points_add" : "add Points",
+     "updated" : "Updated",
+     "wrong_pass" : "Wrong Password",
+     "actions" : "control" ,
+     "new_teacher" : "New Teacher",
+
+     "new_event" : "New Event",
+     "event_title" : "Event Name",
+     "day" : "Day",
+     "from" : "From",
+     "to" : "To",
+     "add_time" : "Add Time",
+     "noAnswer": "Answer %s is Empty",
+
+     "new_video" : "New Video",
+     "title" : "Title",
+     "discription" : "Discription",
+     "video_poster" : "Poster",
+
+
+
+
+
+
+
+
+
+
+
+}
