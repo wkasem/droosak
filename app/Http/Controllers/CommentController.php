@@ -50,7 +50,7 @@ class CommentController extends Controller
 
       $user = User::where('id' , $video->by)->first();
 
-      \Notification::send($user, new Commented($phoneCode , $mailCode));
+      \Notification::send($user, new Commented($video));
 
       $video->comments()->create([
         'id' => request()->input('id'),
