@@ -506,8 +506,10 @@ export default {
        this.preparePromo();
        this.listenForComments();
        this.commentsHasMoreReplies();
-       
-       videojs('lesson-player');
+       $(function(){
+
+         videojs('lesson-player');
+       });
 
        document.addEventListener(screenfull.raw.fullscreenchange, () => {
          let target = $(this.$refs.comment_section);
