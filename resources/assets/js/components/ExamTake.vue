@@ -3,7 +3,7 @@
     <section class="section" v-if='!finish'>
       <div class="container">
         <div class="heading">
-          <h1 class="title">{{ exam.title }}</h1>
+          <h1 class="title">{{ title }}</h1>
           <div class="subtitle" id="countdown" :dir="tdir"> </div>
         </div>
         <hr />
@@ -49,6 +49,8 @@
         <div class="heading">
           Finished
         </div>
+        <div class="content">
+          <a href="download" class="button">Download</a>
       </div>
     </section>
 </div>
@@ -56,7 +58,7 @@
 
 <script>
     export default {
-        props : ['data' , 'tdir'],
+        props : ['data' , 'tdir' , 'title'],
 
         data(){
           return {
@@ -112,7 +114,9 @@
             }
           },
           finishSave(e){
-console.log(e);
+
+            this.exam.user.results.push({ qIndx : this.indx , aIndx : this.answerIndx});
+
            if(e) Progressbar.self(e.target);
            let data = new FormData();
 
@@ -120,8 +124,8 @@ console.log(e);
            data.append('examid' , this.exam.id);
 
            this.$http.post('finish' , data).then(res => {
-             this.finish = true;
-             this.results = JSON.parse(res.body);
+             location.reload();
+
            });
           },
           countdown(){
@@ -150,7 +154,7 @@ console.log(e);
 
           this.exam = JSON.parse(this.data);
           this.answers = this.exam.user.results;
-console.log(JSON.parse(this.data));
+
           this.countdown();
 
           this.checkStage();

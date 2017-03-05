@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 
 use droosak\Playlist;
 use droosak\Videos;
+use droosak\View;
+use droosak\User;
 
 use FFMpeg;
 use Storage;
 use Streamer;
+use Points;
 
 class VideoController extends Controller
 {
@@ -22,6 +25,32 @@ class VideoController extends Controller
     return view('admin.playlists' , compact('playlists'));
   }
 
+  public function updatePoster($id)
+  {
+    $this->validate(request(),[
+      'poster' => 'required|file|mimes:png,jpg,jpeg'
+    ]);
+
+    $file = request()->file('poster');
+
+    $path = $file->hashName(sprintf('playlists/%s' , $id));
+
+    $image = \Image::make($file);
+
+    $image->resize(370, 280);
+
+     \Storage::put($path, (string) $image->encode());
+
+     $playlist = Playlist::where('playlist_id' , $id)->first();
+
+     if($playlist->poster){
+       Storage::delete(sprintf("playlists/%s/%s" , $id , $playlist->poster));
+
+     }
+     $playlist->update([ 'poster' => basename($path) ]);
+
+    return basename($path);
+  }
   public function addPlaylist()
   {
 
@@ -29,13 +58,17 @@ class VideoController extends Controller
       'title' => 'required|min:3|unique:playlists'
     ]);
 
-    request()->merge(['playlist_id' => str_random(5)  , 'show' => true ]);
+    $id = str_random(5);
+
+    request()->merge(['playlist_id' => $id  , 'show' => true ]);
+
 
     $playlist = Playlist::create(request()->all());
 
-    Storage::makeDirectory(sprintf('playlists/%s/_videos' , $playlist->playlist_id));
-    Storage::makeDirectory(sprintf('playlists/%s/_thumbs' , $playlist->playlist_id));
+    Storage::makeDirectory(sprintf('playlists/%s/_videos' , $id));
+    Storage::makeDirectory(sprintf('playlists/%s/_thumbs' , $id));
 
+    $playlist->playlist_id = $id;
     return $playlist;
   }
 
@@ -44,22 +77,43 @@ class VideoController extends Controller
 
     $playlist = collect(Playlist::where('playlist_id' , $id)->with('videos.published_by')->first());
 
-    if(!$playlist) return redirect()->route('admin.index');
+    if(!$playlist->count()) return redirect()->route('admin.index');
 
     $playlist->put('videos' , collect($playlist->get('videos'))->chunk(3));
 
-    return view('admin.playlist_videos' , compact('playlist'));
+    $teachers = User::teachers()->get();
+
+    $playlists = Playlist::show()->get();
+
+    return view('admin.playlist_videos' , compact('playlist' , 'teachers' , 'playlists'));
   }
 
   public function getVideo($id)
   {
 
-    $video = Videos::where('video_id' , $id)
-                   ->with(['playlist' , 'comments.replies' , 'published_by' , 'stream'])
-                   ->withCount(['comments'])
-                   ->first();
 
-    return view('video', compact('video'));
+    $promotion  = Playlist::where('title' , 'promotion')
+                          ->first()
+                          ->videos()->inRandomOrder()->first();
+
+    $video = Videos::where('video_id' , $id)
+                   ->with([
+                     'playlist' ,
+                     'comments.replies_count' ,
+                     'published_by' ,
+                     'stream'
+                   ])
+                   ->withCount(['comments' , 'views'])
+                   ->first();
+     if(student()){
+       Points::subtract($video);
+       View::create([
+         'video_id' => $id,
+         'user_id' => auth()->user()->id,
+         'owner_id' => $video->by
+       ]);
+     }
+    return view('video', compact('video' , 'promotion'));
   }
 
   public function streamVideo($id)
@@ -85,6 +139,18 @@ class VideoController extends Controller
             ->header('Content-Type', "image/{$ext}");
   }
 
+  public function getPoster($id , $poster)
+  {
+
+
+       $img = Storage::get(sprintf("playlists/%s/%s" , $id , $poster));
+
+       $ext = pathinfo($poster , PATHINFO_EXTENSION);
+
+       return response($img)
+            ->header('Content-Type', "image/{$ext}");
+  }
+
   public function uploadVideo($id)
   {
 
@@ -104,16 +170,20 @@ class VideoController extends Controller
           ->toDisk("local")
           ->save("playlists/$id/_thumbs/$thumb");
 
+      $videoID = str_random(5);
+
       $video  = Playlist::where('playlist_id' , $id)->first()->videos()->create([
-                  'video_id'     => str_random(5),
+                  'video_id'     => $videoID,
                   'src'          => $filesrc,
                   'thumb_src'    => $thumb,
                   'title'        => request()->input('title'),
                   'discription'  => request()->input('discription'),
-                  'by'           => auth()->user()->id
+                  'by'           => request()->input('published_by') ?? 1,
+                  'points'       => request()->input('points') ?? 0
                 ]);
 
     $video->load('published_by');
+    $video->video_id = $videoID;
 
     return $video;
 
@@ -126,8 +196,20 @@ class VideoController extends Controller
       'discription' => 'min:10'
     ]);
 
-     Videos::where('video_id' , request()->input('videoid'))
-          ->update(request()->only('title' , 'discription'));
+     $video = Videos::where('video_id' , request()->input('videoid'))->first();
+
+     if($video->playlist_id != request('playlist_id')){
+       \Storage::move(
+           sprintf('playlists/%s/_videos/%s' , $video->playlist_id , $video->src),
+           sprintf('playlists/%s/_videos/%s' , request('playlist_id') , $video->src)
+       );
+       \Storage::move(
+           sprintf('playlists/%s/_thumbs/%s' , $video->playlist_id , $video->thumb_src),
+           sprintf('playlists/%s/_thumbs/%s' , request('playlist_id') , $video->thumb_src)
+       );
+     }
+
+      $video->update(request()->only('title' , 'discription' , 'points' , 'playlist_id'));
   }
 
   public function deleteVideo()

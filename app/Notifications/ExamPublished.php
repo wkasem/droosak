@@ -7,18 +7,20 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class da extends Notification
+class ExamPublished extends Notification implements ShouldQueue
 {
     use Queueable;
+
+    public $exam;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($exam)
     {
-        //
+        $this->exam = $exam;
     }
 
     /**
@@ -29,7 +31,7 @@ class da extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail' , 'broadcast'];
     }
 
     /**
@@ -40,7 +42,11 @@ class da extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)->markdown('view.name');
+      \App::setLocale('ar');
+
+      return (new MailMessage)
+                  ->subject(" دروسك.كوم :" . \Lang::get('exams.'.$this->exam['title']))
+                  ->markdown('vendor.mail.exam' , ['exam' => $this->exam]);
     }
 
     /**
@@ -52,7 +58,7 @@ class da extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'exam' => $this->exam
         ];
     }
 }

@@ -45,6 +45,6 @@ class CommentRecieved implements ShouldBroadcast
     public function broadcastOn()
     {
 
-        return new PrivateChannel('video.'. $this->comment['_videoID'] . '.comments');
+        return new PrivateChannel('video.'. $this->comment['_videoID']);
     }
 }

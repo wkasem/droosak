@@ -1,7 +1,7 @@
 let Badge = function(user){
 
 
-  switch (user.type_id ) {
+  switch (parseInt(user.type_id) ) {
     case 1:
       return '<span class="tag is-warning">'+Locale.get('badges_admin')+'</span>';
     case 2:

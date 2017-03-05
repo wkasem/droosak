@@ -6,11 +6,16 @@
   "finish" :"أنتهاء",
   "views" : "مشاهدات %s",
   "watch" : "مشاهدة",
+  "edit" : "تعديل",
+  "delete" : "أزالة",
   "comment" : "تعليق",
   "more_comments" : "مزيد من التعليقات",
   "send" : "أرسال",
   "no-messages" : "لا توجد رسائل",
   "record" : "تسجيل",
+  "how" : "كيف",
+  "endStream" : "أنهى البث",
+  "commented" : "قام بالتعليق على ",
 
   "badges_teacher" :"مدرس",
   "badges_student" : "طالب",
@@ -41,6 +46,8 @@
     "time" : "الوقت",
     "videos" : "%s فيديوهات",
     "schedule_updated" : "%s تم تحديث الجدول الخاص ب",
+    "exam_updated" : "%s متاح الان ",
+    "update_cv" : "تحديث السيرة",
 
     "1": "السبت",
     "2": "الاحد",
@@ -80,7 +87,8 @@
     "new_video" : "فيديو جديد",
     "title" : "العنوان",
     "discription" : "تفاصيل",
-    "video_poster" : "صورة"
+    "video_poster" : "صورة",
+    "profile" : "الصفحة الشخصية"
 
 
 }

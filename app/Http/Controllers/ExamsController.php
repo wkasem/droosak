@@ -64,4 +64,16 @@ class ExamsController extends Controller
 
       Exam::update();
     }
+
+    public function download($id)
+    {
+
+      return Exam::download($id);
+    }
+
+    public function getTitle()
+    {
+
+      return \Lang::get('exams.'.request('title'));
+    }
 }

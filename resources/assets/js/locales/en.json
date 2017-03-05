@@ -6,11 +6,16 @@
   "finish" :"Finish",
   "views" : "%s Views",
   "watch" : "Watch",
+  "edit" : "Edit",
+  "delete" :"Delete",
   "comment" : "Comment",
   "more_comments" : "Load More Comments",
   "send" : "Send",
   "no-messages" : "No Messages",
   "record" : "Record",
+  "how" : "How",
+  "endStream" : "End Stream",
+  "commented" : "Has Commented on",
 
   "badges_teacher" :"Teacher",
    "badges_student" : "Student",
@@ -41,6 +46,7 @@
      "time" : "Time",
      "videos" : "%s Videos",
      "schedule_updated" : "Schedule Updated For %s",
+     "exam_updated" : "%s is Avaliable Now ",
 
 
      "1": "Saturday",
@@ -81,14 +87,8 @@
      "title" : "Title",
      "discription" : "Discription",
      "video_poster" : "Poster",
-
-
-
-
-
-
-
-
+     "update_cv" : "Update CV",
+     "profile" : "Profile"
 
 
 

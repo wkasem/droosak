@@ -10,7 +10,11 @@
       <div class="card">
        <div class="card-image">
          <figure class="image is-4by3">
-           <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image">
+           @if($playlist->poster)
+            <img src="/courses/{{ $playlist->playlist_id}}/poster/">
+            @else
+            <img src="/imgs/video_banco_wiki.jpg">
+            @endif
          </figure>
        </div>
        <div class="card-content">
@@ -22,7 +26,7 @@
          </div>
        </div>
        <footer class="card-footer">
-         <a href="playlists/{{ $playlist->id }}/videos" class="card-footer-item">
+         <a href="courses/{{ $playlist->playlist_id }}/videos" class="card-footer-item">
           @lang('playlists.discover')
          </a>
         </footer>
@@ -31,4 +35,17 @@
 @endforeach
 </div>
 @endforeach
+
+@if(!$playlists->count())
+<section class="section" dir="{{ tdir() }}">
+  <div class="container">
+    <div class="content">
+      <h1 class="title">@lang('auth.playlists.error.title')</h1>
+       <p>
+         @lang('auth.playlists.error.subtitle')
+       </p>
+    </div>
+  </div>
+</div>
+@endif
 @endsection

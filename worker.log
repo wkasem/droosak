@@ -8606,3 +8606,1579 @@ Parse error: syntax error, unexpected 'break' (T_BREAK), expecting ';' in /home/
    seconds.                                                                    
                                                                                
 
+[2017-02-26 16:16:18] Processed: droosak\Events\CommentRecieved
+[2017-02-26 16:16:25] Processed: droosak\Events\CommentRecieved
+[2017-02-26 16:18:21] Processed: droosak\Events\CommentRecieved
+[2017-02-26 16:19:50] Processed: droosak\Events\CommentRecieved
+[2017-02-26 16:20:20] Processed: droosak\Events\CommentRecieved
+[2017-02-26 16:21:10] Processed: droosak\Events\CommentRecieved
+[2017-02-26 16:21:29] Processed: droosak\Events\CommentRecieved
+[2017-02-26 16:21:52] Processed: droosak\Events\CommentRecieved
+[2017-02-26 16:22:07] Processed: droosak\Events\CommentRecieved
+[2017-02-26 16:23:48] Processed: droosak\Events\CommentRecieved
+
+                                                                               
+  [Symfony\Component\Process\Exception\ProcessTimedOutException]               
+  The process "'/usr/bin/php7.0' 'artisan' queue:work '' --once --queue='defa  
+  ult' --delay=0 --memory=128 --sleep=3 --tries=0" exceeded the timeout of 60  
+   seconds.                                                                    
+                                                                               
+
+[2017-02-26 18:56:50] Processed: droosak\Events\CommentRecieved
+[2017-02-26 18:56:55] Processed: droosak\Events\CommentRecieved
+[2017-02-26 18:57:08] Processed: droosak\Events\CommentRecieved
+[2017-02-26 18:57:10] Processed: droosak\Events\CommentRecieved
+[2017-02-26 18:57:11] Processed: droosak\Events\CommentRecieved
+[2017-02-26 18:57:12] Processed: droosak\Events\CommentRecieved
+[2017-02-26 18:57:13] Processed: droosak\Events\CommentRecieved
+[2017-02-26 18:57:15] Processed: droosak\Events\CommentRecieved
+[2017-02-26 18:57:16] Processed: droosak\Events\CommentRecieved
+[2017-02-26 19:59:48] Processed: droosak\Events\CommentRecieved
+[2017-02-26 20:00:11] Processed: droosak\Events\CommentRecieved
+
+                                                                               
+  [Symfony\Component\Process\Exception\ProcessTimedOutException]               
+  The process "'/usr/bin/php7.0' 'artisan' queue:work '' --once --queue='defa  
+  ult' --delay=0 --memory=128 --sleep=3 --tries=0" exceeded the timeout of 60  
+   seconds.                                                                    
+                                                                               
+
+[2017-02-27 00:42:45] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:42:46] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:42:48] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:42:49] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:42:50] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:42:52] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:42:53] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:42:54] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:42:55] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:42:56] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:42:58] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:00] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:02] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:03] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:04] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:06] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:07] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:08] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:10] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:11] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:12] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:14] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:16] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:17] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:19] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:20] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:22] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:23] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:24] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:25] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:27] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:28] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:29] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:30] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:31] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:32] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:33] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:35] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:36] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:38] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:39] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:40] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:41] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:42] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:43] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:45] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:46] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:48] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:49] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:50] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:51] Processed: droosak\Notifications\LiveEvent
+[2017-02-27 00:43:52] Processed: droosak\Events\CommentRecieved
+[2017-02-27 00:43:53] Processed: droosak\Events\CommentRecieved
+[2017-02-27 00:43:54] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:43:55] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:43:56] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:43:58] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:43:59] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:00] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:01] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:02] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:03] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:04] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:06] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:07] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:08] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:09] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:10] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:11] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:12] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:14] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:15] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:16] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:17] Processed: droosak\Events\CommentRecieved
+[2017-02-27 00:44:18] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:20] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:21] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:22] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:23] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:24] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:25] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:26] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:28] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:29] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:30] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:31] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:32] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:33] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:35] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:36] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:37] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:38] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:39] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:40] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:41] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:43] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:44] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:45] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:46] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:47] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:48] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:44:50] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-02-27 00:45:00] Processed: droosak\Events\CommentRecieved
+[2017-02-27 00:45:05] Processed: droosak\Events\CommentRecieved
+[2017-02-27 00:45:15] Processed: droosak\Events\CommentRecieved
+[2017-02-27 00:45:24] Processed: droosak\Events\CommentRecieved
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                            
+  [Symfony\Component\Debug\Exception\FatalThrowableError]   
+  Parse error: syntax error, unexpected 'Route' (T_STRING)  
+                                                            
+
+
+                                                                               
+  [Symfony\Component\Process\Exception\ProcessTimedOutException]               
+  The process "'/usr/bin/php7.0' 'artisan' queue:work '' --once --queue='defa  
+  ult' --delay=0 --memory=128 --sleep=3 --tries=0" exceeded the timeout of 60  
+   seconds.                                                                    
+                                                                               
+
+
+                                                                               
+  [Symfony\Component\Process\Exception\ProcessTimedOutException]               
+  The process "'/usr/bin/php7.0' 'artisan' queue:work '' --once --queue='defa  
+  ult' --delay=0 --memory=128 --sleep=3 --tries=0" exceeded the timeout of 60  
+   seconds.                                                                    
+                                                                               
+
+[2017-02-27 13:18:08] Processed: droosak\Notifications\SchedulePublish
+[2017-02-27 13:18:21] Processed: droosak\Notifications\SchedulePublish
+[2017-02-27 13:18:22] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+PHP Parse error:  syntax error, unexpected ':' in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 74
+
+Parse error: syntax error, unexpected ':' in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 74
+PHP Parse error:  syntax error, unexpected ':' in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 74
+
+Parse error: syntax error, unexpected ':' in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 74
+PHP Parse error:  syntax error, unexpected ':' in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 74
+
+Parse error: syntax error, unexpected ':' in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 74
+PHP Parse error:  syntax error, unexpected ':' in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 74
+
+Parse error: syntax error, unexpected ':' in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 74
+PHP Parse error:  syntax error, unexpected ':' in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 74
+
+Parse error: syntax error, unexpected ':' in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 74
+PHP Parse error:  syntax error, unexpected ':' in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 74
+
+Parse error: syntax error, unexpected ':' in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 74
+PHP Parse error:  syntax error, unexpected ':' in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 74
+
+Parse error: syntax error, unexpected ':' in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 74
+PHP Parse error:  syntax error, unexpected ':' in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 74
+
+Parse error: syntax error, unexpected ':' in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 74
+PHP Parse error:  syntax error, unexpected ':' in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 74
+
+Parse error: syntax error, unexpected ':' in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 74
+[2017-02-27 13:23:45] Processed: droosak\Notifications\SchedulePublish
+[2017-02-27 13:23:50] Processed: droosak\Notifications\SchedulePublish
+[2017-02-27 13:23:51] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+
+                                                                               
+  [Symfony\Component\Process\Exception\ProcessTimedOutException]               
+  The process "'/usr/bin/php7.0' 'artisan' queue:work '' --once --queue='defa  
+  ult' --delay=0 --memory=128 --sleep=3 --tries=0" exceeded the timeout of 60  
+   seconds.                                                                    
+                                                                               
+
+
+                                                                               
+  [Symfony\Component\Process\Exception\ProcessTimedOutException]               
+  The process "'/usr/bin/php7.0' 'artisan' queue:work '' --once --queue='defa  
+  ult' --delay=0 --memory=128 --sleep=3 --tries=0" exceeded the timeout of 60  
+   seconds.                                                                    
+                                                                               
+
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+PHP Parse error:  syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+
+Parse error: syntax error, unexpected '$all' (T_VARIABLE) in /home/vagrant/Web/Code/droosak/app/Helpers/global.php on line 57
+[2017-03-03 14:52:09] Processed: droosak\Events\MessageRecieved
+[2017-03-03 15:47:37] Processed: droosak\Events\CommentRecieved
+[2017-03-03 15:47:46] Processed: droosak\Events\CommentRecieved
+
+                                                                               
+  [Symfony\Component\Process\Exception\ProcessTimedOutException]               
+  The process "'/usr/bin/php7.0' 'artisan' queue:work '' --once --queue='defa  
+  ult' --delay=0 --memory=128 --sleep=3 --tries=0" exceeded the timeout of 60  
+   seconds.                                                                    
+                                                                               
+
+PHP Notice:  date_default_timezone_set(): Timezone ID 'Africa/sudan' is invalid in /home/vagrant/Web/Code/droosak/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php on line 48
+
+Notice: date_default_timezone_set(): Timezone ID 'Africa/sudan' is invalid in /home/vagrant/Web/Code/droosak/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php on line 48
+PHP Notice:  date_default_timezone_set(): Timezone ID 'Africa/Sudan' is invalid in /home/vagrant/Web/Code/droosak/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php on line 48
+
+Notice: date_default_timezone_set(): Timezone ID 'Africa/Sudan' is invalid in /home/vagrant/Web/Code/droosak/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php on line 48
+PHP Notice:  date_default_timezone_set(): Timezone ID 'Africa/Sudan' is invalid in /home/vagrant/Web/Code/droosak/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php on line 48
+
+Notice: date_default_timezone_set(): Timezone ID 'Africa/Sudan' is invalid in /home/vagrant/Web/Code/droosak/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php on line 48
+PHP Notice:  date_default_timezone_set(): Timezone ID 'Africa/Sudan' is invalid in /home/vagrant/Web/Code/droosak/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php on line 48
+
+Notice: date_default_timezone_set(): Timezone ID 'Africa/Sudan' is invalid in /home/vagrant/Web/Code/droosak/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php on line 48
+[2017-03-04 15:25:42] Processed: droosak\Notifications\ExamPublished
+[2017-03-04 15:31:13] Processed: droosak\Notifications\ExamPublished
+[2017-03-04 15:31:19] Processed: droosak\Notifications\ExamPublished
+[2017-03-04 15:32:41] Processed: droosak\Notifications\ExamPublished
+[2017-03-04 15:33:24] Processed: droosak\Notifications\ExamPublished
+[2017-03-04 15:42:47] Processed: droosak\Notifications\ExamPublished
+[2017-03-04 15:43:49] Processed: droosak\Notifications\ExamPublished
+[2017-03-04 17:44:04] Processed: droosak\Notifications\ExamPublished
+[2017-03-04 17:44:05] Processed: droosak\Notifications\ExamPublished
+[2017-03-04 17:44:06] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-04 17:45:06] Processed: droosak\Notifications\ExamPublished
+[2017-03-04 17:45:08] Processed: droosak\Notifications\ExamPublished
+[2017-03-04 17:45:09] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-04 17:46:40] Processed: droosak\Notifications\ExamPublished
+[2017-03-04 17:46:41] Processed: droosak\Notifications\ExamPublished
+[2017-03-04 17:46:42] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-04 17:51:53] Processed: droosak\Notifications\ExamPublished
+[2017-03-04 17:51:54] Processed: droosak\Notifications\ExamPublished
+[2017-03-04 17:51:55] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-04 17:52:12] Processed: droosak\Notifications\ExamPublished
+[2017-03-04 17:52:13] Processed: droosak\Notifications\ExamPublished
+[2017-03-04 17:52:14] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-04 17:53:00] Processed: droosak\Notifications\ExamPublished
+[2017-03-04 17:53:02] Processed: droosak\Notifications\ExamPublished
+[2017-03-04 17:53:03] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-04 17:53:31] Processed: droosak\Notifications\ExamPublished
+[2017-03-04 17:53:33] Processed: droosak\Notifications\ExamPublished
+[2017-03-04 17:53:34] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-04 18:11:06] Processed: droosak\Notifications\LiveEvent
+[2017-03-04 18:11:07] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-04 18:12:29] Processed: droosak\Events\CommentRecieved
+[2017-03-05 19:02:09] Processed: droosak\Notifications\LiveEvent
+[2017-03-05 19:02:10] Processed: droosak\Notifications\LiveEvent
+[2017-03-05 19:02:11] Processed: droosak\Notifications\LiveEvent
+[2017-03-05 19:02:12] Processed: droosak\Notifications\LiveEvent
+[2017-03-05 19:02:13] Processed: droosak\Events\CommentRecieved
+[2017-03-05 19:02:14] Processed: droosak\Events\CommentRecieved
+[2017-03-05 19:02:15] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-05 19:02:16] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-05 19:02:17] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-05 19:02:18] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-05 19:07:28] Processed: droosak\Events\CommentRecieved
+[2017-03-05 19:07:57] Processed: droosak\Events\CommentRecieved
+[2017-03-05 19:08:14] Processed: droosak\Events\CommentRecieved
+[2017-03-05 19:11:26] Processed: droosak\Events\CommentRecieved
+[2017-03-05 19:11:39] Processed: droosak\Events\CommentRecieved
+[2017-03-05 19:16:07] Processed: droosak\Events\Viewing
+[2017-03-05 19:16:21] Processed: droosak\Events\Viewing
+[2017-03-05 19:16:30] Processed: droosak\Events\Viewing
+[2017-03-05 19:18:37] Processed: droosak\Events\CommentRecieved
+[2017-03-05 19:21:03] Processed: droosak\Events\CommentRecieved
+[2017-03-05 19:22:27] Processed: droosak\Events\CommentRecieved
+
+                                                                               
+  [Symfony\Component\Process\Exception\ProcessTimedOutException]               
+  The process "'/usr/bin/php7.0' 'artisan' queue:work '' --once --queue='defa  
+  ult' --delay=0 --memory=128 --sleep=3 --tries=0" exceeded the timeout of 60  
+   seconds.                                                                    
+                                                                               
+
+[2017-03-05 19:33:23] Processed: droosak\Events\CommentRecieved
+[2017-03-05 19:33:24] Processed: droosak\Events\CommentRecieved
+[2017-03-05 19:33:25] Processed: droosak\Events\CommentRecieved
+[2017-03-05 19:33:26] Processed: droosak\Events\CommentRecieved
+[2017-03-05 19:33:27] Processed: droosak\Events\CommentRecieved
+[2017-03-05 19:33:29] Processed: droosak\Events\CommentRecieved
+[2017-03-05 19:33:33] Processed: droosak\Events\CommentRecieved
+[2017-03-05 19:33:35] Processed: droosak\Events\CommentRecieved
+[2017-03-05 19:33:37] Processed: droosak\Events\CommentRecieved
+[2017-03-05 19:33:39] Processed: droosak\Events\CommentRecieved

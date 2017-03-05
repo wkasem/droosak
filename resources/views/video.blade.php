@@ -13,6 +13,6 @@
 
 @section('content')
 
-<Player data='{{ json_encode($video)}}'></Player>
+<Player data='{{ json_encode($video)}}' data2='{{ json_encode($promotion)}}'></Player>
 
 @endsection

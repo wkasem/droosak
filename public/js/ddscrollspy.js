@@ -36,7 +36,7 @@ if (!Array.prototype.filter){
 
 	var defaults = {
 		spytarget: window,
-		scrolltopoffset: -100,
+		scrolltopoffset: -200,
 		scrollbehavior: 'smooth',
 		scrollduration: 0,
 		highlightclass: 'is-active',
@@ -144,7 +144,13 @@ if (!Array.prototype.filter){
 						curtarget.$menuitem.addClass(o.highlightclass)// highlight its menu item
 
           $(curtarget.$menuitem.attr('href')).find('.column').each(function(i , r){
-             setTimeout(function(){ $(r).addClass('animated slideInUp');} , (i * 400));
+            var crr = curtarget.$menuitem.attr('href');
+            if(crr == '#courses' || crr == '#teachers'){
+              setTimeout(function(){ $(r).addClass('animated zoomIn');} , (i * 100));
+            }else if(crr == '#joinus' || crr == '#about' || crr == '#messages' || crr == '#exams'){
+              setTimeout(function(){ $(r).addClass('animated fadeIn');} , (i * 300));
+            }
+
           });
 					if (curtarget.index >= cantscrollpastindex && scrolltop >= (spyscrollheight - spyheight)){ // if we're at target that can't be scrolled past and we're at end of document
 						if (o.enableprogress){ // if o.enableprogress enabled

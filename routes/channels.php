@@ -1,7 +1,7 @@
 <?php
 
 
-Broadcast::channel('video.{videoId}.comments', function ($user, $orderId) {
+Broadcast::channel('video.{videoId}', function ($user, $orderId) {
     return true;
 });
 

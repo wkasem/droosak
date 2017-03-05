@@ -278,6 +278,12 @@
             delete tempData['failed'];
             delete tempData['succesed'];
             delete tempData['results'];
+            delete tempData['errBag'];
+
+            tempData.answers.map(a => {
+              delete a['errBag'];
+              return a;
+            });
 
             data.append('exam' , JSON.stringify(tempData));
 

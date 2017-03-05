@@ -166,6 +166,8 @@ return [
         \Stevebauman\Active\ActiveServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Netshell\Paypal\PaypalServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
+
 
 
 
@@ -178,8 +180,8 @@ return [
         /*
          * Application Service Providers...
          */
+         droosak\Providers\AuthServiceProvider::class,
         droosak\Providers\AppServiceProvider::class,
-        droosak\Providers\AuthServiceProvider::class,
         droosak\Providers\BroadcastServiceProvider::class,
         droosak\Providers\EventServiceProvider::class,
         droosak\Providers\RouteServiceProvider::class,
@@ -242,7 +244,8 @@ return [
         'Broadcast' => Illuminate\Support\Facades\Broadcast::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Paypal' => Netshell\Paypal\Facades\Paypal::class,
-        'PointsEx' => droosak\Exceptions\PointsException::class
+        'PointsEx' => droosak\Exceptions\PointsException::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class
 
     ],
 

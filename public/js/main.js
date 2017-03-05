@@ -1,5 +1,12 @@
 $(function(){
 
+
+  $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+  });
+
   toastr.options = {
   "closeButton": false,
   "debug": false,
@@ -9,7 +16,7 @@ $(function(){
   "preventDuplicates": false,
   "showDuration": "300",
   "hideDuration": "1000",
-  "timeOut": "20000",
+  "timeOut": "8000",
   "extendedTimeOut": "1000",
   "showEasing": "swing",
   "hideEasing": "linear",
@@ -51,7 +58,16 @@ Echo.private("notifications." + user.id)
           case "droosak\\Notifications\\SchedulePublish":
             toastr["info"](Locale.get('schedule_updated' , notification.title));
             break;
-          default:
+          case "droosak\\Notifications\\ExamPublished":
+            $.ajax({
+              method : 'POST',
+              url    : `/exams/title`,
+              data   : 'title=' + notification.exam.title,
+              success : function(data){
+                toastr["info"](Locale.get('exam_updated' , data));
+              }
+            })
+            break;
 
         }
     });

@@ -27,10 +27,10 @@
             <div class="content ">
               <h1 class="title is-dark">@lang('nav.live')</h1>
                 <p class="control">
-                  <input  type="text" class="input is-expanded" name="title" placeholder="Title">
+                  <input  type="text" class="input is-expanded" name="title" placeholder="{{ Lang::get('auth.title')}}">
                 </p>
                 <p class="control">
-                  <textarea class="textarea" placeholder="Discription" name="discription"></textarea>
+                  <textarea class="textarea" placeholder="{{ Lang::get('auth.discription')}}" name="discription"></textarea>
                 </p>
                 <p class="control">
                   <button class="button is-success" type="submit">

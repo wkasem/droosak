@@ -13,7 +13,8 @@
            <div class="card">
         <div class="card-image">
           <figure class="image is-4by3">
-            <img src="/imgs/video_banco_wiki.jpg" alt="Image">
+            <img src="/imgs/video_banco_wiki.jpg" :alt="playlist.title" v-if='!playlist.poster'>
+            <img :src="'courses/'+playlist.playlist_id+'/poster/' + playlist.poster" :alt="playlist.title" v-if='playlist.poster'>
           </figure>
         </div>
         <div class="card-content">
@@ -27,7 +28,7 @@
           </div>
         </div>
         <footer class="card-footer">
-          <a class="card-footer-item" :href="'playlists/'+ playlist.playlist_id + '/videos'">{{ Locale.get('videos')}}</a>
+          <a class="card-footer-item" :href="'courses/'+ playlist.playlist_id + '/videos'">{{ Locale.get('videos')}}</a>
         </footer>
        </div>
      </div>
@@ -43,10 +44,10 @@
            <div class="content ">
              <h1 class="title is-dark">{{ Locale.get('new_course_list')}}</h1>
              <p class="control">
-               <input class="input is-expanded" type="text" name="title" placeholder="Title">
+               <input class="input is-expanded" type="text" name="title" :placeholder="Locale.get('title')">
              </p>
              <p class="control">
-               <textarea class="textarea" placeholder="Discription" name="discription"></textarea>
+               <textarea class="textarea" placeholder="Discription" :placeholder="Locale.get('discription')"></textarea>
              </p>
              <p class="control">
                <button class="button is-success" type="submit">
@@ -83,7 +84,7 @@
 
                 Progressbar.self($(e.target).find('button'));
 
-             this.$http.post('/admin/playlists/add-playlist' , Data).then(res => {
+             this.$http.post('/admin/courses/add-playlist' , Data).then(res => {
                Progressbar.end($(e.target).find('button'));
 
                Modal.close('playlist_add');

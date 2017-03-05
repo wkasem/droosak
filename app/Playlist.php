@@ -29,6 +29,12 @@ class Playlist extends Model
     return $this->hasMany(Videos::class , 'playlist_id');
   }
 
+  public function scopeShow($q)
+  {
+
+    return $q->where('show' , 1);
+  }
+
 
 
 }

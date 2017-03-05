@@ -40,7 +40,7 @@
         <th dir="ltr"><img :src="'/pic/' + student.id" class="image is-circle is-32x32" /></th>
         <td>{{ student.username }}</td>
         <td>{{ student.email }}</td>
-        <td>{{ student.mobile }}</td>
+        <td>{{ student.phone_number }}</td>
         <td>{{ student.points }}</td>
         <td>
           <div class="block">
@@ -100,7 +100,7 @@
           return {
             students : [],
             shadowCopy : [],
-            searchBy : Locale.get('id'),
+            searchBy : 'id',
             searchKey: '',
             current : null,
             Locale : window.Locale

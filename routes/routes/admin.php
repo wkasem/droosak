@@ -6,9 +6,10 @@ Route::post('/revenueChart' , 'adminController@getRevenueChart');
 Route::post('/subscribers' , 'adminController@getSubscribers');
 Route::post('/live' , 'adminController@live');
 Route::post('/introSave' , 'adminController@introSave');
+Route::post('/logo' , 'adminController@logoSave');
 
 //Videos
-Route::group(['prefix' => '/playlists'],function(){
+Route::group(['prefix' => '/courses'],function(){
 
   Route::get('/' , 'VideoController@index')->name('admin.playlists');
   Route::get('/{id}/videos' , 'VideoController@getPlaylist');
@@ -16,6 +17,8 @@ Route::group(['prefix' => '/playlists'],function(){
   Route::post('/{id}/edit' , 'VideoController@updateVideo');
   Route::post('/{id}/delete' , 'VideoController@deleteVideo');
   Route::post('/add-playlist' , 'VideoController@addPlaylist');
+  Route::post('/{id}/poster' , 'VideoController@updatePoster');
+  Route::get('/{id}/poster/{poster}' , 'VideoController@getPoster');
 });
 
 Route::group(['prefix' => '/exams'],function(){

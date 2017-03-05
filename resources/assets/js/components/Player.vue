@@ -2,9 +2,19 @@
   <div class="columns">
     <div class="column is-12">
       <div class="card">
-        <div class="card-image">
-          <figure class="image  Video" v-if='video.live != 1'>
-            <video id="lesson-player" class="video-js" controls preload
+        <div class="card-image" v-if='Object.keys(video).length'>
+
+          <figure class="image " v-if='video.live != 1 && promo'>
+            <video  class="video-js" id="promotion"  autoplay
+            :poster="'/video/' + promotion.video_id + '/getThumb'" data-setup="{}">
+              <source :src="'/video/' + promotion.video_id + '/stream'" type='video/mp4'>
+            </video>
+            <div class="promo-skip" v-if='promoInterval'>{{ promoInterval }}</div>
+            <div class="promo-skip is-btn" v-if='!promoInterval && promo' @click='skipPromo'>Skip</div>
+          </figure>
+
+          <figure class="image" v-if='video.live != 1' v-show='!promo'>
+            <video  id="lesson-player" class="video-js" controls
             :poster="'/video/' + video.video_id + '/getThumb'" data-setup="{}">
               <source :src="'/video/' + video.video_id + '/stream'" type='video/mp4'>
               <p class="vjs-no-js">
@@ -13,6 +23,7 @@
               </p>
             </video>
           </figure>
+
           <figure class="image  live" v-if='video.live == 1'>
              <iframe class="video-js" src="//iframe.dacast.com/b/85909/c/432649" frameborder="0" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
           </figure>
@@ -27,19 +38,22 @@
               <div class="content">
                 <p>
                   <strong>{{ video.published_by.username }}</strong> <span v-html='badge(video.published_by)'></span>
-
-                  <br>
-                  {{ video.published_by.about }}
                 </p>
+                <a :href="'/profile/' + video.published_by.id" class="button is-primary" target="_blank">
+                  <span>{{ Locale.get('profile')}}</span>
+                  <span class="icon is-small">
+                    <i class="fa fa-user" ></i>
+                  </span>
+                </a>
               </div>
             </div>
           </article>
         </div>
-        <div class="box" v-if='video.stream'>
+        <div class="box" v-if='!streamOff &&video.stream && authUser().id == video.published_by.id'>
           <article class="media">
             <div class="media-left">
               <figure class="image">
-                <img :src="'/pic/' + video.published_by.id" class="image is-circle is-64x64">
+                <i class="fa fa-cog" aria-hidden="true"></i>
               </figure>
             </div>
             <div class="media-content">
@@ -48,8 +62,31 @@
                  <strong>Login :</strong> {{ video.stream.login }} <strong> Password :</strong> {{ video.stream.password }}
                 </p>
                 <p>
-
+                  <strong>Stream Key :</strong> {{ video.stream.stream_name }} <strong> URL :</strong> {{ video.stream.src }}
                 </p>
+                <a href="#stream_how" class="button  modal-trigger">
+                  <span>{{ Locale.get('how') }}</span>
+                  <span class="icon is-small">
+                    <i class="fa fa-question" aria-hidden="true"></i>
+                  </span>
+                </a>
+                <a  class="button  is-danger" @click='endStream($event)'>
+                  {{ Locale.get('endStream') }}
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="box" v-if='streamOff && video.stream && authUser().id == video.published_by.id'>
+          <article class="media">
+            <div class="media-content">
+              <div class="content">
+                <div class="is-file ">
+                  <input type="file" name="video" @change='addVideo($event)'>
+                    <a class="button ">
+                      <span>Upload </span>
+                    </a>
+                </div>
               </div>
             </div>
           </article>
@@ -68,6 +105,15 @@
               </div>
             </div>
           </section>
+          <nav class="level">
+             <div class="level-left">
+               <a class="level-item" style="color:#000000">
+                 {{ video.comments_count }} Comments
+               </a>
+               <a class="level-item" style="color:#000000">
+                 {{ video.views_count }} Views
+               </a>
+           </nav>
           <hr>
           <div class="content has-text-centered"  >
             <a class="button" v-if='hasMoreComments' @click='loadMoreComments($event)'>{{ Locale.get('more_comments')}}</a>
@@ -93,6 +139,17 @@
                     </small>
                   </p>
                 </div>
+
+                <article class="media more-replies" v-if='comment.hasMoreReplies' >
+                  <div class="subtitle" @click='loadReplies($event,comment.id,index)' style="width:100%">
+                    <span class="icon media-left">
+                      <i class="fa fa-angle-down"></i>
+                    </span>
+                    More Replies
+                  </div>
+                  <span class="replies-load"></span>
+                </article>
+
                 <article class="media" v-for='reply in comment.replies'>
                   <figure class="media-left">
                     <p class="image">
@@ -122,7 +179,7 @@
                     </figure>
                     <form class="media-content" v-on:submit.prevent='postComment($event , true)'>
                       <p class="control">
-                        <textarea class="textarea" name="body" ref='reply' @keyup.enter="$refs.replyBtn[0].click()"></textarea>
+                        <textarea class="textarea" name="body" id='reply' @keyup.enter="$refs.replyBtn[0].click()"></textarea>
                       </p>
                       <p class="control" >
                         <button class="button" ref="replyBtn">reply</button>
@@ -133,11 +190,11 @@
               </div>
             </article>
           </div>
-          <hr>
+          <hr v-if='video.comments.length'>
           <article class="media">
             <figure class="media-left is-hidden-touch">
               <p class="image is-64x64">
-                <img src="http://bulma.io/images/placeholders/128x128.png">
+                <img :src="'/pic/' + authUser().id" class="image is-circle is-64x64">
               </p>
             </figure>
             <form class="media-content" v-on:submit.prevent='postComment($event , false)'>
@@ -155,33 +212,79 @@
       </div>
     </div>
   </div>
+
+  <div class="modal" id="stream_how">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <p class="image is-4by3">
+      <img src="/imgs/stream_how.png">
+    </p>
+  </div>
+  <button class="modal-close"></button>
+</div>
 </template>
 
 <script>
 import screenfull from "screenfull";
 
 export default {
-    props : ['data'],
+    props : ['data' , 'data2'],
 
     data(){
       return {
         video : [],
+        promotion : [],
         commentData : null,
         hasMoreComments : false,
         currentCommentPage : 1,
         last_indx : 0,
         curr_reply_indx : null,
         Locale : window.Locale,
-        badge : window.Badge
+        badge : window.Badge,
+        promo : false,
+        promoInterval : 5,
+        streamOff : false
       }
     },
     methods :{
+      addVideo(e){
 
+       let data = new FormData();
+
+       data.append('video' , $(e.target)[0].files[0]);
+       data.append('videoId' , this.video.video_id);
+
+       var url = '/teacher/courses/' + this.video.playlist_id + '/upload';
+
+        this.$http.post( url, data , {
+          before : e => {
+            Progressbar.show();
+          },
+          progress : pe => {
+
+          let percent = (pe.loaded / pe.total) * 100;
+
+          Progressbar.update(percent);
+          }
+        }).then(res => {
+
+          location.reload();
+        } ,res => {
+          Progressbar.hide();
+
+          Validator.errors(res.body);
+      });
+
+    },
      fullscreenComments(){
        const target = $(this.$refs.comment_section)[0];
        if (screenfull.enabled) {
           screenfull.request(target);
        }
+     },
+     authUser(){
+
+       return window.user;
      },
      setReplyIndex(index){
        if(this.curr_reply_indx == index){
@@ -189,6 +292,7 @@ export default {
          return;
        }
        this.curr_reply_indx = index;
+       $("#reply").focus();
      },
      postComment(event , reply){
 
@@ -282,16 +386,34 @@ export default {
    },
    listenForComments(){
 
-      Echo.private(`video.${this.video.video_id}.comments`)
+      Echo.private(`video.${this.video.video_id}`)
           .listen('CommentRecieved',e => {
               (e.comment.parent) ? this.addReply(e.comment)  : this.addComment(e.comment);
+           })
+          .listen('Viewing',e => {
+              this.video.views_count++;
            });
+   },
+   loadReplies(e,parent,index){
+
+     let data = new FormData();
+
+     data.append('videoId' , this.video.video_id);
+     data.append('parent' , parent);
+
+     $(e.target).next().show();
+
+     this.$http.post('/replies/more' , data).then(res => {
+
+     this.video.comments[index].replies = res.body.reverse();
+     this.video.comments[index].hasMoreReplies = false;
+     });
    },
    sendVoiceNote(blob , local , reply){
 
     this.commentData = new FormData();
 
-    let comment_id = uuid();
+    let comment_id = parseInt(uuid().substring(1,8));
 
     this.commentData.append('audio' , blob);
     this.commentData.append('id' , comment_id);
@@ -315,6 +437,27 @@ export default {
     this.sendVoiceNote(blob , local , true);
 
    },
+   endStream(e){
+
+     Progressbar.self(e.target);
+
+     let data = new FormData();
+
+     data.append('videoId' , this.video.video_id);
+     data.append('streamId', this.video.stream.stream_id);
+
+     this.$http.post('/stream/off', data).then(res => {
+
+       this.streamOff = true;
+
+       setTimeout(() => {
+         $('.is-file .button').click(function(e){
+           $(this).parent().find('input').click();
+         });
+       },1000);
+     });
+
+   },
    isFullscreen(){
 
      return screenfull.isFullscreen;
@@ -323,15 +466,46 @@ export default {
      Ps.update(target[0]);
 
      $(target).scrollTop($(target).prop("scrollHeight") + 20);
+   },
+   preparePromo(){
+     this.promo = (this.promotion) ? true : false;
+
+
+     let p = setInterval(() => {
+              this.promoInterval -= 1;
+              (this.promoInterval) ? null : clearInterval(p);
+             },1000);
+   },
+   commentsHasMoreReplies(){
+
+     this.video.comments.map((c) => {
+
+      if(c.replies_count){
+        c.hasMoreReplies = (c.replies_count.count > 2)
+        return c;
+      }
+       c.hasMoreReplies = false;
+
+       return c;
+     });
+   },
+   skipPromo(){
+
+     this.promo = false;
+     videojs("promotion").dispose();
+     videojs("lesson-player").play();
    }
     },
     mounted() {
 
+       this.promotion = JSON.parse(this.data2);
        this.video = JSON.parse(this.data);
        this.video.comments = this.video.comments.reverse();
        this.hasMoreComments = (this.video.comments_count > 5);
 
+       this.preparePromo();
        this.listenForComments();
+       this.commentsHasMoreReplies();
 
        document.addEventListener(screenfull.raw.fullscreenchange, () => {
          let target = $(this.$refs.comment_section);
@@ -344,6 +518,10 @@ export default {
             Ps.destroy(target[0]);
           }
       });
+    },
+    updated(){
+
+      Modal.activate();
     }
 }
 

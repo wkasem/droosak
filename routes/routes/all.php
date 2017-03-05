@@ -5,8 +5,11 @@ Route::get('video/{id}/stream' , 'VideoController@streamVideo')->name('home.vide
 Route::get('video/{id}' , 'VideoController@getVideo')->name('home.video');
 Route::post('/comment' , 'CommentController@addComment');
 Route::post('/comments/more' , 'CommentController@moreComments');
+Route::post('/replies/more' , 'CommentController@moreReplies');
 Route::post('/comment/sendVoiceNote' , 'CommentController@sendVoiceNote');
 Route::get('/voiceNote/{src}/stream' , 'MessagesController@streamVoiceNote');
+
+Route::get('profile/{id}' , 'TeachersController@getTeacher');
 
 
 Route::group(['prefix' => '/messages'],function(){

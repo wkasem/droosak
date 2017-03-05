@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title> @lang('exams.'.$exam->title)</title>
 
     <!--styles!-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -16,7 +16,7 @@
     <section class="hero is-warning is-bold is-fullheight">
       <div class="hero-body">
         <div class="container has-text-centered" id="app">
-          <ExamTake data='{{ json_encode($exam) }}' tdir="{{ tdir() }}"></ExamTake>
+          <ExamTake data='{{ json_encode($exam) }}' tdir="{{ tdir() }}" title="{{Lang::get('exams.'.$exam->title)}}"></ExamTake>
         </div>
       </div>
     </section>

@@ -13,7 +13,7 @@ class Schedule extends Model
    * @var array
    */
   protected $fillable = [
-    'title',
+    'title'
   ];
     public function times()
     {

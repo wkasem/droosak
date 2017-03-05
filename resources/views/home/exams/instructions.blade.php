@@ -1,5 +1,7 @@
 @extends('layout')
 
+@section('title' , Lang::get('exams.'.$exam->title))
+
 
 @section('content')
 <section class="section" dir="{{ tdir() }}">

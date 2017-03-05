@@ -30,6 +30,15 @@ class Comments extends Model
     public function replies()
     {
 
-      return $this->hasMany(Comments::class , 'parent')->with('user');
+      return $this->hasMany(Comments::class , 'parent')
+                   ->with('user')->latest()->limit(2);
+    }
+
+    public function replies_count()
+    {
+
+      return $this->hasOne(Comments::class , 'parent')
+                 ->select(\DB::raw('parent , COUNT(parent) as count'))
+                 ->groupBy('parent');
     }
 }

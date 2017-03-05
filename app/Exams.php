@@ -40,4 +40,21 @@ class Exams extends Model
                 ->where('user_id' , auth()->user()->id);
   }
 
+  public function getFinishedAttribute()
+  {
+
+    return (bool) $this->user->finished_at;
+  }
+  public function getStartedAttribute()
+  {
+
+    return (bool) $this->user->started_at;
+  }
+
+  public function getProgressColorAttribute()
+  {
+
+    return ($this->user->score >= 50) ? 'is-success' : 'is-danger';
+  }
+
 }

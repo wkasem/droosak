@@ -15,13 +15,14 @@ class Videos extends Model
      * @var array
      */
     protected $fillable = [
-      'video_id', 'title', 'discription' , 'src' , 'thumb_src' , 'by', 'stream_id' , 'playlist_id' , 'live'
+      'video_id', 'title', 'discription' , 'src' , 'thumb_src' , 'by', 'stream_id'
+      , 'playlist_id' , 'live' , 'points'
     ];
 
     protected $primaryKey = 'video_id';
 
     protected $casts = ['video_id' => 'string'];
-    
+
     public function playlist()
     {
 
@@ -33,7 +34,7 @@ class Videos extends Model
 
       return $this->hasMany(Comments::class , 'video_id')
                   ->where('parent' , '')
-                  ->with('user')
+                  ->with(['user' , 'replies'])
                   ->limit(10)
                   ->latest();
     }
@@ -44,15 +45,23 @@ class Videos extends Model
       return $this->belongsTo(User::class , 'by');
     }
 
+
+
     public function stream()
     {
 
       return $this->hasOne(Stream::class ,'video_id');
     }
 
+    public function views()
+    {
+
+      return $this->hasMany(View::class ,'video_id');
+    }
+
     public function scopeLive($q)
     {
 
-      return $q->where('playlist_id' , 1);
+      return $q->where('live' , 1)->latest()->with('published_by');
     }
 }

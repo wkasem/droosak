@@ -27,7 +27,7 @@ class Points
     if(!$r){
       $r = Revenue::create(['points' => 0]);
     }
-    
+
     $r->points += $points;
     $r->save();
   }
@@ -35,7 +35,7 @@ class Points
   public static function subtract($entity)
   {
     self::hasEnough($entity);
-
+    
     auth()->user()->points -= $entity->points;
 
     auth()->user()->save();

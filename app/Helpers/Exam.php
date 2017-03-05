@@ -2,9 +2,11 @@
 
 namespace droosak\Helpers;
 
+use droosak\Notifications\ExamPublished;
 use Carbon\Carbon;
 use droosak\Exams;
 use Points;
+use PDF;
 
 class Exam
 {
@@ -14,7 +16,7 @@ class Exam
   public function __construct($id , $withUser = true)
   {
 
-    $this->exam =  $this->get($id , $withUser);
+    $this->exam =  (gettype($id) == 'integer') ? $this->get($id , $withUser) : $id;
 
   }
 
@@ -34,18 +36,18 @@ class Exam
     return Exams::all();
   }
 
-  public static function edit($id)
+  public static function edit(int $id)
   {
 
     return Exams::where('id' , $id)->with(['results'])->first();
   }
 
-  public static function get($id , $user = false)
+  public static function get(int $id , $user = false)
   {
 
     $exam = Exams::published()->findOrFail($id);
 
-    return ($user) ? $exam->with('user')->first() : $exam->first();
+    return ($user) ? $exam->load('user'): $exam;
   }
 
   public function createTaker()
@@ -56,9 +58,13 @@ class Exam
     return $this->instructionsView($this->exam);
   }
 
-  public static function take($id)
+  public static function take(int $id)
   {
       $i = new static($id);
+
+      if(session()->has('examing')){
+          return redirect()->route('home.exams.take' , ['id' => session('examing')]);
+      }
 
       //didnt start or take the exam
       if(!$i->already()) return $i->createTaker();
@@ -76,14 +82,12 @@ class Exam
   }
 
 
-  public static function start($id)
+  public static function start(int $id)
   {
+
 
       $i = new static($id);
 
-      if(session()->has('examing')){
-          return redirect()->route('home.exams.take' , ['id' => $i->exam->id]);
-      }
 
       Points::subtract($i->exam);
 
@@ -104,9 +108,9 @@ class Exam
   {
 
     $time = $this->exam->user->started_at
-                 ->addMinutes($this->exam->minutes);
+                 ->addMinutes($this->exam->minutes)->diffForHumans();
 
-    return (bool) (Carbon::now())->diffInMinutes($time);
+    return (bool) strpos($time , 'now');
   }
 
   private function already()
@@ -184,15 +188,21 @@ class Exam
         return (array)$a;
     });
 
+    $temp = Exams::where('id' , $exam['id']);
 
-    Exams::where('id' , $exam['id'])->update($exam);
+    // if(!sizeof(json_decode($exam->first()->questions) && (bool) $exam->published ){
+    //
+    // }
+    \Notification::send(students(), new ExamPublished($exam));
+
+    $temp->update($exam);
   }
 
 
   public static function save()
   {
 
-    $i = new static(request()->input('examid'));
+    $i = new static(intval(request()->input('examid')));
 
     $i->commitAnswers();
   }
@@ -200,9 +210,11 @@ class Exam
   public static function finish()
   {
 
-    $i = new static(request()->input('examid'));
+    $i = new static(intval(request()->input('examid')));
 
-    return $i->commitAnswers(true);
+    session()->forget('examing');
+
+    $i->commitAnswers(true);
   }
 
   public  function commitAnswers($finish = false)
@@ -221,8 +233,6 @@ class Exam
     }
 
     $user->save();
-
-    return [ $user->score , $user->time ];
   }
 
   private function getExamScore($questions , $answers)
@@ -244,6 +254,20 @@ class Exam
     return ($user->started_at)->diffInMinutes($user->finished_at);
   }
 
+  public static function download(int $id)
+  {
+    $i = new static($id);
+
+    if($i->already() && $i->hasFinished()){
+      $exam = $i->exam;
+      $answers = json_decode($exam->user->results);
+
+      return  PDF::loadView('home.exams.result',compact('exam' , 'answers'))
+                  ->download(\Lang::get('exams.'.$exam->title).' - Results.pdf');
+    }
+
+  }
+
 
   public static function Worker()
   {
@@ -255,7 +279,7 @@ class Exam
     if($exams->count()){
       foreach ($exams->get() as $exam) {
 
-        $i = new static($exam , false);
+        $i = new static($exam);
 
         if(!$i->hasFinished()){
           if($i->hasStarted()){
@@ -263,9 +287,14 @@ class Exam
 
               session(['examing' => $i->exam->id]);
             }else{
-              $i->user->finished_at = $i->exam->user->started_at
-              ->addMinutes($i->exam->minutes);
-              $i->user->time        = $i->exam->minutes;
+
+             session()->forget('examing');
+
+              $i->exam->user->finished_at = $i->exam->user->started_at
+                                           ->addMinutes($i->exam->minutes);
+              $i->exam->user->time        = $i->exam->minutes;
+
+              $i->exam->user->save();
             }
           }
         }

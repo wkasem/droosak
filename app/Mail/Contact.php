@@ -31,6 +31,6 @@ class Contact extends Mailable
     public function build()
     {
         return $this->subject('Droosak:'.$this->user['contact_username'])
-                    ->markdown('vendor.mail.contact');
+                    ->view('mail.contact');
     }
 }

@@ -11,6 +11,7 @@ use droosak\User;
 use droosak\NewsLetter;
 use droosak\Welcome;
 use droosak\Mail\Contact;
+use droosak\Schedule;
 
 
 class HomeController extends Controller
@@ -23,9 +24,23 @@ class HomeController extends Controller
       return view('welcome' , compact('welcome'));
     }
 
+    public function schedule()
+    {
+      $schedules = Schedule::with('times')->get();
+
+      return view('home.schedule' , compact('schedules'));
+    }
+
     public function index()
     {
 
+      if(student()){
+
+        $videos = Videos::where('live' , '!=' , 1)->latest()->take(3)->get();
+        $live = Videos::where('live', 1)->latest()->take(4)->get();
+
+        return view('home.index' , compact('videos' , 'live'));
+      }
       return view('home.index');
     }
 
@@ -106,16 +121,24 @@ class HomeController extends Controller
     public function exams()
     {
 
-      $exams = Exams::published()->get();
+      $exams = Exams::published()->with('user')->get();
 
-      return view('home.exams.index' , compact('exams'));
+      $fixed = $exams->filter(function($e){
+        return !$e->monthly;
+      });
+      $monthly = $exams->filter(function($e){
+        return $e->monthly;
+      })->groupBy(function($x){
+        return $x->created_at->year;
+      });
+
+      return view('home.exams.index' , compact('fixed' , 'monthly'));
     }
 
     public function playlists()
     {
 
-      $playlists = Playlist::with(['last_thumb'])
-                          ->withCount(['videos'])->get()->chunk(3);
+      $playlists = Playlist::where('show' , 1)->withCount(['videos'])->get()->chunk(3);
 
       return view('home.playlists' , compact('playlists'));
     }
@@ -125,11 +148,9 @@ class HomeController extends Controller
     public function getPlaylist($id)
     {
 
-      $playlist = collect(Playlist::where('id' , $id)->with('videos.published_by')->first());
+      $playlist = Playlist::where('playlist_id' , $id)->with('videos.published_by')->first();
 
       if(!$playlist) return redirect()->route('home.playlists');
-
-      $playlist->put('videos' , collect($playlist->get('videos'))->chunk(3));
 
       return view('home.playlist_videos' , compact('playlist'));
     }

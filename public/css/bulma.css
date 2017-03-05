@@ -5653,7 +5653,6 @@ a.nav-item.is-tab {
   border-top: 1px solid transparent;
   padding-bottom: calc(0.5rem - 1px);
   padding-left: 1rem;
-  padding-right: 1rem;
   padding-top: calc(0.5rem - 1px);
 }
 
@@ -7360,7 +7359,7 @@ label.panel-block:hover {
 }
 
 .hero-head i {
-  margin: 5px;
+  margin-right: 2px;
 }
 
 .hero-body {
@@ -8162,6 +8161,14 @@ label.panel-block:hover {
   padding: 3rem 1.5rem 6rem;
 }
 
+.is-green {
+  color: #23d160 !important;
+}
+
+.is-red {
+  color: #ff3860 !important;
+}
+
 .is-fullscreen {
   position: relative;
   width: 100%;
@@ -8173,12 +8180,45 @@ label.panel-block:hover {
   display: none;
 }
 
+.image.is-video {
+  min-height: 600px;
+}
+
+.is-live {
+  -webkit-animation: live .6s infinite alternate;
+  animation: live .6s infinite alternate;
+}
+
+@-webkit-keyframes live {
+  from {
+    background: #ff3860;
+    color: #fff;
+  }
+  to {
+    background: #fff;
+    color: #000;
+  }
+}
+
+@keyframes live {
+  from {
+    background: #ff3860;
+    color: #fff;
+  }
+  to {
+    background: #fff;
+    color: #000;
+  }
+}
+
 img.image.is-circle {
   border-radius: 50%;
 }
 
 .video-js {
   width: 100%;
+  min-height: 600px;
+  max-height: 600px;
 }
 
 .Video {
@@ -8206,6 +8246,48 @@ img.image.is-circle {
   height: 1rem;
   position: relative;
   width: 1rem;
+}
+
+.promo-skip {
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  border: 1px solid black;
+  box-shadow: 0px 0px 5px #d8d6d6;
+  color: #fff;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  font-size: 2rem;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.promo-skip.is-btn {
+  cursor: pointer;
+}
+
+.media.more-replies {
+  cursor: pointer;
+}
+
+.media.more-replies .replies-load {
+  -webkit-animation: spinAround 500ms infinite linear;
+  animation: spinAround 500ms infinite linear;
+  border: 2px solid #dbdbdb;
+  border-radius: 290486px;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  content: "";
+  display: block;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
+  display: none;
 }
 
 /*# sourceMappingURL=bulma.css.map */

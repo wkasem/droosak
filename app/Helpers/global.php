@@ -12,7 +12,7 @@ if( !function_exists('en'))
 if( !function_exists('userType'))
 {
   function userType(){
-
+    
     return Auth::user()->type_id;
   }
 }
@@ -41,33 +41,69 @@ if( !function_exists('admin'))
   }
 }
 
+if( !function_exists('students'))
+{
+  function students(){
+
+    return droosak\User::students()->get();
+  }
+}
+
+
 if( !function_exists('days'))
 {
-  function days($i){
+  function days($i , $lang = 'rtl'){
 
+  if($lang == 'rtl'){
     switch ($i) {
       case 1:
-        return 'السبت';
-        break;
+      return 'السبت';
+      break;
       case 2:
-        return 'اﻻحد';
-        break;
+      return 'اﻻحد';
+      break;
       case 3:
-        return 'الاثنين';
-        break;
+      return 'الاثنين';
+      break;
       case 4:
-        return 'الثلاثاء';
-        break;
+      return 'الثلاثاء';
+      break;
       case 5:
-        return 'اﻻربعاء';
-        break;
+      return 'اﻻربعاء';
+      break;
       case 6:
-        return 'الخميس';
-        break;
+      return 'الخميس';
+      break;
       case 7:
-        return 'الجمعة';
-        break;
+      return 'الجمعة';
+      break;
     }
+  }
+
+  switch ($i) {
+    case 1:
+    return 'Saturday';
+    break;
+    case 2:
+    return 'Sunday';
+    break;
+    case 3:
+    return 'Monday';
+    break;
+    case 4:
+    return 'Tuesday';
+    break;
+    case 5:
+    return 'Wednesday';
+    break;
+    case 6:
+    return 'Thursday';
+    break;
+    case 7:
+    return 'Friday';
+    break;
+  }
+
   }
 }
 

@@ -44,20 +44,19 @@
       <th dir="ltr"><img :src="'/pic/' + teacher.id" class="image is-circle is-32x32" /></th>
       <td>{{ teacher.username }}</td>
       <td>{{ teacher.email }}</td>
-      <td>{{ teacher.mobile }}</td>
+      <td>{{ teacher.phone_number }}</td>
       <td>
         <div class="block">
           <a href="#update-cv" class="button modal-trigger" @click='setCurrent(index)'>
-            <span>Update</span>
+            <span>{{ Locale.get('update_cv')}}</span>
             <span class="icon is-small">
-              <i class="fa fa-id-card" ></i>
+              <i class="fa fa-file-text" ></i>
             </span>
           </a>
-          <a href="#delete-cv" class="button is-danger is-outlined modal-trigger"
-          @click='setCurrent(index)' v-if='teacher.cv_src'>
-            <span>Delete</span>
+          <a :href="'/profile/' + teacher.id" class="button is-primary" target="_blank">
+            <span>{{ Locale.get('profile')}}</span>
             <span class="icon is-small">
-              <i class="fa fa-times"></i>
+              <i class="fa fa-user" ></i>
             </span>
           </a>
         </div>
@@ -75,13 +74,16 @@
       <article class="media">
         <div class="media-content">
             <div class="control">
+              <input class="is-expanded" type="file" name="pic">
+            </div>
+            <div class="control">
               <input class="input is-expanded" name="username" type="text" :placeholder="Locale.get('username')">
             </div>
             <div class="control">
               <input class="input is-expanded" name="email" type="text" :placeholder="Locale.get('email')">
             </div>
             <div class="control">
-              <input class="input is-expanded" name="mobile" type="text" :placeholder="Locale.get('mobile')">
+              <input class="input is-expanded" name="phone_number" type="text" :placeholder="Locale.get('mobile')">
             </div>
             <div class="control">
               <input class="input is-expanded" name="password" type="password" :placeholder="Locale.get('password')">
@@ -110,14 +112,14 @@
       <article class="media">
         <div class="media-content">
           <div class="content ">
-            <h1 class="title is-dark" >{{ current().first_name }}'s CV</h1>
+            <h1 class="title is-dark" >{{ current().username }}</h1>
             <p class="control">
               <input class="is-expanded" type="file" name="cv">
             </p>
             <p class="control has-addons ">
-              <input class="input is-expanded" type="password" name="password" placeholder="Admin Password">
+              <input class="input is-expanded" type="password" name="password" :placeholder="Locale.get('admin_pass')">
               <button class="button is-primary" type="submit">
-                Update
+                {{ Locale.get('update')}}
               </button>
             </p>
           </div>
@@ -165,10 +167,11 @@
 
             Progressbar.self($(e.target).find('button'));
 
-            this.$http.post('teachers/add' , data).then(res => {
+            this.$http.post('teachers/add' , data , {emulateJSON : false}).then(res => {
 
               this.teachers.push(res.body);
               Modal.close('teacher-new');
+              Progressbar.end($(e.target).find('button'));
               Validator.wipeInputs();
               Alert.updated();
             } , res => {
@@ -202,41 +205,11 @@
               Progressbar.end($(e.target).find('button'));
 
               if(res.status == 403){
-                Alert.wrong('Wrong Password');
+                Alert.wrong(Locale.get('wrong_pass'));
                 return;
               }
                Validator.errors(res.body);
             });
-          },
-          deleteCVModal(indx){
-
-           this.index = indx;
-           $('#delete-teacher-cv').modal('open');
-          },
-          deleteCV(e){
-
-            let data = new FormData($(e.target)[0]);
-
-            data.append('teacher_id' , this.teachers[this.indx].id);
-
-            Progressbar.self($(e.target).find('button'));
-
-
-             this.$http.post('teachers/delete/cv' , data).then(res => {
-
-               this.teachers[this.indx].cv_src = null;
-               Progressbar.end($(e.target).find('button'));
-
-               this.validator.wipeInputs();
-               Modal.close('delete-teacher-cv');
-             }, res => {
-               if(res.status == 403){
-                 Alert.wrong('Wrong Password');
-                 return;
-               }
-               Progressbar.end($(e.target).find('button'));
-
-             });
           }
         },
 

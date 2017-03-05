@@ -18,7 +18,7 @@ class CreateExamsResultsTable extends Migration
             $table->integer('user_id');
             $table->integer('exam_id');
             $table->json('results')->nullable();
-            $table->integer('score')->nullable();
+            $table->integer('score')->default(0);
             $table->integer('time')->nullable();
             $table->timestamp('started_at')->nullable();
             $table->timestamp('finished_at')->nullable();

@@ -17,7 +17,9 @@ return [
  'logout' => 'خروج',
  'search' => 'بحث',
  'live' => 'بث حى',
+ 'liveNow' => 'حى الأن',
  'schedule' => 'جدول المواعيد',
+
 
 
 

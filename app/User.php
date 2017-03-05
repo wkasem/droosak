@@ -37,7 +37,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'mail_code' , 'phone_number' , 'phone_code'
+        'password', 'remember_token', 'mail_code' , 'phone_code'
     ];
 
 
@@ -77,6 +77,12 @@ class User extends Authenticatable
     {
 
       return $this->hasMany(Videos::class , 'by');
+    }
+
+    public function views()
+    {
+
+      return $this->hasMany(View::class ,'owner_id');
     }
 
     public function exams()

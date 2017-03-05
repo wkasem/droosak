@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'username' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6',
-            'phone_number' => 'required|number|min:6|max:15|unique:users',
+            'phone_number' => 'required|min:6|max:15|unique:users',
         ]);
 
         session()->flash('signup_process' , true);

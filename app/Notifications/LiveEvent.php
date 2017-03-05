@@ -11,7 +11,7 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 
-class LiveEvent extends Notification
+class LiveEvent extends Notification implements ShouldQueue
 {
     use Queueable , InteractsWithSockets;
 

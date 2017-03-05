@@ -3,6 +3,25 @@
 
     <div class="box">
     <article class="media">
+      <div class="media-left">
+        <figure class="image is-64x64">
+          <img src="/imgs/logo.png" alt="Image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <form method="post" name="logoForm" action="/admin/logo" enctype="multipart/form-data">
+          <div class="is-file ">
+            <input type="file" name="pic">
+              <a class="button ">
+                <span>{{ Locale.get('update')}} </span>
+              </a>
+          </div>
+        </form>
+      </div>
+    </article>
+  </div>
+    <div class="box">
+    <article class="media">
       <div class="media-content">
         <div class="content" id="usersChart" > </div>
         <div class="content is-loading-div" v-if='!usersChart'> </div>
@@ -44,7 +63,23 @@
           <div class="content">
             <table>
               <tbody>
-                <tr v-for='video in live'><td>{{ video }}</td></tr>
+                <tr v-for='video in live'>
+                  <td>
+                    <figure class="image is-64x64">
+                      <img src="/imgs/video_banco_wiki.jpg">
+                    </figure>
+                  </td>
+                  <td>
+                          <p>
+                            <strong>{{ video.published_by.username }}</strong> <small><timeago :since="Date.parse(video.created_at)" :auto-update="60"></timeago></small>
+                            <br>
+                            {{ video.title }}
+                          </p>
+                    </td>
+                    <td>
+                      <a :href="'/video/' + video.video_id" target="_blank" class="button is-warning">{{ Locale.get('watch')}}</a>
+                    </td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -270,6 +305,9 @@ props : ['data' , 'tdir'],
             case 'subscribers':
               Ps.initialize($('.subscribers')[0]);
               break;
+            case 'live':
+              Ps.initialize($('.live')[0]);
+              break;
 
           }
         });
@@ -296,7 +334,7 @@ props : ['data' , 'tdir'],
   width: 100%;
 	height: 400px;
 }
-.subscribers{
+.subscribers,.live{
   position: relative;
   height: 235px;
 }

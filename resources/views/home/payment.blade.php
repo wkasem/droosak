@@ -1,5 +1,6 @@
 @extends('layout')
 
+@section('title' , Lang::get('nav.payment'))
 
 @section('scripts')
 
@@ -38,10 +39,10 @@
           <img src="{{ asset('imgs/5137Image4.png')}}" class="image" />
         </div>
         <div class="column">
-          <span class="tag is-warning is-large">
-            0109454225
-          </span>
           <img src="{{ asset('imgs/cashmenu.png')}}" class="image" />
+          <span class="tag is-danger is-large">
+            
+          </span>
         </div>
       </div>
   </div>

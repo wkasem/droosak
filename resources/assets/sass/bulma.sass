@@ -8,6 +8,11 @@
 @import "sass/grid/_all"
 @import "sass/layout/_all"
 
+.is-green
+ color: #23d160 !important
+.is-red
+ color: #ff3860 !important
+
 .is-fullscreen
   position: relative
   width: 100%
@@ -18,6 +23,20 @@
   input
    display: none
 
+.image.is-video
+  min-height: 600px
+
+.is-live
+ animation: live .6s infinite alternate
+
+@keyframes live
+  from
+    background: #ff3860
+    color : #fff
+  to
+    background: #fff
+    color:#000
+
 
 img.image.is-circle
    display:inline-block
@@ -25,6 +44,8 @@ img.image.is-circle
 
 .video-js
   width: 100%
+  min-height: 600px
+  max-height: 600px
 
 .Video
   padding-top: 39.8%
@@ -39,3 +60,26 @@ img.image.is-circle
 
 .is-loading-div
   +loader
+
+.promo-skip
+  width: 100px
+  height: 50px
+  position: absolute
+  right: 0
+  top: 50%
+  border: 1px solid black
+  box-shadow: 0px 0px 5px #d8d6d6
+  color: #fff
+  display: flex
+  align-items: center
+  justify-content: center
+  font-size: 2rem
+  background: rgba(0, 0, 0, 0.55)
+  &.is-btn
+   cursor: pointer
+
+.media.more-replies
+  cursor: pointer
+  .replies-load
+   +loader
+   display: none

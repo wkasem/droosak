@@ -30,7 +30,27 @@ return [
     ],
 
     "no-messages" => "No Messages",
-
+    "watch" => "watch",
+    "title" => "Title",
+    "discription"=>"Discription",
+    'playlists' =>[
+      'error' => [
+        'title' => 'Sorry there are no courses right now !',
+        'subtitle' => 'Please wait we will upload some shortly..'
+      ]
+    ],
+    'schedules' =>[
+      'error' => [
+        'title' => 'Sorry there are no schedules right now !',
+        'subtitle' => 'Please wait schedules will be updated shortly..'
+      ]
+    ],
+    'exams' =>[
+      'error' => [
+        'title' => 'Sorry there are no exams right now !',
+        'subtitle' => 'Please wait exams will be updated shortly..'
+      ]
+    ],
     'points' => [
       'badge' => ':points Points',
       'explain' => 'Point = 1 EGP',
@@ -46,6 +66,12 @@ return [
       'fixed' => 'Fixed',
       'take' => 'Take',
       'start' => 'Start',
+      'view'  => 'View',
+      'complete'  => 'Complete',
+      'score'  => 'Score',
+      'time'  => 'Time',
+      'copy'  => 'Get Copy of Answers',
+      'min'   => 'min',
       'instructions' => [
         'title' => 'Simple Instructions Before Exam',
         'steps' => [

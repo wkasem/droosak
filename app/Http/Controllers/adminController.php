@@ -22,6 +22,17 @@ class adminController extends Controller
       return view('admin.index' , compact('welcome'));
     }
 
+    public function logoSave()
+    {
+
+      $this->validate(request(),[
+        'logo' => 'required|file|mimes:jpg,jpeg,png'
+      ]);
+
+      request('logo')->storeAs('imgs' , 'logo.png' , 'public');
+
+    }
+
     public function getSubscribers()
     {
 

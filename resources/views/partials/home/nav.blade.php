@@ -2,8 +2,8 @@
   <a class="nav-item">
     <img src="{{ asset('imgs/logo.png')}}" alt="Droosak">
   </a>
-  <a href="{{ route('messages')}}"
-     class="nav-item is-tab {{ active()->output('is-active')->route('messages') }}">
+  <a href="{{ route('home.index')}}"
+     class="nav-item is-tab {{ active()->output('is-active')->route('home.index') }}">
      <i class="fa fa-home" aria-hidden="true"></i>
      @lang('nav.home')
    </a>
@@ -18,6 +18,11 @@
        <i class="fa fa-list-alt" aria-hidden="true"></i>
        @lang('nav.videos')
      </a>
+     <a href="{{ route('home.schedule')}}"
+        class="nav-item is-tab {{ active()->output('is-active')->route('home.schedule') }}">
+        <i class="fa fa-calendar" aria-hidden="true"></i>
+        @lang('nav.schedule')
+      </a>
     <a href="{{ route('home.exams')}}"
        class="nav-item is-tab {{ active()->output('is-active')->route('home.exams') }}">
        <i class="fa fa-inbox" aria-hidden="true"></i>
@@ -30,12 +35,19 @@
      </a>
   @endif
   @if(teacher())
-    <a href="#live"
-       class="nav-item is-tab modal-trigger ">
-       <i class="fa fa-money" aria-hidden="true"></i>
-       @lang('nav.live')
-     </a>
-   @endif
+    @if($isLive)
+      <a href="/video/{{ $isLive->video_id }}"
+         class="nav-item is-tab is-live">
+         @lang('nav.liveNow')
+       </a>
+    @else
+      <a href="#live"
+         class="nav-item is-tab modal-trigger ">
+         <i class="fa fa-video-camera is-red" aria-hidden="true"></i>
+         @lang('nav.live')
+       </a>
+    @endif
+  @endif
 
   <a class="nav-item">
     <form action="{{ route('search') }}">

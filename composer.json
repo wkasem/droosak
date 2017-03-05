@@ -6,12 +6,13 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "barryvdh/laravel-dompdf": "^0.8.0",
         "intervention/image": "^2.3",
         "laravel/framework": "5.4.*",
+        "netshell/paypal": "dev-master",
         "nexmo/client": "@beta",
         "predis/predis": "^1.1",
-        "stevebauman/active": "1.0.*",
-        "netshell/paypal": "dev-master"
+        "stevebauman/active": "1.0.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

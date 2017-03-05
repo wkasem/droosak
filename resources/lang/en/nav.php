@@ -18,6 +18,7 @@ return [
  'logout' => 'Logout',
  'search' => 'Search...',
  'live' => 'Go Live',
+ 'liveNow' => 'Live Now',
  'schedule' => 'Schedule',
 
 
