@@ -23,8 +23,9 @@ class HomeController extends Controller
 
       $playlists = Playlist::show()->with('videos')->whereHas('videos')->latest()->get();
 
+      $teachers = User::teachers()->get();
 
-      return view('welcome' , compact('welcome' , 'playlists'));
+      return view('welcome' , compact('welcome' , 'playlists' , 'teachers'));
     }
 
     public function schedule()
