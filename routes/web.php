@@ -11,6 +11,7 @@ return back();
 });
 
 Route::get('v/{id}/getThumb' , 'VideoController@getThumb');
+Route::get('/p/{id}' , 'SettingsController@getPic');
 
 
 Route::group(['prefix' => '/' , 'middleware' => 'guest' ],function(){
