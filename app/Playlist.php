@@ -26,7 +26,13 @@ class Playlist extends Model
   public function videos()
   {
 
-    return $this->hasMany(Videos::class , 'playlist_id');
+    return $this->hasMany(Videos::class , 'playlist_id')->withCount('views');
+  }
+
+  public function documents()
+  {
+
+    return $this->hasMany(Document::class , 'playlist_id');
   }
 
   public function scopeShow($q)

@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="columns">
+  <div class="columns" v-if='playlist.show'>
     <div class="column section">
       <article class="media">
         <figure class="media-left">
@@ -8,6 +8,15 @@
             <img src="/imgs/video_banco_wiki.jpg" :alt="playlist.title" v-if='!playlist.poster'>
             <img :src="'poster/' + playlist.poster" :alt="playlist.title" v-if='playlist.poster'>
           </p>
+          <div class="is-file ">
+            <input type="file" name="poster" @change='uploadPoster($event)'>
+              <a class="button ">
+                <span class="icon">
+                  <i class="fa fa-picture-o" aria-hidden="true"></i>
+                </span>
+                <span>{{ Locale.get('video_poster') }} </span>
+              </a>
+          </div>
         </figure>
         <div class="media-content">
           <div class="content">
@@ -18,27 +27,24 @@
            </p>
           </div>
         </div>
-        <div class="media-right">
-          <a href="#video_add" class="modal-trigger button">
-            <span class="icon">
-              <i class="fa fa-plus"></i>
-            </span>
-            <span>{{ Locale.get('new_video') }}</span>
-          </a>
-          <a href="#video_poster" class="modal-trigger button">
-            <span class="icon">
-              <i class="fa fa-picture-o" aria-hidden="true"></i>
-            </span>
-            <span>{{ Locale.get('video_poster') }}</span>
-          </a>
-        </div>
       </article>
 </div>
 </div>
-
-
+<hr v-if='playlist.show'>
+<div class="columns">
+  <div class="column section">
+  <div class="container">
+  <div class="heading">
+    <h1 class="title">{{ Locale.get('videos')}}<span class="tag">{{ videos_count }}</span></h1>
+    <a href="#video_add" class="modal-trigger button">
+      <span class="icon">
+        <i class="fa fa-plus"></i>
+      </span>
+      <span>{{ Locale.get('new_video') }}</span>
+    </a>
+  </div>
   <div class="columns" v-for='(videos_group , parent) in playlist.videos'>
-       <div class="column is-one-third" v-for='(video , child) in videos_group' v-bind:key="video.id">
+       <div class="column is-one-third" v-for='(video , child) in videos_group'>
           <div class="card">
              <div class="card-image">
                <figure class="image is-4by3">
@@ -51,16 +57,19 @@
                  {{ video.discription }}
                  <br>
                  <a >
-                   <span class="tag is-info">0 Views</span><br>
+                   <span class="tag is-info" v-if='!isPromo()'>{{ Locale.get('views' , video.views_count)  }}</span><br>
                  </a>
-                 <small>{{ video.published_by.username }}</small>
+                 <figure class="box-publish" v-if='!isPromo()'>
+                   <img :src="'/pic/' + video.published_by.id"  class="image is-24x24">
+                   <a :href="'/profile/' + video.published_by.id" target="_blank"><small>{{ video.published_by.username }}</small></a>
+                 </figure>
                </div>
              </div>
              <footer class="card-footer">
-              <a :href="'/video/' + video.video_id" target="_blank" class="card-footer-item">
+              <a :href="'/video/' + video.video_id" target="_blank" class="card-footer-item" v-if='!isPromo()'>
                 {{ Locale.get('watch') }}
               </a>
-              <a href="#video_edit" class="card-footer-item modal-trigger" @click.prevent='setCurrent(parent , child)'>
+              <a href="#video_edit" class="card-footer-item modal-trigger" v-if='!isPromo()' @click.prevent='setCurrent(parent , child)'>
                 {{ Locale.get('edit')}}
               </a>
               <a href="#video_delete"class="card-footer-item modal-trigger" @click.prevent='setCurrent(parent , child)'>
@@ -70,6 +79,50 @@
       </div>
     </div>
   </div>
+</div>
+</div>
+</div>
+
+<!--books -->
+<hr v-if='!isPromo()'>
+<div class="columns" v-if='!isPromo()'>
+  <div class="column section">
+  <div class="container">
+  <div class="heading">
+    <h1 class="title">{{ Locale.get('documents')}}<span class="tag" v-if='playlist.documents'>{{ playlist.documents.length }}</span></h1>
+    <div class="is-file ">
+      <input type="file" name="file" @change='uploadDocument($event)'>
+        <a class="button ">
+          <span class="icon">
+            <i class="fa fa-file-text-o"></i>
+          </span>
+          <span>{{ Locale.get('new_document')}} </span>
+        </a>
+    </div>
+  </div>
+  <div class="box" v-for='(document , index) in playlist.documents'>
+    <article class="media">
+      <div class="media-left">
+        <figure class="image is-64x64" v-html='Document.img(document.src)'> </figure>
+      </div>
+      <div class="media-content">
+        <div class="content">
+          <p> {{ document.name }} </p>
+        </div>
+      </div>
+      <div class="media-right">
+        <a  :href="'/documents/'+ document.id +'/download'"  target="_blank" class="button">
+          {{ Locale.get('download') }}
+        </a>
+        <a href="#document_delete"class="button is-danger modal-trigger" @click.prevent='setCurrent(0 , index)'>
+          {{ Locale.get('delete') }}
+        </a>
+      </div>
+    </article>
+  </div>
+</div>
+</div>
+</div>
 
   <div class="modal" id="video_edit">
   <div class="modal-background"></div>
@@ -126,25 +179,27 @@
               <p class="control">
                 <input type="file" name="video" accept='video/*' >
               </p>
-              <label class="label">{{ Locale.get('badges_teacher')}}</label>
-              <p class="control">
-                <span class="select">
-                  <select name="published_by">
-                    <option v-for='teacher in teachers' :value="teacher.id">
-                      {{ teacher.username }}
-                    </option>
-                  </select>
-                </span>
-              </p>
-              <p class="control">
-                <input  type="text" class="input is-expanded" name="title" :placeholder="Locale.get('title')">
-              </p>
-              <p class="control">
-                <input  type="number" class="input is-expanded" name="points" :placeholder="Locale.get('points')">
-              </p>
-              <p class="control">
-                <textarea class="textarea" :placeholder="Locale.get('discription')" name="discription"></textarea>
-              </p>
+              <div v-if='!isPromo()'>
+                <label class="label">{{ Locale.get('badges_teacher')}}</label>
+                <p class="control">
+                  <span class="select">
+                    <select name="published_by">
+                      <option v-for='teacher in teachers' :value="teacher.id">
+                        {{ teacher.username }}
+                      </option>
+                    </select>
+                  </span>
+                </p>
+                <p class="control">
+                  <input  type="text" class="input is-expanded" name="title" :placeholder="Locale.get('title')">
+                </p>
+                <p class="control">
+                  <input  type="number" class="input is-expanded" name="points" :placeholder="Locale.get('points')">
+                </p>
+                <p class="control">
+                  <textarea class="textarea" :placeholder="Locale.get('discription')" name="discription"></textarea>
+                </p>
+              </div>
               <p class="control">
                 <button class="button is-success" type="submit">
                   {{ Locale.get('add') }}
@@ -183,18 +238,19 @@
  <a class="modal-close"></a>
 </div>
 
- <div class="modal" id="video_poster">
+ <div class="modal" id="document_delete">
  <div class="modal-background"></div>
- <div class="modal-content">
-   <form v-on:submit.prevent='uploadPoster($event)'>
+ <div class="modal-content" v-if='hasAnyDocuemnts()'>
+   <form v-on:submit.prevent='deleteDocument($event)'>
      <div class="box">
        <article class="media">
          <div class="media-content">
            <div class="content ">
-             <p class="control">
-               <input class="is-expanded" type="file" name="poster">
-               <button class="button is-danger is-pulled-right" type="submit">
-                 {{ Locale.get('update')}}
+             <h1 class="title is-dark">{{getCurrentDocument().name}}</h1>
+             <p class="control has-addons ">
+               <input class="input is-expanded" type="password" name="password" :placeholder="Locale.get('admin_pass')">
+               <button class="button is-danger" type="submit">
+                 {{ Locale.get('delete') }}
                </button>
              </p>
            </div>
@@ -221,11 +277,34 @@
             child : 0,
             Locale : window.Locale,
             teachers : [],
-            playlists : []
+            playlists : [],
+            Document : window.Document,
+            videos_count : 0
           }
         },
         methods :{
 
+          uploadDocument(e){
+
+           let data = new FormData();
+
+            data.append('file' , $(e.target)[0].files[0]);
+            data.append('playlist_id' , this.playlist.playlist_id);
+
+            Progressbar.self($(e.target).siblings()[0]);
+            this.$http.post('/admin/documents/upload', data).then(res => {
+
+              this.playlist.documents.push(res.body);
+
+              Progressbar.end($(e.target).siblings()[0]);
+
+            } ,res => {
+              Progressbar.end($(e.target).siblings()[0]);
+
+              Validator.errors(res.body);
+          });
+
+        },
           setCurrent(parent , child){
 
             this.parent = parent;
@@ -239,13 +318,31 @@
 
             return this.playlist.videos.length;
           },
+          hasAnyDocuemnts(){
+
+            return (this.playlist.documents) ? this.playlist.documents.length : false;
+          },
           getCurrent(){
 
              return this.playlist.videos[this.parent][this.child];
           },
+          getCurrentDocument(){
+
+            return this.playlist.documents[this.child];
+          },
+          isPromo(){
+
+            return this.playlist.title == 'promotion';
+          },
           addVideo(e){
 
            let data = new FormData($(e.target)[0]);
+
+           if(this.isPromo()){
+             let num = this.playlist.videos.length + 1;
+
+             data.set('title' , `Droosak${num}`)
+           }
 
            var url = '/admin/courses/' + this.playlist.playlist_id + '/upload';
 
@@ -264,6 +361,9 @@
               Progressbar.hide();
               Modal.close('video_add');
               Validator.reset();
+              Validator.wipeInputs();
+
+              this.videos_count++;
 
               Chunk.add(this.playlist.videos , res.body);
             } ,res => {
@@ -276,17 +376,19 @@
         uploadPoster(e){
           let data = new FormData($(e.target)[0]);
 
+          data.append('poster' , $(e.target)[0].files[0]);
+
           var url = '/admin/courses/' + this.playlist.playlist_id + '/poster';
-          Progressbar.self($(e.target).find('button'));
+          Progressbar.self($(e.target).siblings()[0]);
 
           this.$http.post( url, data).then(res => {
 
              this.playlist.poster = res.body;
 
-             Progressbar.end($(e.target).find('button'));
+             Progressbar.end($(e.target).siblings()[0]);
              Modal.close('video_poster');
           } ,res => {
-            Progressbar.end($(e.target).find('button'));
+            Progressbar.end($(e.target).siblings()[0]);
 
             Validator.errors(res.body);
 
@@ -328,17 +430,39 @@
 
           data.append('videoid' , this.getCurrent().video_id);
 
-          Progressbar.show();
+          Progressbar.self($(e.target).find('button'));
 
            this.$http.post(url , data).then(res => {
 
              this.removeVideo();
-             Progressbar.hide();
+             Progressbar.end($(e.target).find('button'));
              Modal.close('video_delete');
            }, res => {
-             Alert.wrong('Wrong Password');
+             Alert.wrong(Locale.get('wrong_pass'));
 
-             Progressbar.hide();
+             Progressbar.end($(e.target).find('button'));
+           });
+        },
+        deleteDocument(e){
+          let data = new FormData($(e.target)[0]);
+          let url = '/admin/documents/delete';
+
+          data.append('docuemntId' , this.getCurrentDocument().id);
+
+          Progressbar.self($(e.target).find('button'));
+
+           this.$http.post(url , data).then(res => {
+
+             this.playlist.documents.splice(this.child , 1);
+
+             Progressbar.end($(e.target).find('button'));
+
+             Modal.close('document_delete');
+           }, res => {
+
+             Alert.wrong(Locale.get('wrong_pass'));
+
+             Progressbar.end($(e.target).find('button'));
            });
         },
         removeVideo(){
@@ -357,11 +481,26 @@
           this.teachers = JSON.parse(this.data2);
           this.playlists = JSON.parse(this.data3);
 
+          this.isPromo();
+          this.videos_count = this.playlist.videos.length;
+
           this.playlist.videos = Chunk.cast(this.playlist.videos);
+
         },
         updated(){
-
+          $('.is-file .button').click(function(e){
+            $(this).parent().find('input').click(function(e){
+              e.stopPropagation();
+            });
+          });
           Modal.activate();
         }
     }
 </script>
+
+<style scoped>
+.heading{
+  display: flex;
+  justify-content: space-between;
+}
+</style>

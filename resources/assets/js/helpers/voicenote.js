@@ -20,10 +20,10 @@ export default class{
     return this.recordStatus;
   }
 
-  finish(){
+  finish(id){
     this.recordStatus = false;
 
-    Modal.close('voice-note');
+    Modal.close(id);
     Fr.voice.stop();
   }
 

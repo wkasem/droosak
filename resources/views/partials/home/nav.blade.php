@@ -1,6 +1,6 @@
 <div class="nav-left is-hidden-touch">
   <a class="nav-item">
-    <img src="{{ asset('imgs/logo.png')}}" alt="Droosak">
+    <img src="{{ asset('imgs/'.$welcome->logo)}}" alt="Droosak">
   </a>
   <a href="{{ route('home.index')}}"
      class="nav-item is-tab {{ active()->output('is-active')->route('home.index') }}">
@@ -72,6 +72,13 @@
 
 
 <div class="nav-right nav-menu is-hidden-touch">
+  @if(teacher())
+    <a href="{{ route('profile' , ['id' => auth()->user()->id])}}"
+       class="nav-item is-tab {{ active()->output('is-active')->route('profile') }}">
+         <img src="/pic/{{auth()->user()->id}}"  class="image is-24x24">
+         {{ auth()->user()->username }}
+     </a>
+    @endif
   <a href="{{ route('settings')}}"  class="nav-item is-tab"> @lang('nav.settings') </a>
   <a class="nav-item is-tab is-danger"
      onclick="javascript: document.getElementsByName('logout')[0].submit();"> @lang('nav.logout') </a>

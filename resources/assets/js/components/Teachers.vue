@@ -194,7 +194,7 @@
 
             Progressbar.self($(e.target).find('button'));
 
-            this.$http.post('teachers/add/cv' , data).then(res => {
+            this.$http.post('/teacher/add/cv' , data).then(res => {
 
               this.current().cv_src = res.body;
               Progressbar.end($(e.target).find('button'));

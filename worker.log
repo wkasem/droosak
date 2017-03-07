@@ -10182,3 +10182,92 @@ Notice: date_default_timezone_set(): Timezone ID 'Africa/Sudan' is invalid in /h
 [2017-03-05 19:33:35] Processed: droosak\Events\CommentRecieved
 [2017-03-05 19:33:37] Processed: droosak\Events\CommentRecieved
 [2017-03-05 19:33:39] Processed: droosak\Events\CommentRecieved
+
+                                                                               
+  [Symfony\Component\Process\Exception\ProcessTimedOutException]               
+  The process "'/usr/bin/php7.0' 'artisan' queue:work '' --once --queue='defa  
+  ult' --delay=0 --memory=128 --sleep=3 --tries=0" exceeded the timeout of 60  
+   seconds.                                                                    
+                                                                               
+
+[2017-03-06 14:22:06] Processed: droosak\Events\MessageRecieved
+[2017-03-06 14:40:05] Processed: droosak\Mail\Contact
+[2017-03-06 14:41:22] Processed: droosak\Mail\Contact
+[2017-03-06 14:42:38] Processed: droosak\Mail\Contact
+[2017-03-06 14:50:53] Processed: droosak\Mail\Contact
+[2017-03-06 14:50:58] Processed: droosak\Mail\Contact
+[2017-03-06 14:51:27] Processed: droosak\Mail\Contact
+[2017-03-06 14:52:35] Processed: droosak\Mail\Contact
+
+                                                                               
+  [Symfony\Component\Process\Exception\ProcessTimedOutException]               
+  The process "'/usr/bin/php7.0' 'artisan' queue:work '' --once --queue='defa  
+  ult' --delay=0 --memory=128 --sleep=3 --tries=0" exceeded the timeout of 60  
+   seconds.                                                                    
+                                                                               
+
+
+                                                                               
+  [Symfony\Component\Process\Exception\ProcessTimedOutException]               
+  The process "'/usr/bin/php7.0' 'artisan' queue:work '' --once --queue='defa  
+  ult' --delay=0 --memory=128 --sleep=3 --tries=0" exceeded the timeout of 60  
+   seconds.                                                                    
+                                                                               
+
+[2017-03-07 18:52:52] Processed: droosak\Notifications\LiveEvent
+[2017-03-07 18:52:58] Processed: droosak\Notifications\LiveEvent
+[2017-03-07 18:53:01] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-07 18:53:05] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-07 18:57:08] Processed: droosak\Notifications\LiveEvent
+[2017-03-07 18:57:14] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-07 19:10:56] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:11:02] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:11:08] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-07 19:13:25] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:13:29] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:13:40] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-07 19:19:05] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:19:07] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:19:09] Processed: droosak\Notifications\LiveEvent
+[2017-03-07 19:19:12] Processed: droosak\Notifications\LiveEvent
+[2017-03-07 19:19:15] Processed: droosak\Notifications\LiveEvent
+[2017-03-07 19:19:32] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:19:37] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:19:39] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:19:41] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-07 19:22:52] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:22:57] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:23:00] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:23:01] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-07 19:26:31] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:26:40] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:26:42] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:26:43] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-07 19:28:03] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:28:07] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:28:09] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:28:10] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-07 19:29:57] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:30:01] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:30:03] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:30:04] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-07 19:31:19] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:31:23] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:31:25] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:31:26] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-07 19:31:55] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:32:00] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:32:02] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:32:03] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-07 19:33:38] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:33:41] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:33:43] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:33:44] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-07 19:40:47] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:40:51] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:40:53] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 19:40:54] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-07 20:18:05] Processed: droosak\Events\CommentRecieved
+[2017-03-07 20:22:39] Processed: droosak\Events\CommentRecieved
+[2017-03-07 20:26:39] Processed: droosak\Events\CommentRecieved
+[2017-03-07 20:28:52] Processed: droosak\Events\CommentRecieved

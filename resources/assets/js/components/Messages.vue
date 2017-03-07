@@ -7,7 +7,7 @@
            @click='changeConversation(index)'>
         <img :src="'/pic/' + conversation.other_user.id" class="image is-circle is-64x64">
         <div class="details">
-          <h5 class="title is-5"> {{ conversation.other_user.username }} </h5>
+          <h5 class="title is-5" style="margin:0"> {{ conversation.other_user.username }} </h5>
           <h6 class="title is-6" v-html="lastMessage(conversation.messages)"></h6>
         </div>
           <span class="tag is-danger"
@@ -33,7 +33,7 @@
            @click='changeConversation(index)'>
         <img :src="'/pic/' + conversation.other_user.id" class="image is-circle is-64x64">
         <div class="details">
-          <h5 class="title is-5"> {{ conversation.other_user.username }} </h5>
+          <h5 class="title is-5" style="margin:0"> {{ conversation.other_user.username }} </h5>
           <h6 class="title is-6" v-html="lastMessage(conversation.messages)"></h6>
         </div>
           <span class="tag is-danger"

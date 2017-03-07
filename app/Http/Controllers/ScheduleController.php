@@ -19,9 +19,7 @@ class ScheduleController extends Controller
     public function save()
     {
 
-      $students = User::students()->get();
-
-      \Notification::send($students, new SchedulePublish(request()->all()));
+      \Notification::send(students(), new SchedulePublish(request()->all()));
 
       $schedule = Schedule::firstOrCreate(['title' => request('title')]);
 

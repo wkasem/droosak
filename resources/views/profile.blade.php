@@ -16,22 +16,28 @@
 
 @section('content')
 
+
 <section class="section" dir="{{ tdir() }}">
 
   <div class="container">
+    @if(auth()->user()->id == $user->id)
+    <Profile data='{{json_encode($user)}}'></Profile>
+    @else
     <div class="columns">
       <div class="column is-2 profile-pic">
         <img src="/pic/{{$user->id}}" class="image is-circle" />
-        <a href="#" class="button is-pulled-right">Download Cv</a>
-
+        @if($user->cv_src)
+         <a href="/teachers/download/{{$user->id}}/cv" class="button is-pulled-right">@lang('auth.download_cv')</a>
+        @endif
       </div>
       <div class="column">
         <span class="title is-2">
           {{ $user->username}}
         </span>
-        <span class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+         <span class="subtitle">{{ ($user->about) ? $user->about : ''}}</span>
       </div>
     </div>
+    @endif
     <hr />
     <span class="title">Videos</span>
     @foreach($user->videos->chunk(3) as $video_group)
@@ -49,11 +55,7 @@
                    <span class="title block">{{ $video->title }}</span><br>
                    {{ $video->discription }}
                    <br>
-                   <a >
-                     <span class="tag is-info">@lang('auth.views' , ['count' => 2])</span><br>
-                   </a>
-                   <small>{{ $video->published_by->username }}</small>
-                 </div>
+                  </div>
                </div>
                <footer class="card-footer">
                 <a href="/video/{{ $video->video_id}}" target="_blank" class="card-footer-item">@lang('auth.watch')</a>

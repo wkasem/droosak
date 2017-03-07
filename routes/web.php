@@ -10,6 +10,8 @@ session(['locale' => $locale]);
 return back();
 });
 
+Route::get('v/{id}/getThumb' , 'VideoController@getThumb');
+
 
 Route::group(['prefix' => '/' , 'middleware' => 'guest' ],function(){
 

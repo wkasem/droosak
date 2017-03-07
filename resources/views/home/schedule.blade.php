@@ -1,5 +1,6 @@
 @extends('layout')
 
+@section('title' , Lang::get('nav.schedule'))
 
 @section('content')
 

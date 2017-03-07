@@ -75,7 +75,7 @@ class VideoController extends Controller
   public function getPlaylist($id)
   {
 
-    $playlist = collect(Playlist::where('playlist_id' , $id)->with('videos.published_by')->first());
+    $playlist = collect(Playlist::where('playlist_id' , $id)->with(['videos.published_by' , 'documents'])->first());
 
     if(!$playlist->count()) return redirect()->route('admin.index');
 
@@ -161,7 +161,7 @@ class VideoController extends Controller
       ]);
 
       $filesrc  = basename(request()->file('video')->store("playlists/$id/_videos"));
-      $filename = pathinfo(request()->file('video')->getClientOriginalName() , PATHINFO_FILENAME);
+      //$filename = pathinfo(request()->file('video')->getClientOriginalName() , PATHINFO_FILENAME);
       $thumb    = sprintf("%s.png" , str_random(40));
 
       FFMpeg::open("playlists/$id/_videos/$filesrc")
@@ -182,7 +182,7 @@ class VideoController extends Controller
                   'points'       => request()->input('points') ?? 0
                 ]);
 
-    $video->load('published_by');
+    $video->load(['published_by' , 'views']);
     $video->video_id = $videoID;
 
     return $video;

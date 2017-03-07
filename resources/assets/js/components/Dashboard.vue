@@ -1,22 +1,18 @@
 <template>
 <div>
 
-    <div class="box">
+    <div class="box" v-if='welcome'>
     <article class="media">
-      <div class="media-left">
-        <figure class="image is-64x64">
-          <img src="/imgs/logo.png" alt="Image">
-        </figure>
-      </div>
       <div class="media-content">
-        <form method="post" name="logoForm" action="/admin/logo" enctype="multipart/form-data">
+        <figure class="image ">
+          <img :src="'/imgs/'+welcome.logo" alt="Image" id="logo">
+        </figure>
           <div class="is-file ">
-            <input type="file" name="pic">
+            <input type="file" name="logo" @change='updateLogo($event)'>
               <a class="button ">
                 <span>{{ Locale.get('update')}} </span>
               </a>
           </div>
-        </form>
       </div>
     </article>
   </div>
@@ -33,7 +29,7 @@
       <div class="card">
         <header class="card-header">
           <p class="card-header-title">
-            NewsLetter Subscribers
+            {{ Locale.get('NewsLetter')}}
             <span class="content is-loading-div" v-if='!subscribers'> </span>
             <span class="tag" v-if='subscribers'>{{ subscribers.length }}</span>
           </p>
@@ -107,21 +103,21 @@
         <img src="/imgs/welcome1.png" class="image">
       </div>
       <form class="column" @submit.prevent='introSave($event)'>
-        <span class="title">Intro <button class="button is-success">{{ Locale.get('save') }}</button></span>
-        <label class="label">Title - Arabic</label>
+        <span class="title"><button class="button is-success">{{ Locale.get('save') }}</button></span>
+        <label class="label">{{ Locale.get('title_arabic')}}</label>
         <p class="control">
           <input class="input" type="text" name="title_arabic" :value='welcome.title_arabic'>
         </p>
-        <label class="label">Title - English</label>
+        <label class="label">{{ Locale.get('title_english')}}</label>
         <p class="control">
           <input class="input" type="text" name="title_english" :value='welcome.title_english'>
         </p>
         <hr>
-        <label class="label">Subtitle - Arabic</label>
+        <label class="label">{{ Locale.get('subtitle_arabic')}}</label>
         <p class="control">
           <textarea class="textarea" name="subtitle_arabic">{{ welcome.subtitle_arabic}}</textarea>
         </p>
-        <label class="label">Subtitle - English</label>
+        <label class="label">{{ Locale.get('subtitle_english')}}</label>
         <p class="control">
           <textarea class="textarea" name="subtitle_english">{{ welcome.subtitle_english}}</textarea>
         </p>
@@ -134,17 +130,17 @@
 <div class="box" v-if='welcome'>
 <article class="media">
   <form @submit.prevent='introSave($event)' class="media-content">
-    <span class="title">Other Details <button class="button is-success">Save</button></span>
+    <span class="title"> <button class="button is-success">{{ Locale.get('save')}}</button></span>
     <div class="columns">
       <div class="column">
-        <img src="/imgs/welcome1.png" class="image">
+        <img src="/imgs/welcome3.png" class="image">
       </div>
       <div class="column" >
-        <label class="label">About - Arabic</label>
+        <label class="label">{{ Locale.get('about_arabic')}}</label>
         <p class="control">
           <textarea class="textarea" name="about_arabic">{{ welcome.about_arabic}}</textarea>
         </p>
-        <label class="label">About - English</label>
+        <label class="label">{{ Locale.get('about_english')}}</label>
         <p class="control">
           <textarea class="textarea" name="about_english">{{ welcome.about_english}}</textarea>
         </p>
@@ -156,7 +152,7 @@
         <img src="/imgs/welcome2.png" class="image">
       </div>
       <div class="column" >
-        <label class="label">Email</label>
+        <label class="label">{{ Locale.get('email')}}</label>
         <p class="control">
           <input class="input" type="text" name="email" :value='welcome.email'>
         </p>
@@ -210,7 +206,25 @@ props : ['data' , 'tdir'],
  },
 
   methods :{
+    updateLogo(e){
 
+     let data = new FormData();
+
+      data.append('logo' , $(e.target)[0].files[0]);
+
+      Progressbar.self($(e.target).siblings()[0]);
+      this.$http.post('/admin/logo', data).then(res => {
+
+        $('#logo , .main-logo').attr('src' ,`/imgs/${res.body}`);
+        Progressbar.end($(e.target).siblings()[0]);
+
+      } ,res => {
+        Progressbar.end($(e.target).siblings()[0]);
+
+        Validator.errors(res.body);
+    });
+
+  },
     introSave(e){
      let data = new FormData($(e.target)[0]);
 
@@ -227,6 +241,7 @@ props : ['data' , 'tdir'],
       $.map(this.usersChart , (data , name) => {
           x.push({
             name : name,
+            showInLegend: false,
             data : Object.keys(data).map(d => { return data[d]; })
           })
       });
@@ -242,7 +257,7 @@ props : ['data' , 'tdir'],
               text: (new Date()).getFullYear()
           },
           subtitle: {
-              text: 'Yearly Overview'
+              text: this.Locale.get('users_year_overview')
           },
           xAxis: {
               categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -267,7 +282,7 @@ props : ['data' , 'tdir'],
               text: (new Date()).getFullYear()
           },
           subtitle: {
-              text: 'Yearly Overview'
+              text: this.Locale.get('revenue_year_overview')
           },
           xAxis: {
               categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -283,6 +298,7 @@ props : ['data' , 'tdir'],
           series: [
             {
               name : "Revenue",
+              showInLegend: false,
               data : Object.keys(this.revenueChart).map(d => { return this.revenueChart[d]; })
             }
           ]

@@ -4,29 +4,28 @@
 
 @section('content')
 
-
 <div class="columns">
-  <div class="column">
-    <div class="card ">
-    <header class="card-header">
-      <p class="card-header-title">
-        {{ $playlist->title }}
-      </p>
-    </header>
-    @if($playlist->discription)
-      <div class="card-content">
-        <div class="content">
+  <div class="column section">
+    <div class="container">
+        <div class="content has-text-centered">
+          <p class="title">
+            {{ $playlist->title }}
+          </p>
           <h3 class="subtitle">{{ $playlist->discription }}</h3>
         </div>
-      </div>
-     @endif
+    </div>
   </div>
 </div>
-</div>
 
+<hr />
 
 @foreach($playlist->videos->chunk(3) as $video_group)
 <div class="columns">
+  <div class="column section">
+    <div class="container">
+      <div class="heading">
+        <h1 class="title">@lang('nav.videos')</h1>
+      </div>
   @foreach($video_group as $video)
      <div class="column is-one-third">
         <div class="card">
@@ -56,7 +55,77 @@
   </div>
   @endforeach
 </div>
+</div>
+</div>
 @endforeach
+
+@if(!$playlist->videos->count())
+<div class="columns">
+  <div class="column section" dir="{{ tdir() }}">
+      <div class="container">
+        <div class="content has-text-centered">
+          <i class="fa fa-file-video-o" style="font-size:10rem"></i>
+          <h1 class="title">@lang('auth.videos.error.title')</h1>
+           <p>
+             @lang('auth.videos.error.subtitle')
+           </p>
+        </div>
+      </div>
+  </div>
+</div>
+@endif
+
+
+@if($playlist->documents)
+<hr>
+<div class="columns">
+  <div class="column section">
+  <div class="container">
+  <div class="heading">
+    <h1 class="title">@lang('nav.documents')</h1>
+  </div>
+  @foreach($playlist->documents as $document)
+  <div class="box">
+    <article class="media">
+      <div class="media-left">
+        <figure class="image is-64x64">
+          {!! documents($document->src) !!}
+        </figure>
+      </div>
+      <div class="media-content">
+        <div class="content">
+          <p> {{ $document->name }} </p>
+        </div>
+      </div>
+      <div class="media-right">
+        <a  href="/documents/{{ $document->id }}/download"  target="_blank" class="button">
+          @lang('nav.download')
+        </a>
+      </div>
+    </article>
+  </div>
+  @endforeach
+</div>
+</div>
+</div>
+@endif
+
+@if(!$playlist->documents->count())
+<div class="columns">
+  <div class="column section" dir="{{ tdir() }}">
+    <div class="container">
+      <div class="content has-text-centered">
+        <i class="fa fa-file-text-o" style="font-size:10rem"></i>
+        <h1 class="title">@lang('auth.documents.error.title')</h1>
+         <p>
+           @lang('auth.documents.error.subtitle')
+         </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+@endif
 
 
 @endsection

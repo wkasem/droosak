@@ -63,7 +63,7 @@ import voiceNote from '../helpers/voicenote';
             } , ['URL' , 'blob']);
 
 
-          this.voiceNote.finish();
+          this.voiceNote.finish(this.uuid);
          }
         },
 

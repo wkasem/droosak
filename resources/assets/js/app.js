@@ -7,6 +7,7 @@ import Echo from "laravel-echo";
 require('./helpers/Modal');
 require('./helpers/progressbar');
 require('./helpers/chunk');
+require('./helpers/Document');
 require('./helpers/validator');
 require('./helpers/badge');
 require('./helpers/locale');
@@ -56,6 +57,7 @@ Vue.component('voicenote', require('./components/VoiceNote.vue'));
 Vue.component('voicemessage', require('./components/VoiceMessage.vue'));
 Vue.component('dashboard', require('./components/Dashboard.vue'));
 Vue.component('schedule', require('./components/Schedule.vue'));
+Vue.component('profile', require('./components/Profile.vue'));
 
 const app = new Vue({
     el: '#app',

@@ -8,6 +8,11 @@ Route::post('/live' , 'adminController@live');
 Route::post('/introSave' , 'adminController@introSave');
 Route::post('/logo' , 'adminController@logoSave');
 
+
+Route::post('/documents/upload' , 'DocumentsController@upload');
+Route::post('/documents/delete' , 'DocumentsController@delete');
+
+
 //Videos
 Route::group(['prefix' => '/courses'],function(){
 
@@ -18,7 +23,6 @@ Route::group(['prefix' => '/courses'],function(){
   Route::post('/{id}/delete' , 'VideoController@deleteVideo');
   Route::post('/add-playlist' , 'VideoController@addPlaylist');
   Route::post('/{id}/poster' , 'VideoController@updatePoster');
-  Route::get('/{id}/poster/{poster}' , 'VideoController@getPoster');
 });
 
 Route::group(['prefix' => '/exams'],function(){
@@ -27,6 +31,7 @@ Route::group(['prefix' => '/exams'],function(){
   Route::get('/{exam}' , 'ExamsController@edit')->name('admin.exams.edit');
   Route::post('/save' , 'ExamsController@save');
 });
+
 
 Route::group(['prefix' => '/schedule'],function(){
 
@@ -40,9 +45,7 @@ Route::group(['prefix' => '/teachers'],function(){
 
   Route::get('/' , 'TeachersController@index')->name('admin.teachers');
   Route::post('/add' , 'TeachersController@add');
-  Route::post('/add/cv' , 'TeachersController@addCV');
   Route::post('/delete/cv' , 'TeachersController@deleteCV');
-  Route::get('/download/{teacher}/cv' , 'TeachersController@downloadCV');
 });
 
 Route::group(['prefix' => '/students'],function(){

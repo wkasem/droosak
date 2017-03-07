@@ -1,5 +1,7 @@
 @extends('layout')
 
+@section('title' , Lang::get('nav.videos'))
+
 
 @section('content')
 
@@ -11,7 +13,7 @@
        <div class="card-image">
          <figure class="image is-4by3">
            @if($playlist->poster)
-            <img src="/courses/{{ $playlist->playlist_id}}/poster/">
+            <img src="/{{ $playlist->playlist_id}}/poster/{{ $playlist->poster}}">
             @else
             <img src="/imgs/video_banco_wiki.jpg">
             @endif

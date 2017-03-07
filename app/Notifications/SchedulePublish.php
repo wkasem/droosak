@@ -6,6 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Messages\NexmoMessage;
+
 
 class SchedulePublish extends Notification implements ShouldQueue
 {
@@ -35,7 +37,7 @@ class SchedulePublish extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['broadcast' , 'mail'];
+        return ['broadcast' , 'mail' , 'nexmo'];
     }
 
     /**
@@ -47,8 +49,21 @@ class SchedulePublish extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject($this->data['title'].'تم تحديث جدول مواعيد')
+                    ->subject($this->data['title'].' تم تحديث جدول مواعيد')
                     ->markdown('vendor.mail.schedule' , ['data' => $this->data]);
+    }
+
+    /**
+     * Get the Nexmo / SMS representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return NexmoMessage
+     */
+    public function toNexmo($notifiable)
+    {
+        return (new NexmoMessage)
+                    ->content($this->data['title'] . ' Schedule Has Been Updated You can check it on droosak.com')
+                    ->unicode();
     }
 
     /**

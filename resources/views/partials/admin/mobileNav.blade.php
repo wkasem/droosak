@@ -1,6 +1,6 @@
 <div class="nav-left is-hidden-desktop">
   <a class="nav-item">
-    <img src="{{ asset('imgs/logo.png')}}" alt="droosak">
+    <img src="{{ asset('imgs/'.$welcome->logo)}}" alt="Droosak" class="main-logo">
   </a>
 </div>
 <span class="nav-toggle is-hidden-desktop ">

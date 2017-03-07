@@ -29,8 +29,15 @@ class adminController extends Controller
         'logo' => 'required|file|mimes:jpg,jpeg,png'
       ]);
 
-      request('logo')->storeAs('imgs' , 'logo.png' , 'public');
+      $welcome = Welcome::first();
 
+      $name = basename(request()->file('logo')->store('imgs' , 'public'));
+
+      \Storage::disk('public')->delete('imgs/'.$welcome->logo);
+
+      $welcome->update(['logo' => $name]);
+
+      return $name;
     }
 
     public function getSubscribers()
@@ -47,7 +54,7 @@ class adminController extends Controller
 
     public function getUsersChart()
     {
-      $users = User::students()->whereYear('created_at' , date('Y'))->get()->groupBy(function($user){
+      $users = User::notAdmin()->whereYear('created_at' , date('Y'))->get()->groupBy(function($user){
         return $user->created_at->month;
       })->map(function($user){
         return $user->count();

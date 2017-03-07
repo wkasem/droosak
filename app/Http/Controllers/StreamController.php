@@ -24,7 +24,7 @@ class StreamController extends Controller
 
     $id = str_random(15);
 
-    \Notification::send(User::students()->get(), new LiveEvent($id , \Auth::user()));
+    \Notification::send(students(), new LiveEvent($id , \Auth::user()));
 
     $stream = Dacast::Live()->create(request()->only('title' , 'discription'));
 
@@ -76,8 +76,7 @@ class StreamController extends Controller
 
       Videos::where('video_id' , request('videoId'))->update([
                   'src'          => $filesrc,
-                  'thumb_src'    => $thumb,
-                  'live'         => 3
+                  'thumb_src'    => $thumb
              ]);
 
   }

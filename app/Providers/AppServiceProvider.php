@@ -47,7 +47,9 @@ class AppServiceProvider extends ServiceProvider
           return new \Dacast\Api(env('DACAST_API'));
       });
 
-      View::composer(['partials.footer' , 'mail.layout'], function ($view) {
+      View::composer([
+        'partials.footer' , 'mail.layout', 'partials.admin.content' , 'partials.home.content'
+      ], function ($view) {
         $welcome = \droosak\Welcome::first();
 
         $view->with(compact('welcome'));

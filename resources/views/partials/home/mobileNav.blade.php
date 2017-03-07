@@ -1,6 +1,6 @@
 <div class="nav-left is-hidden-desktop">
   <a class="nav-item">
-    <img src="{{ asset('imgs/logo.png')}}" alt="Bulma logo">
+    <img src="{{ asset('imgs/'.$welcome->logo)}}" alt="Droosak">
   </a>
 </div>
 <span class="nav-toggle is-hidden-desktop ">
@@ -9,26 +9,59 @@
   <span></span>
 </span>
 <div class="nav-mobile nav-menu is-hidden-desktop">
-  <a class="nav-item is-tab"> @lang('nav.home') </a>
-  <a href="{{ route('messages')}}"
-     class="nav-item is-tab {{ active()->output('is-active')->route('messages') }}">
-     @lang('nav.messages')
+  <a href="{{ route('home.index')}}"
+     class="nav-item is-tab {{ active()->output('is-active')->route('home.index') }}">
+     <i class="fa fa-home" aria-hidden="true"></i>
+     @lang('nav.home')
    </a>
+   <a href="{{ route('messages')}}"
+      class="nav-item is-tab {{ active()->output('is-active')->route('messages') }}">
+      <i class="fa fa-inbox" aria-hidden="true"></i>
+      @lang('nav.messages')
+    </a>
   @if(student())
-    <a href="{{ route('home.playlists')}}"
-       class="nav-item is-tab {{ active()->output('is-active')->route('home.playlists') }}">
-       @lang('nav.videos')
-     </a>
-    <a href="{{ route('home.exams')}}"
-       class="nav-item is-tab {{ active()->output('is-active')->route('home.exams') }}">
-       @lang('nav.exams')
-     </a>
-     <a href="{{ route('home.payment')}}"
-        class="nav-item is-tab {{ active()->output('is-active')->route('home.payment') }}">
-        <i class="fa fa-money" aria-hidden="true"></i>
-        @lang('nav.payment')
-      </a>
+  <a href="{{ route('home.playlists')}}"
+     class="nav-item is-tab {{ active()->output('is-active')->route('home.playlists') }}">
+     <i class="fa fa-list-alt" aria-hidden="true"></i>
+     @lang('nav.videos')
+   </a>
+   <a href="{{ route('home.schedule')}}"
+      class="nav-item is-tab {{ active()->output('is-active')->route('home.schedule') }}">
+      <i class="fa fa-calendar" aria-hidden="true"></i>
+      @lang('nav.schedule')
+    </a>
+  <a href="{{ route('home.exams')}}"
+     class="nav-item is-tab {{ active()->output('is-active')->route('home.exams') }}">
+     <i class="fa fa-inbox" aria-hidden="true"></i>
+     @lang('nav.exams')
+   </a>
+  <a href="{{ route('home.payment')}}"
+     class="nav-item is-tab {{ active()->output('is-active')->route('home.payment') }}">
+     <i class="fa fa-money" aria-hidden="true"></i>
+     @lang('nav.payment')
+   </a>
    @endif
+   @if(teacher())
+     @if($isLive)
+       <a href="/video/{{ $isLive->video_id }}"
+          class="nav-item is-tab is-live">
+          @lang('nav.liveNow')
+        </a>
+     @else
+       <a href="#live"
+          class="nav-item is-tab modal-trigger ">
+          <i class="fa fa-video-camera is-red" aria-hidden="true"></i>
+          @lang('nav.live')
+        </a>
+     @endif
+   @endif
+   @if(teacher())
+     <a href="{{ route('profile' , ['id' => auth()->user()->id])}}"
+        class="nav-item is-tab {{ active()->output('is-active')->route('profile') }}">
+          <img src="/pic/{{auth()->user()->id}}"  class="image is-24x24">
+          {{ auth()->user()->username }}
+      </a>
+     @endif
    <a href="{{ route('settings')}}"  class="nav-item is-tab"> @lang('nav.settings') </a>
    <a class="nav-item is-tab is-danger"
       onclick="javascript: document.getElementsByName('logout')[0].submit();"> @lang('nav.logout') </a>

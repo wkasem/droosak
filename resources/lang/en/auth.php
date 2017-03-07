@@ -21,6 +21,8 @@ return [
     'oldPass' => "Old Password",
     'username' => "Username",
     "change" => "Change",
+    "latest_videos" => "Latest Lessons",
+    "download_cv" => "Download CV",
 
 
     'badges' => [
@@ -36,6 +38,18 @@ return [
     'playlists' =>[
       'error' => [
         'title' => 'Sorry there are no courses right now !',
+        'subtitle' => 'Please wait we will upload some shortly..'
+      ]
+    ],
+    'videos' =>[
+      'error' => [
+        'title' => 'Sorry there are no Lessons right now !',
+        'subtitle' => 'Please wait we will upload some shortly..'
+      ]
+    ],
+    'documents' =>[
+      'error' => [
+        'title' => 'Sorry there are no Documents right now !',
         'subtitle' => 'Please wait we will upload some shortly..'
       ]
     ],

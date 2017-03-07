@@ -14,6 +14,8 @@ Route::post('live' , 'StreamController@on')->name('home.live');
 
 Route::post('teacher/views' , 'TeachersController@getViews');
 Route::post('teacher/notis' , 'TeachersController@getNotis');
+Route::post('teacher/add/cv' , 'TeachersController@addCV');
+Route::post('teacher/update/bio' , 'TeachersController@updateBio');
 Route::post('teacher/courses/{id}/upload' , 'StreamController@uploadVideo');
 
 

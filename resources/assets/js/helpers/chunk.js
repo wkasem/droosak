@@ -1,6 +1,7 @@
 let Chunk = {
 
   cast(data){
+    console.log(data);
     data = data.map(arr => {
       if(arr instanceof Array){ return arr }
 

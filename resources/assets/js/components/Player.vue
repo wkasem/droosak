@@ -10,7 +10,9 @@
               <source :src="'/video/' + promotion.video_id + '/stream'" type='video/mp4'>
             </video>
             <div class="promo-skip" v-if='promoInterval'>{{ promoInterval }}</div>
-            <div class="promo-skip is-btn" v-if='!promoInterval && promo' @click='skipPromo'>Skip</div>
+            <div class="promo-skip is-btn" v-if='!promoInterval && promo' @click='skipPromo'>
+             {{ Locale.get('skip') }}
+            </div>
           </figure>
 
           <figure class="image" v-if='video.live != 1' v-show='!promo'>
@@ -77,7 +79,7 @@
             </div>
           </article>
         </div>
-        <div class="box" v-if='streamOff && video.stream && authUser().id == video.published_by.id'>
+        <div class="box" v-if='streamOff && authUser().id == video.published_by.id'>
           <article class="media">
             <div class="media-content">
               <div class="content">
@@ -242,7 +244,7 @@ export default {
         Locale : window.Locale,
         badge : window.Badge,
         promo : false,
-        promoInterval : 5,
+        promoInterval : 10,
         streamOff : false
       }
     },
@@ -371,7 +373,7 @@ export default {
 
      let payload = {videoId : this.video.video_id , page : this.currentCommentPage++};
 
-     $(e.target).addClass('is-loading is-disabled');
+     Progressbar.self(e.target);
 
      this.$http.post('/comments/more' , payload ).then(res => {
 
@@ -381,7 +383,8 @@ export default {
 
       this.video.comments = result.data.concat(this.video.comments);
 
-       $(e.target).removeClass('is-loading is-disabled');
+      Progressbar.end(e.target);
+
      });
    },
    listenForComments(){
@@ -470,11 +473,6 @@ export default {
    preparePromo(){
      this.promo = (this.promotion) ? true : false;
 
-
-     let p = setInterval(() => {
-              this.promoInterval -= 1;
-              (this.promoInterval) ? null : clearInterval(p);
-             },1000);
    },
    commentsHasMoreReplies(){
 
@@ -503,11 +501,29 @@ export default {
        this.video.comments = this.video.comments.reverse();
        this.hasMoreComments = (this.video.comments_count > 5);
 
+       if(this.video.live == 3){
+         this.streamOff = true;
+       }
+
        this.preparePromo();
        this.listenForComments();
        this.commentsHasMoreReplies();
-       $(function(){
 
+       let that = this;
+
+       $(function(){
+         videojs('promotion', {}, function(){
+           this.on('loadedmetadata', function(){
+             let p = setInterval(() => {
+                      that.promoInterval -= 1;
+                      (that.promoInterval) ? null : clearInterval(p);
+                     },1000);
+           });
+
+           this.on('ended', function() {
+              that.skipPromo();
+            });
+         });
          videojs('lesson-player');
        });
 

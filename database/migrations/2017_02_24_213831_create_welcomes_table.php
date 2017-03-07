@@ -26,6 +26,7 @@ class CreateWelcomesTable extends Migration
             $table->text('instagram')->nullable();
             $table->text('email')->nullable();
             $table->text('map')->nullable();
+            $table->text('logo');
             $table->timestamps();
         });
     }

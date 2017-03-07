@@ -21,7 +21,10 @@ class HomeController extends Controller
     {
       $welcome = Welcome::first();
 
-      return view('welcome' , compact('welcome'));
+      $playlists = Playlist::show()->with('videos')->whereHas('videos')->latest()->get();
+
+
+      return view('welcome' , compact('welcome' , 'playlists'));
     }
 
     public function schedule()
@@ -36,10 +39,12 @@ class HomeController extends Controller
 
       if(student()){
 
-        $videos = Videos::where('live' , '!=' , 1)->latest()->take(3)->get();
-        $live = Videos::where('live', 1)->latest()->take(4)->get();
+        $videos = Videos::with('playlist')->where('live' , '!=' , 1)
+                       ->latest()->take(3)->get()->filter(function($v){
+                        return $v->playlist->show;
+                       });
 
-        return view('home.index' , compact('videos' , 'live'));
+        return view('home.index' , compact('videos'));
       }
       return view('home.index');
     }
@@ -74,7 +79,7 @@ class HomeController extends Controller
 
       \Mail::to($email)->send(new Contact(request()->all()));
 
-      return back()->with(['contact_success' => true]);
+      //return back()->with(['contact_success' => true]);
     }
 
     public function newsletter()
@@ -148,7 +153,7 @@ class HomeController extends Controller
     public function getPlaylist($id)
     {
 
-      $playlist = Playlist::where('playlist_id' , $id)->with('videos.published_by')->first();
+      $playlist = Playlist::where('playlist_id' , $id)->with(['videos.published_by' , 'documents'])->first();
 
       if(!$playlist) return redirect()->route('home.playlists');
 

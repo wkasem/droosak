@@ -1,7 +1,7 @@
 <section class="section">
   <div class="container">
     <div class="heading">
-      <h1 class="title">Latet</h1>
+      <h1 class="title">@lang('auth.latest_videos')</h1>
       <div class="columns">
         @foreach($videos as $video)
            <div class="column is-one-third">
@@ -16,7 +16,10 @@
                      <span class="title block">{{ $video->title }}</span><br>
                      {{ $video->discription }}
                      <br>
-                     <small>{{ $video->published_by->username }}</small>
+                     <figure class="box-publish">
+                       <img src="/pic/{{$video->published_by->id}}"  class="image is-24x24">
+                       <a href="/profile/{{$video->published_by->id}}" target="_blank"><small>{{ $video->published_by->username }}</small></a>
+                     </figure>
                    </div>
                  </div>
                  <footer class="card-footer">

@@ -51,7 +51,7 @@ Echo.private("notifications." + user.id)
             cancelButtonText:Locale.get('liveCancel')
           },function(c){
             if(c){
-              window.open(`/video/${notification.id}` , '_blank');
+              window.open(`/video/${notification.video_id}` , '_blank');
             }
           });
             break;

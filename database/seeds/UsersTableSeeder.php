@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
             'username' => 'hassan.slama',
             'password'   => bcrypt('1234'),
             'email'      => 'admin@droosak.com',
-            'phone_number' => '01099758439',
+            'phone_number' => '201099758439',
             'type_id'    => 1,
             'created_at' => \Carbon\Carbon::today(),
             'ip' => '192.168.10.1'
@@ -27,7 +27,7 @@ class UsersTableSeeder extends Seeder
             'username' => 'waleedk2',
             'password'   => bcrypt('1234'),
             'email'      => 'teacher@droosak.com',
-            'phone_number' => '01099758439',
+            'phone_number' => '201099758439',
             'type_id'    => 2,
             'created_at' => \Carbon\Carbon::today(),
             'ip' => '192.168.10.1'
@@ -36,7 +36,7 @@ class UsersTableSeeder extends Seeder
             'username' => 'waleedk2',
             'password'   => bcrypt('1234'),
             'email'      => 'student@droosak.com',
-            'phone_number' => '01099758439',
+            'phone_number' => '201099758439',
             'type_id'    => 3,
             'created_at' => \Carbon\Carbon::today(),
             'ip' => '192.168.10.1'

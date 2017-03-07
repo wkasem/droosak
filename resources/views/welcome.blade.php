@@ -241,7 +241,7 @@
           position: relative;
         }
         .hide-courses{
-          height: 680px;
+          max-height: 680px;
         }
         .course-more{
           position: absolute;

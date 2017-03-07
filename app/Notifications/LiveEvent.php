@@ -9,6 +9,8 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Notifications\Messages\NexmoMessage;
+
 
 
 class LiveEvent extends Notification implements ShouldQueue
@@ -38,7 +40,7 @@ class LiveEvent extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['broadcast'];
+        return ['broadcast' , 'nexmo'];
     }
 
     /**
@@ -61,7 +63,8 @@ class LiveEvent extends Notification implements ShouldQueue
     public function toNexmo($notifiable)
     {
         return (new NexmoMessage)
-                    ->content('Droosak.com Code:'.$this->phoneCode);
+                    ->content($this->user->username . ' is Live Now on droosak.com')
+                    ->unicode();
     }
 
     /**

@@ -19,8 +19,9 @@ return [
  'live' => 'بث حى',
  'liveNow' => 'حى الأن',
  'schedule' => 'جدول المواعيد',
+ 'documents' => 'المراجع',
 
-
+ 'download' => 'تنزيل',
 
 
   'previous' => 'السابق',

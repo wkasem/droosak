@@ -12,7 +12,7 @@ if( !function_exists('en'))
 if( !function_exists('userType'))
 {
   function userType(){
-    
+
     return Auth::user()->type_id;
   }
 }
@@ -46,6 +46,21 @@ if( !function_exists('students'))
   function students(){
 
     return droosak\User::students()->get();
+  }
+}
+
+if( !function_exists('documents'))
+{
+  function documents($n){
+
+
+    $name = str_replace('.' , '' , explode('.' , $n)[1]);
+
+    $srcs = ['pdf' , 'doc' , 'docx'];
+    
+    $name = (in_array($name , $srcs)) ? $name : 'document';
+
+    return "<img src='/imgs/documents/$name.png' />";
   }
 }
 

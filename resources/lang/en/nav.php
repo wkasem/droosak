@@ -20,7 +20,9 @@ return [
  'live' => 'Go Live',
  'liveNow' => 'Live Now',
  'schedule' => 'Schedule',
+ 'documents' => 'Documents',
 
+ 'download' => 'Download',
 
  'previous' => 'Previous',
  'next'     => 'Next',

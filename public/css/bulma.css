@@ -169,7 +169,7 @@ code {
 }
 
 hr {
-  background-color: #dbdbdb;
+  background-color: #dedede;
   border: none;
   display: block;
   height: 1px;
@@ -5122,7 +5122,7 @@ body.stop-scrolling {
 
 .messages__wrapper .contacts__wrapper {
   position: relative;
-  height: 45rem;
+  height: 47rem;
 }
 
 .messages__wrapper.mobile {
@@ -8167,6 +8167,19 @@ label.panel-block:hover {
 
 .is-red {
   color: #ff3860 !important;
+}
+
+figure.box-publish {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+figure.box-publish img {
+  margin-right: 10px;
 }
 
 .is-fullscreen {

@@ -1,11 +1,12 @@
 @extends('layout')
 
+@section('title' , $key)
 
 @section('content')
 <section class="section">
   <div class="container">
     <div class="heading">
-      <h1 class="title" style="height: 35px;">"{{ $key }}" @lang('nav.results')</h1><br />
+      <h1 class="title">"{{ $key }}" @lang('nav.results')</h1><br />
       <hr />
 
       @if($users->count())
@@ -32,6 +33,13 @@
                       <i class="fa fa-envelope-o"></i>
                     </span>
                   </a>
+                  @if($user->type_id == 2)
+                  <a href="{{ route('profile' , ['id' => $user->id])}}" target="_blank" class="level-item">
+                    <span class="icon is-small">
+                      <i class="fa fa-user" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                  @endif
                 </div>
               </nav>
             </div>

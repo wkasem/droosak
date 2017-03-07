@@ -9,7 +9,12 @@ Route::post('/replies/more' , 'CommentController@moreReplies');
 Route::post('/comment/sendVoiceNote' , 'CommentController@sendVoiceNote');
 Route::get('/voiceNote/{src}/stream' , 'MessagesController@streamVoiceNote');
 
-Route::get('profile/{id}' , 'TeachersController@getTeacher');
+Route::get('profile/{id}' , 'TeachersController@getTeacher')->name('profile');
+
+
+Route::get('/documents/{document}/download' , 'DocumentsController@download');
+Route::get('/{id}/poster/{poster}' , 'VideoController@getPoster');
+Route::get('/teachers/download/{teacher}/cv' , 'TeachersController@downloadCV');
 
 
 Route::group(['prefix' => '/messages'],function(){

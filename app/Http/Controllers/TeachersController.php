@@ -90,12 +90,19 @@ class TeachersController extends Controller
     return $file;
   }
 
+  public function updateBio()
+  {
+
+    auth()->user()->update(['about' => request('bio')]);
+  }
+
 
   public function downloadCV(User $teacher)
   {
 
     return response()->download(
-      sprintf("%s/teachers/%s" , storage_path('app') , $teacher->cv_src)
+      sprintf("%s/teachers/%s" , storage_path('app') , $teacher->cv_src),
+      $teacher->username
     );
   }
 
