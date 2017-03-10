@@ -40,9 +40,9 @@
         </div>
         <div class="column">
           <img src="{{ asset('imgs/cashmenu.png')}}" class="image" />
-          <span class="tag is-danger is-large">
-            
-          </span>
+          <!-- <span class="tag is-danger is-large">
+
+          </span> -->
         </div>
       </div>
   </div>

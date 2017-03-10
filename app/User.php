@@ -2,6 +2,7 @@
 
 namespace droosak;
 
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -9,7 +10,7 @@ use Illuminate\Broadcasting\PrivateChannel;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens , Notifiable;
 
     /**
       * The channels the user receives notification broadcasts on.

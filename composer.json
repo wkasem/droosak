@@ -9,6 +9,7 @@
         "barryvdh/laravel-dompdf": "^0.8.0",
         "intervention/image": "^2.3",
         "laravel/framework": "5.4.*",
+        "laravel/passport": "^2.0",
         "netshell/paypal": "dev-master",
         "nexmo/client": "@beta",
         "predis/predis": "^1.1",

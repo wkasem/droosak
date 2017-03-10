@@ -10271,3 +10271,36 @@ Notice: date_default_timezone_set(): Timezone ID 'Africa/Sudan' is invalid in /h
 [2017-03-07 20:22:39] Processed: droosak\Events\CommentRecieved
 [2017-03-07 20:26:39] Processed: droosak\Events\CommentRecieved
 [2017-03-07 20:28:52] Processed: droosak\Events\CommentRecieved
+[2017-03-07 21:49:20] Processed: droosak\Events\MessageRecieved
+[2017-03-07 21:49:33] Processed: droosak\Events\MessageRecieved
+[2017-03-07 21:49:50] Processed: droosak\Events\MessageRecieved
+[2017-03-07 21:50:07] Processed: droosak\Events\MessageRecieved
+
+                                                                               
+  [Symfony\Component\Process\Exception\ProcessTimedOutException]               
+  The process "'/usr/bin/php7.0' 'artisan' queue:work '' --once --queue='defa  
+  ult' --delay=0 --memory=128 --sleep=3 --tries=0" exceeded the timeout of 60  
+   seconds.                                                                    
+                                                                               
+
+[2017-03-07 22:25:38] Processed: droosak\Events\MessageRecieved
+[2017-03-07 22:27:09] Processed: droosak\Events\MessageRecieved
+[2017-03-07 22:27:18] Processed: droosak\Events\MessageRecieved
+[2017-03-07 22:27:35] Processed: droosak\Events\MessageRecieved
+[2017-03-07 22:28:40] Processed: droosak\Events\Viewing
+[2017-03-07 22:41:29] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 22:41:36] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 22:41:39] Processed: droosak\Notifications\SchedulePublish
+[2017-03-07 22:41:40] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+[2017-03-07 22:53:39] Processed: droosak\Events\CommentRecieved
+[2017-03-07 23:08:04] Processed: droosak\Notifications\LiveEvent
+[2017-03-07 23:08:07] Processed: droosak\Notifications\LiveEvent
+[2017-03-07 23:08:08] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+
+                                                                               
+  [Symfony\Component\Process\Exception\ProcessTimedOutException]               
+  The process "'/usr/bin/php7.0' 'artisan' queue:work '' --once --queue='defa  
+  ult' --delay=0 --memory=128 --sleep=3 --tries=0" exceeded the timeout of 60  
+   seconds.                                                                    
+                                                                               
+
