@@ -1,8 +1,9 @@
 <?php
 
 
-Route::group(['middleware' => ['auth:api']] , function(){
+// Route::group(['middleware' => []] , function(){
+//
+// });
 
-  Route::get('courses/{id}' , 'ApiController@getCourse');
-  Route::get('courses' , 'ApiController@getCourseList');
-});
+Route::get('courses/{id}' , 'ApiController@getCourse');
+Route::get('courses' , 'ApiController@getCourseList');
