@@ -16,14 +16,14 @@ class Verfied
     public function handle($request, Closure $next)
     {
       if(\Auth::check()){
-        if(auth()->user()->phone_code || auth()->user()->phone_code != ""){
+        if(auth()->user()->phone_code || auth()->user()->mail_code != ""){
           if(\Route::currentRouteName() != "errors.validation" && basename(\URL::previous()) != "validation"){
 
             return redirect()->route('errors.validation');
           }
         }
 
-        if(!auth()->user()->phone_code && auth()->user()->phone_code == "" && \Route::currentRouteName() == "errors.validation"){
+        if(!auth()->user()->phone_code && auth()->user()->mail_code == "" && \Route::currentRouteName() == "errors.validation"){
 
           return redirect('/');
         }
