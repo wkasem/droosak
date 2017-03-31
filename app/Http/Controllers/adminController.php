@@ -9,6 +9,8 @@ use droosak\NewsLetter;
 use droosak\Videos;
 use droosak\Revenue;
 use droosak\Welcome;
+use droosak\Font;
+use droosak\Playlist;
 
 class adminController extends Controller
 {
@@ -40,6 +42,23 @@ class adminController extends Controller
       return $name;
     }
 
+
+    public function uploadFont()
+    {
+
+      $this->validate(request(),[
+        'font' => 'required|file|mimes:otf,ttf,svg,woff,woff2'
+      ]);
+
+      $src = basename(request()->file('font')->store('fonts' , 'public'));
+
+      $name = studly_case(
+      pathinfo(request()->file('font')->getClientOriginalName() , PATHINFO_FILENAME)
+    );
+
+      return Font::create(compact('src' , 'name'));
+    }
+
     public function getSubscribers()
     {
 
@@ -49,7 +68,14 @@ class adminController extends Controller
     public function live()
     {
 
-      return Videos::live()->get();
+      $videos = Videos::live()->get()->chunk(2);
+      $teachers = User::teachers()->get();
+      $playlists = Playlist::show()->get();
+      $user_id = auth()->user()->id;
+      $live_id = Playlist::where('title' , 'live')->select('playlist_id')->first();
+
+
+      return compact('videos' , 'teachers' , 'playlists' , 'user_id' , 'live_id');
     }
 
     public function getUsersChart()
@@ -88,6 +114,9 @@ class adminController extends Controller
 
     public function introSave()
     {
+
+      $fonts = json_decode(request('fonts'));
+      request()->merge(compact('fonts'));
 
       Welcome::first()->update(request()->all());
     }

@@ -62,28 +62,32 @@
 
             <div class="column has-text-centered">
               @if(en())
-                <h2 class="title is-1 is-white" >
+                <h2 class="title is-1 is-white"
+                    style=" {{ loadFontStyle($welcome , 'title_english') }}">
                   {{ $welcome->title_english}}
                 </h2>
-                <h4 class="subtitle is-white">
+                <h4 class="subtitle is-white"
+                style=" {{ loadFontStyle($welcome , 'subtitle_english') }}">
                   {{ $welcome->subtitle_english}}
                 </h4>
               @endif
               @if(!en())
-                <h2 class="title is-1 is-white">
+                <h2 class="title is-1 is-white"
+                style=" {{ loadFontStyle($welcome , 'title_arabic') }}">
                   {{ $welcome->title_arabic}}
                 </h2>
-                <h4 class="subtitle is-white">
+                <h4 class="subtitle is-white"
+                style=" {{ loadFontStyle($welcome , 'subtitle_english') }}">
                   {{ $welcome->subtitle_arabic}}
                 </h4>
               @endif
             </div>
             <div class="column">
-              <form method="post" action="{{ action('Auth\RegisterController@register') }}">
+              <form  method="post" action="{{ action('Auth\RegisterController@register') }}">
                 {{ csrf_field() }}
                 <label class="label">@lang('welcome.username')</label>
                 <p class="control has-icon">
-                  <input class="input {{ ($errors->has('username')) ? 'is-danger' : '' }}" type="text" name="username">
+                  <input class="input {{ ($errors->has('username')) ? 'is-danger' : '' }}" type="text" name="username" value="{{ old('username') }}">
                   <span class="icon is-small">
                     <i class="fa fa-terminal"></i>
                   </span>
@@ -94,7 +98,7 @@
 
                 <label class="label">@lang('welcome.email')</label>
                 <p class="control has-icon">
-                  <input class="input {{ ($errors->has('email') && session()->has('signup_process')) ? 'is-danger' : '' }}" type="text" name="signup_email">
+                  <input class="input {{ ($errors->has('email') && session()->has('signup_process')) ? 'is-danger' : '' }}" type="text" name="email" value="{{ (session()->has('signup_process')) ? old('email') : '' }}">
                   <span class="icon is-small">
                     <i class="fa fa-envelope"></i>
                   </span>
@@ -104,11 +108,9 @@
                 </p>
 
                 <label class="label">@lang('welcome.phone_number')</label>
-                <p class="control has-icon">
-                  <input class="input {{ ($errors->has('phone_number')) ? 'is-danger' : '' }}" type="text" name="phone_number">
-                  <span class="icon is-small">
-                    <i class="fa fa-mobile"></i>
-                  </span>
+                <p class="control">
+                  <input id="phone" class="input {{ ($errors->has('phone_number')) ? 'is-danger' : '' }}" type="text" value="{{ old('phone_number')}}">
+                  <input type="hidden" name="phone_number" value="{{ old('phone_number')}}" />
                   @if($errors->has('phone_number'))
                     <span class="help is-danger">{{ $errors->first('phone_number') }}</span>
                   @endif
@@ -123,6 +125,17 @@
                   @if($errors->has('password'))
                     <span class="help is-danger">{{ $errors->first('password') }}</span>
                   @endif
+                </p>
+
+                <label class="label">@lang('welcome.stage')</label>
+                <p class="control has-icon">
+                  <span class="select" style="width:100%;">
+                    <select name="stage_id" style="width:100%;">
+                      @foreach($stages as $stage)
+                        <option value="{{ $stage->id }}">@lang('exams.'.$stage->title)</option>
+                      @endforeach
+                    </select>
+                  </span>
                 </p>
                 <p class="control">
                   <button class="button is-success">

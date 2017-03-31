@@ -2,7 +2,7 @@
 
 return [
 
-  'discover' => 'أكتشف الدروس',
-  'videos_count' => ':count دروس' 
+  'discover' => 'أكتشف ',
+  'videos_count' => ':count دروس'
 
 ];

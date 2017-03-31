@@ -2,7 +2,7 @@
 
 return [
 
-  'discover' => 'Discover Lessons',
+  'discover' => 'Discover',
   'videos_count' => ':count Lessons'
 
 

@@ -16,11 +16,11 @@ class Videos extends Model
      */
     protected $fillable = [
       'video_id', 'title', 'discription' , 'src' , 'thumb_src' , 'by', 'stream_id'
-      , 'playlist_id' , 'live' , 'points'
+      , 'playlist_id' , 'live' , 'points' , 'created_by'
     ];
 
     protected $primaryKey = 'video_id';
-
+    
     protected $casts = ['video_id' => 'string'];
 
     public function playlist()
@@ -62,6 +62,6 @@ class Videos extends Model
     public function scopeLive($q)
     {
 
-      return $q->where('live' , 1)->latest()->with('published_by');
+      return $q->where('live' , 1)->latest()->with(['published_by' , 'stream']);
     }
 }

@@ -17,6 +17,51 @@
   </div>
 </div>
 
+
+
+@if($playlist->playlists->count())
+<hr />
+<div class="columns">
+  <div class="column section">
+    <div class="container">
+@foreach($playlist->playlists->chunk(3) as $playlists_group)
+<div class="columns" >
+  @foreach($playlists_group as $p)
+   <div class="column is-one-third">
+      <div class="card">
+       <div class="card-image">
+         <figure class="image is-4by3">
+           @if($p->poster)
+            <img src="/{{ $p->playlist_id}}/poster/{{ $p->poster}}">
+            @else
+            <img src="/imgs/video_banco_wiki.jpg">
+            @endif
+         </figure>
+       </div>
+       <div class="card-content">
+         <div class="content">
+           <span class="title block">{{ $p->title }}</span><br>
+           {{ $p->discription }}
+           <br>
+            <span class="tag is-info">@lang('playlists.videos_count' , ['count' => $p->videos_count])</span><br>
+         </div>
+       </div>
+       <footer class="card-footer">
+         <a href="/courses/{{ $p->playlist_id }}/videos" class="card-footer-item">
+          @lang('playlists.discover')
+         </a>
+        </footer>
+  </div>
+</div>
+@endforeach
+</div>
+@endforeach
+</div>
+</div>
+</div>
+@endif
+
+
 <hr />
 
 @foreach($playlist->videos->chunk(3) as $video_group)

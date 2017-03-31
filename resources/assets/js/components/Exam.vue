@@ -109,18 +109,22 @@
   </div>
 </article>
 </div>
-<div class="notification has-text-centered">
+<div class="notification has-text-centered" v-if='! locked'>
   <a class="button is-info" @click='newQuestion'>{{ Locale.get('newQuestion')}}</a>
   <a :class="'button is-success  ' + [canSave ? '' : 'is-disabled']" @click='saveExam($event)'>
     {{ Locale.get('save')}}
   </a>
+</div>
+<div class="notification has-text-centered" v-if='locked'>
+  <i class="fa fa-lock" aria-hidden="true"></i>
+  {{ Locale.get('exam_locked') }}
 </div>
 </div>
 </template>
 
 <script>
     export default {
-        props : ['data' , 't'],
+        props : ['data' , 't' , 'locked'],
 
         data(){
           return {
@@ -148,10 +152,7 @@
             return 0;
           },
           take(){
-            if(this.exam.results){
-              return this.pass + this.fail;
-            }
-            return 0;
+            return this.exam.results.length;
           }
         },
         methods :{
@@ -280,9 +281,12 @@
             delete tempData['results'];
             delete tempData['errBag'];
 
-            tempData.answers.map(a => {
-              delete a['errBag'];
-              return a;
+            tempData.questions.map(q => {
+               q.answers.map(a => {
+                  delete a['errBag'];
+                  return a;
+                });
+             return q;
             });
 
             data.append('exam' , JSON.stringify(tempData));

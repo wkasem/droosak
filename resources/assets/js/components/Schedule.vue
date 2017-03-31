@@ -11,6 +11,13 @@
                 placeholder="Event name" name="title"
                 v-model='schedule[index].title'>
               </p>
+              <p class="control is-expanded">
+                <span class="select is-medium" style="font-size:1rem;">
+                  <select v-model='schedule[index].stage_id'>
+                    <option v-for='stage in stages' :value="stage.id">{{ stage.title }}</option>
+                  </select>
+                </span>
+              </p>
               <p class="control">
                 <a class="button is-info" @click='save($event , index)'>
                   {{ Locale.get('save')}}
@@ -89,7 +96,7 @@
 <script>
 export default{
 
-  props : ['data'],
+  props : ['data' , 'data2'],
 
   data(){
     return {
@@ -102,6 +109,7 @@ export default{
     addEvent(){
       this.schedule.push({
         title : '',
+        stage_id : 1,
         times : []
       });
     },
@@ -120,6 +128,7 @@ export default{
 
       let data = new FormData();
       data.append('title' , this.schedule[i].title);
+      data.append('stage_id' , this.schedule[i].stage_id);
       data.append('times' , JSON.stringify(this.schedule[i].times));
 
       Progressbar.self(e.target);
@@ -138,7 +147,6 @@ export default{
       this.schedule.forEach((s , m) => {
         this.schedule.forEach((x , is) => {
           if(s.title == x.title && is != m){
-            console.log('dsa');
             this.schedule[m].errorTitle = true;
           }
         });
@@ -149,6 +157,7 @@ export default{
 
  mounted(){
   this.schedule = JSON.parse(this.data);
+  this.stages = JSON.parse(this.data2);
  },
   updated(){
     this.validate();

@@ -28,7 +28,7 @@
           </div>
         </div>
         <footer class="card-footer">
-          <a class="card-footer-item" :href="'courses/'+ playlist.playlist_id + '/videos'">{{ Locale.get('videos')}}</a>
+          <a class="card-footer-item" :href="'/admin/courses/'+ playlist.playlist_id + '/videos'">{{ Locale.get('videos')}}</a>
         </footer>
        </div>
      </div>
@@ -46,6 +46,14 @@
              <p class="control">
                <input class="input is-expanded" type="text" name="title" :placeholder="Locale.get('title')">
              </p>
+             <p class="control" v-if='stages.length'>
+               <span class="select">
+                 <select name="stage_id">
+                   <option v-for='stage in stages' :value="stage.id">{{ stage.title }}</option>
+                 </select>
+               </span>
+             </p>
+             <input type="hidden" :value="parent.stage_id" v-if='!stages.length' name="stage_id">
              <p class="control">
                <textarea class="textarea" placeholder="Discription" :placeholder="Locale.get('discription')"></textarea>
              </p>
@@ -69,11 +77,12 @@
 <script>
 
     export default {
-        props : ['data'],
+        props : ['data' ,'data2', 'parent'],
 
         data(){
           return {
             playlists : [],
+            stages: [],
             Locale : window.Locale
           }
         },
@@ -81,6 +90,10 @@
 
          addPlaylist(e){
            let Data = new FormData($(e.target)[0]);
+
+           if(this.parent != "0"){
+              Data.append('parent' , this.parent.playlist_id);
+           }
 
                 Progressbar.self($(e.target).find('button'));
 
@@ -101,6 +114,7 @@
 
         mounted() {
           this.playlists = Chunk.cast(JSON.parse(this.data));
+          this.stages = JSON.parse((this.data2) ? this.data2 : "[]");
           Modal.activate();
         }
     }

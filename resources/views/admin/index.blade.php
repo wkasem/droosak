@@ -20,5 +20,5 @@
 
 @section('content')
 
-<Dashboard data='{{ json_encode($welcome) }}' dir='{{ tdir() }}'></Dashboard>
+<Dashboard data='{{ json_encode($welcome) }}' data2='{{ json_encode($fonts) }}' dir='{{ tdir() }}'></Dashboard>
 @endsection

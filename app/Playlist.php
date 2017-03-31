@@ -15,13 +15,19 @@ class Playlist extends Model
    * @var array
    */
   protected $fillable = [
-      'playlist_id' , 'title', 'discription' , 'by' , 'poster' , 'show'
+      'playlist_id' , 'title', 'discription' , 'by' , 'poster' , 'show' , 'parent' , 'stage_id'
   ];
 
   protected $primaryKey = 'playlist_id';
 
   protected $casts = ['playlist_id' => 'string'];
 
+
+  public function playlists()
+  {
+
+    return $this->hasMany(Playlist::class , 'parent');
+  }
 
   public function videos()
   {
@@ -39,6 +45,12 @@ class Playlist extends Model
   {
 
     return $q->where('show' , 1);
+  }
+
+  public function scopeNoParent($q)
+  {
+
+    return $q->where('parent' , null);
   }
 
 

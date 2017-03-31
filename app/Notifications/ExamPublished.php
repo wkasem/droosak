@@ -31,7 +31,7 @@ class ExamPublished extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['mail' , 'broadcast'];
+       return $notifiable->channels();
     }
 
     /**
@@ -46,7 +46,7 @@ class ExamPublished extends Notification implements ShouldQueue
 
       return (new MailMessage)
                   ->subject(" دروسك.كوم :" . \Lang::get('exams.'.$this->exam['title']))
-                  ->markdown('vendor.mail.exam' , ['exam' => $this->exam]);
+                  ->view('mail.exam' , ['exam' => $this->exam]);
     }
 
     /**

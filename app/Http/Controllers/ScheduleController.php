@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use droosak\Notifications\SchedulePublish;
 use droosak\Schedule;
 use droosak\User;
+use droosak\Stage;
 
 class ScheduleController extends Controller
 {
@@ -14,13 +15,18 @@ class ScheduleController extends Controller
     {
       $schedule = Schedule::with('times')->get();
 
-      return view('admin.schedule' , compact('schedule'));
+      $stages = Stage::all()->map(function($s){
+        $s->title = \Lang::get('exams.'.$s->title);
+        return $s;
+      });
+
+      return view('admin.schedule' , compact('schedule' , 'stages'));
     }
     public function save()
     {
 
-      \Notification::send(students(), new SchedulePublish(request()->all()));
-
+      \Notification::send(students(request('stage_id')), new SchedulePublish(request()->all()));
+dd('s');
       $schedule = Schedule::firstOrCreate(['title' => request('title')]);
 
       $schedule->times()->delete();

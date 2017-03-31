@@ -18,9 +18,11 @@ class CreateExamsTable extends Migration
           $table->json('questions');
           $table->text('title');
           $table->integer('minutes')->default(0);
+          $table->integer('stage_id');
           $table->integer('points')->default(0);
           $table->boolean('published')->default(false);
-          $table->boolean('monthly')->default(true);
+          $table->boolean('heading')->default(false);
+          $table->integer('monthly')->default(0);
           $table->timestamps();
       });
     }

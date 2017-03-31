@@ -29,17 +29,43 @@
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    @if(!en())
-     <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">       <style>
-        body{
-          font-family: 'Cairo', sans-serif;
 
-        }
-       </style>
-    @endif
+    @foreach($fonts as $font)
+     <style>
+       @font-face {
+         font-family: "{{ $font->id }}";
+         src: url({{ "/fonts/$font->src" }});
+       }
+     </style>
+    @endforeach
+
+    @if($font = $welcome->fonts['main_english'] && en())
+     <style>
+       body{
+         font-family: "{{ $font }}"
+       }
+      </style>
+      @endif
+
+    @if($font = $welcome->fonts['main_arabic'] && !en())
+     <style>
+       body{
+         font-family: "{{ $font }}"
+       }
+      </style>
+      @elseif(!en() && !$font)
+      <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+      <style>
+         body{
+           font-family: 'Cairo', sans-serif;
+
+         }
+        </style>
+      @endif
     @yield('styles')
   </head>
   <body >
+
 
   @include(admin() ? 'partials.admin.content' : 'partials.home.content')
 

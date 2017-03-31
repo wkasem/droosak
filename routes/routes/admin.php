@@ -7,6 +7,7 @@ Route::post('/subscribers' , 'adminController@getSubscribers');
 Route::post('/live' , 'adminController@live');
 Route::post('/introSave' , 'adminController@introSave');
 Route::post('/logo' , 'adminController@logoSave');
+Route::post('/font/upload' , 'adminController@uploadFont');
 
 
 Route::post('/documents/upload' , 'DocumentsController@upload');
@@ -23,6 +24,7 @@ Route::group(['prefix' => '/courses'],function(){
   Route::post('/{id}/delete' , 'VideoController@deleteVideo');
   Route::post('/add-playlist' , 'VideoController@addPlaylist');
   Route::post('/{id}/poster' , 'VideoController@updatePoster');
+  Route::post('/live/create' , 'StreamController@adminOn');
 });
 
 Route::group(['prefix' => '/exams'],function(){
@@ -30,6 +32,7 @@ Route::group(['prefix' => '/exams'],function(){
   Route::get('/' , 'ExamsController@index')->name('admin.exams');
   Route::get('/{exam}' , 'ExamsController@edit')->name('admin.exams.edit');
   Route::post('/save' , 'ExamsController@save');
+  Route::post('/create' , 'ExamsController@createExam')->name('createExam');
 });
 
 

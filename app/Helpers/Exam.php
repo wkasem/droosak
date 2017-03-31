@@ -23,17 +23,24 @@ class Exam
   public static function all()
   {
 
-    $m = Exams::whereYear('created_at' , date('Y'))
-                ->whereMonth('created_at' , date('m'))->count();
-    if(!$m){
-      Exams::create([
-        'title' => date('n'),
-        'monthly' => 1,
-        'questions' => []
-      ]);
-    }
+    $monthly = Exams::whereYear('created_at' , date('Y'))
+                ->whereMonth('created_at' , date('m'))
+                ->where('monthly' , 1)->get();
 
-    return Exams::all();
+    $fixed = Exams::where('monthly' , 0)->get();
+
+    return compact('monthly' , 'fixed');
+  }
+
+  public static function createExam($stage_id, $title)
+  {
+
+    return Exams::create([
+      'title' => $title,
+      'monthly' => 1,
+      'stage_id' => $stage_id,
+      'questions' => []
+    ]);
   }
 
   public static function edit(int $id)
@@ -63,9 +70,8 @@ class Exam
       $i = new static($id);
 
       if(session()->has('examing')){
-          return redirect()->route('home.exams.take' , ['id' => session('examing')]);
+          return $i->examView($i->exam);
       }
-
       //didnt start or take the exam
       if(!$i->already()) return $i->createTaker();
 
@@ -163,13 +169,8 @@ class Exam
 
    foreach ($exam->results as $result) {
 
-     $time = $result->started_at;
-
-     $time->addMinutes($exam->minutes);
-
      if(!$locked){
-
-       $locked = (bool) (Carbon::now())->diffInMinutes($time);
+       $locked = ! (bool) $result->finished_at;
      }
    }
 
@@ -188,14 +189,11 @@ class Exam
         return (array)$a;
     });
 
-    $temp = Exams::where('id' , $exam['id']);
 
-    // if(!sizeof(json_decode($exam->first()->questions) && (bool) $exam->published ){
-    //
-    // }
-    \Notification::send(students(), new ExamPublished($exam));
+    if($exam['published'] )
+       \Notification::send(students($exam['stage_id']), new ExamPublished($exam));
 
-    $temp->update($exam);
+     Exams::where('id' , $exam['id'])->update($exam);
   }
 
 

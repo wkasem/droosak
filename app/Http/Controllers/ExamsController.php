@@ -4,6 +4,7 @@ namespace droosak\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use droosak\Stage;
 use Exam;
 
 class ExamsController extends Controller
@@ -15,14 +16,12 @@ class ExamsController extends Controller
 
       $exams = Exam::all();
 
-      $monthly = $exams->filter(function($e){
-        return $e->monthly;
-      })->groupBy(function($x){
-        return $x->created_at->year;
+
+      $stages = Stage::all()->filter(function($stage) use ($exams){
+         return !in_array($stage->id ,$exams['monthly']->pluck('stage_id')->toArray());
       });
 
-
-      return view('admin.exams.index' , compact('exams' , 'monthly'));
+      return view('admin.exams.index' , compact('exams' ,'stages'));
     }
 
     public function edit($id)
@@ -30,9 +29,24 @@ class ExamsController extends Controller
 
       $exam = Exam::edit($id);
 
-      $locked = false; //Exam::isLocked($exam);
+      $locked = Exam::isLocked($exam);
 
-      return view('admin.exams.edit' , compact('exam' , 'locked'));
+      $stages = Stage::all()->map(function($s){
+        $s->title = \Lang::get('exams.'.$s->title);
+        return $s;
+      });
+
+      return view('admin.exams.edit' , compact('exam' , 'locked' , 'stages'));
+    }
+
+    public function createExam()
+    {
+
+      $stage = Stage::where('id' , request('stage_id'))->first();
+
+      $exam = Exam::createExam($stage->id , $stage->title);
+
+      return redirect()->route('admin.exams.edit' , ['id' => $exam->id]);
     }
 
     public function takeExam($id)

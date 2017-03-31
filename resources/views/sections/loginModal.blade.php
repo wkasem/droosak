@@ -5,9 +5,10 @@
     <section class="modal-card-body">
       <form action="{{ route('login') }}" method="post">
         {{ csrf_field() }}
-        <label class="label">@lang('welcome.email')</label>
+        <input type="hidden" name="login_mobile_code" />
+        <label class="label">@lang('welcome.emailOrPhone')</label>
         <p class="control has-icon">
-          <input class="input {{ ($errors->has('email') && !session()->has('signup_process')) ? 'is-danger' : '' }}" type="email" name="email" />
+          <input class="input {{ ($errors->has('email') && !session()->has('signup_process')) ? 'is-danger' : '' }}" type="text" name="email" value="{{ (!session()->has('signup_process')) ? old('email') : '' }}" />
           <span class="icon is-small">
             <i class="fa fa-envelope"></i>
           </span>

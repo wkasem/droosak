@@ -43,9 +43,11 @@ if( !function_exists('admin'))
 
 if( !function_exists('students'))
 {
-  function students(){
+  function students($stage_id){
+    if(!$stage_id)
+       return droosak\User::students()->get();
 
-    return droosak\User::students()->get();
+    return droosak\User::students()->where('stage_id' , $stage_id)->get();
   }
 }
 
@@ -57,7 +59,7 @@ if( !function_exists('documents'))
     $name = str_replace('.' , '' , explode('.' , $n)[1]);
 
     $srcs = ['pdf' , 'doc' , 'docx'];
-    
+
     $name = (in_array($name , $srcs)) ? $name : 'document';
 
     return "<img src='/imgs/documents/$name.png' />";
@@ -146,5 +148,15 @@ if( !function_exists('tdir'))
   function tdir(){
 
     return en() ? 'ltr' : 'rtl';
+  }
+}
+
+if( !function_exists('loadFontStyle'))
+{
+  function loadFontStyle($w , $s){
+
+    $font = $w->fonts[$s];
+
+    return ($font) ? "font-family : '$font' " : null;
   }
 }

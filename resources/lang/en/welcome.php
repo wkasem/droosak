@@ -3,8 +3,9 @@
 return [
 
  'email'   => 'Email',
+ 'emailOrPhone'   => 'Email / Mobile Number',
  'password' => 'Password',
- 'username' => 'username',
+ 'username' => 'Username',
  'phone_number' => 'Mobile Number',
  'login' => 'Login',
  'signup' => 'Signup',
@@ -14,6 +15,7 @@ return [
  'intouch' => 'Subscribe',
  'intouch_success' => "Subscribed Successfully !",
  'about_us' => 'ِAbout Droosak',
+ 'stage' => 'Stage',
 
  'messages'=>[
    'title' => 'Talk To Teachers',

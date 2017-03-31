@@ -37,7 +37,12 @@ class UserRegistration extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['mail'];
+       $via = [];
+
+       if(!empty($this->mailCode)){
+         $via[] = 'mail';
+       }
+        return $via ;
     }
 
     /**
@@ -49,9 +54,9 @@ class UserRegistration extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject('Droosak.com Registration')
+                    ->line('Droosak.com Code ')
+                    ->line($this->mailCode);
     }
 
     /**
@@ -66,30 +71,4 @@ class UserRegistration extends Notification implements ShouldQueue
                     ->content('Droosak.com Code:'.$this->phoneCode);
     }
 
-    /**
-     * Get the broadcastable representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return BroadcastMessage
-     */
-    public function toBroadcast($notifiable)
-    {
-        return new BroadcastMessage([
-            'invoice_id' => $this->invoice->id,
-            'amount' => $this->invoice->amount,
-        ]);
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
-    }
 }

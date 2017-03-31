@@ -48,16 +48,17 @@ Vue.component('examtake', require('./components/ExamTake.vue'));
 Vue.component('messages', require('./components/Messages.vue'));
 Vue.component('voicenote', require('./components/VoiceNote.vue'));
 Vue.component('player', require('./components/Player.vue'));
+Vue.component('videos', require('./components/Videos.vue'));
 Vue.component('playlists', require('./components/Playlists.vue'));
 Vue.component('students', require('./components/Students.vue'));
 Vue.component('teachers', require('./components/Teachers.vue'));
 Vue.component('teacherhome', require('./components/TeacherHome.vue'));
-Vue.component('videos', require('./components/Videos.vue'));
 Vue.component('voicenote', require('./components/VoiceNote.vue'));
 Vue.component('voicemessage', require('./components/VoiceMessage.vue'));
 Vue.component('dashboard', require('./components/Dashboard.vue'));
 Vue.component('schedule', require('./components/Schedule.vue'));
 Vue.component('profile', require('./components/Profile.vue'));
+Vue.component('fontmenue', require('./components/FontMenue.vue'));
 
 const app = new Vue({
     el: '#app',
@@ -73,5 +74,26 @@ $(function(){
 
   $('.is-file .button').click(function(){
     $(this).parent().find('input').click();
+  });
+
+  function tabShow(a){
+    var div = a.attr('href').replace('#' , '');
+
+    $(`#${div}`).show().siblings().hide();
+
+    a.parent().addClass('is-active')
+     .siblings().removeClass('is-active');
+  }
+
+  if($('.tabs').length){
+
+    tabShow($('.tabs li.is-active a'));
+  }
+
+
+  $('.tabs a').click(e => {
+    e.preventDefault();
+
+    tabShow($(e.target));
   });
 });

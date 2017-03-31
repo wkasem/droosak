@@ -48,14 +48,18 @@ class AppServiceProvider extends ServiceProvider
       });
 
       View::composer([
-        'partials.footer' , 'mail.layout', 'partials.admin.content' , 'partials.home.content'
+        'partials.footer' , 'mail.layout','layout' , 'admin.index' , 'welcome'
       ], function ($view) {
-        $welcome = \droosak\Welcome::first();
 
-        $view->with(compact('welcome'));
+        $welcome = \Cache::get('welcome' , function(){
+                    return \droosak\Welcome::first();
+        });
+
+        $fonts = \droosak\Font::all();
+        $view->with(compact('welcome' , 'fonts'));
       });
 
-        View::composer('partials.home.nav', function ($view) {
+        View::composer(['partials.home.nav' , 'partials.home.mobileNav'], function ($view) {
 
           $isLive = \droosak\Videos::where(['by' => \Auth::id() , 'live' => 1])->first();
 

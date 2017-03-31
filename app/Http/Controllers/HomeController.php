@@ -12,6 +12,7 @@ use droosak\NewsLetter;
 use droosak\Welcome;
 use droosak\Mail\Contact;
 use droosak\Schedule;
+use droosak\Stage;
 
 
 class HomeController extends Controller
@@ -19,13 +20,21 @@ class HomeController extends Controller
 
     public function home()
     {
-      $welcome = Welcome::first();
 
       $playlists = Playlist::show()->with('videos')->whereHas('videos')->latest()->get();
 
       $teachers = User::teachers()->get();
 
-      return view('welcome' , compact('welcome' , 'playlists' , 'teachers'));
+      $stages = Stage::all();
+
+      return view('welcome' , compact('playlists' , 'teachers' , 'stages'));
+    }
+
+    public function notifications()
+    {
+      $notifications = auth()->user()->notifications()->get();
+
+      return view('home.notifications' , compact('notifications'));
     }
 
     public function schedule()
@@ -38,15 +47,8 @@ class HomeController extends Controller
     public function index()
     {
 
-      if(student()){
+      if(auth()->user()->type_id == 3) return redirect()->route('home.playlists');
 
-        $videos = Videos::with('playlist')->where('live' , '!=' , 1)
-                       ->latest()->take(3)->get()->filter(function($v){
-                        return $v->playlist->show;
-                       });
-
-        return view('home.index' , compact('videos'));
-      }
       return view('home.index');
     }
 
@@ -144,7 +146,7 @@ class HomeController extends Controller
     public function playlists()
     {
 
-      $playlists = Playlist::where('show' , 1)->withCount(['videos'])->get()->chunk(3);
+      $playlists = Playlist::show()->noParent()->withCount(['videos'])->get()->chunk(3);
 
       return view('home.playlists' , compact('playlists'));
     }
@@ -154,7 +156,8 @@ class HomeController extends Controller
     public function getPlaylist($id)
     {
 
-      $playlist = Playlist::where('playlist_id' , $id)->with(['videos.published_by' , 'documents'])->first();
+      $playlist = Playlist::where('playlist_id' , $id)
+                          ->with(['playlists','videos.published_by' , 'documents'])->first();
 
       if(!$playlist) return redirect()->route('home.playlists');
 

@@ -13,20 +13,20 @@ class SchedulePublish extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    public $data;
+    public $schedule;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($schedule)
     {
-      $data['times'] = collect(json_decode($data['times']))->map(function($t){
+      $schedule['times'] = collect(json_decode($schedule['times']))->map(function($t){
         return (array) $t;
       });
 
-        $this->data = $data;
+        $this->schedule = $schedule;
     }
 
     /**
@@ -37,7 +37,7 @@ class SchedulePublish extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['broadcast' , 'mail' , 'nexmo'];
+        return $notifiable->channels();
     }
 
     /**
@@ -49,8 +49,8 @@ class SchedulePublish extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject($this->data['title'].' تم تحديث جدول مواعيد')
-                    ->markdown('vendor.mail.schedule' , ['data' => $this->data]);
+                    ->subject(' تم تحديث جدول مواعيد' . $this->schedule['title'])
+                    ->view('mail.schedule' , ['schedule' => $this->schedule]);
     }
 
     /**
@@ -62,7 +62,7 @@ class SchedulePublish extends Notification implements ShouldQueue
     public function toNexmo($notifiable)
     {
         return (new NexmoMessage)
-                    ->content($this->data['title'] . ' Schedule Has Been Updated You can check it on droosak.com')
+                    ->content($this->schedule['title'] . ' Schedule Has Been Updated You can check it on droosak.com')
                     ->unicode();
     }
 
@@ -75,7 +75,7 @@ class SchedulePublish extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            'title' => $this->data['title']
+            'title' => $this->schedule['title']
         ];
     }
 }

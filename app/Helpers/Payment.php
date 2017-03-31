@@ -15,7 +15,7 @@ class Payment
           env('PAYPAL_CLIENT_SECRET'));
 
       $this->_apiContext->setConfig(array(
-          'mode' => 'sandbox',
+          'mode' => 'live',
           'http.ConnectionTimeOut' => 30
         ));
 

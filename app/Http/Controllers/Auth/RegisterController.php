@@ -52,9 +52,10 @@ class RegisterController extends Controller
 
         $v = Validator::make($data, [
             'username' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'email' => 'email|max:255|unique:users',
             'password' => 'required|min:6',
             'phone_number' => 'required|min:6|max:15|unique:users',
+            'stage_id' => 'in:1,2,3,4,5,6'
         ]);
 
         session()->flash('signup_process' , true);
@@ -71,9 +72,9 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $phoneCode = mt_rand(1000,9999);
-        $mailCode = str_random(5);
 
-        $data['phone_number'] = '2'.$data['phone_number'];
+        $mailCode = (!empty($data['email'])) ? str_random(5) : "";
+
 
         $user =  User::create([
             'username' => $data['username'],
@@ -83,10 +84,11 @@ class RegisterController extends Controller
             'phone_code' => $phoneCode,
             'mail_code' => $mailCode,
             'type_id' => 3,
+            'stage_id' => $data['stage_id'],
             'ip' => request()->ip()
         ]);
 
-        //Notification::send($user, new UserRegistration($phoneCode , $mailCode));
+        Notification::send($user, new UserRegistration($phoneCode , $mailCode));
 
        return $user;
     }

@@ -13,6 +13,7 @@ use FFMpeg;
 use Storage;
 use Streamer;
 use Points;
+use droosak\Stage;
 
 class VideoController extends Controller
 {
@@ -20,9 +21,14 @@ class VideoController extends Controller
 
   public function index()
   {
-    $playlists = Playlist::withCount(['videos'])->get()->chunk(3);
+    $playlists = Playlist::noparent()->withCount(['videos'])->get()->chunk(3);
 
-    return view('admin.playlists' , compact('playlists'));
+    $stages = Stage::all()->map(function($s){
+      $s->title = \Lang::get('exams.'.$s->title);
+      return $s;
+    });
+
+    return view('admin.playlists' , compact('playlists' , 'stages'));
   }
 
   public function updatePoster($id)
@@ -75,11 +81,13 @@ class VideoController extends Controller
   public function getPlaylist($id)
   {
 
-    $playlist = collect(Playlist::where('playlist_id' , $id)->with(['videos.published_by' , 'documents'])->first());
+    $playlist = collect(Playlist::where('playlist_id' , $id)
+                     ->with(['playlists' , 'videos.published_by' , 'documents'])->first());
 
     if(!$playlist->count()) return redirect()->route('admin.index');
 
     $playlist->put('videos' , collect($playlist->get('videos'))->chunk(3));
+    $playlist->put('playlists' , collect($playlist->get('playlists'))->chunk(3));
 
     $teachers = User::teachers()->get();
 

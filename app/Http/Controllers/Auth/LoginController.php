@@ -22,6 +22,8 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
 
+    protected $authedWith = 'email';
+
     /**
      * Show the application's login form.
      *
@@ -40,16 +42,38 @@ class LoginController extends Controller
      */
     protected function credentials(Request $request)
     {
-      $user = \droosak\User::where('email' , request('email'))->first();
+      if(is_numeric(request('email'))){
+        $phoneNum = request('login_mobile_code').request('email');
+
+        $request->merge( ['phone_number' => $phoneNum ] );
+        $this->authedWith = 'phone_number';
+      }
+
+      $user = \droosak\User::where('email' , request('email'))
+                           ->orWhere('phone_number' , request('phone_number'))
+                           ->first();
 
       if($user){
         if($user->type_id == 3){
            $request->merge(['ip' => $request->ip()]);
-           return $request->only($this->username(), 'password' , 'ip');
+           return $request->only($this->authedWith, 'password' , 'ip');
         }
       }
-      return $request->only($this->username(), 'password');
+      return $request->only($this->authedWith, 'password');
 
+    }
+
+    /**
+     * Attempt to log the user into the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return bool
+     */
+    protected function attemptLogin(Request $request)
+    {
+        return $this->guard()->attempt(
+            $this->credentials($request), $request->has('remember')
+        );
     }
 
 
@@ -66,6 +90,8 @@ class LoginController extends Controller
     public function redirectTo()
     {
       if(auth()->user()->type_id == 1) return '/admin';
+
+      if(auth()->user()->type_id == 3) return '/courses';
 
       return '/home';
     }

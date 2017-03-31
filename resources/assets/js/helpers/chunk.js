@@ -1,19 +1,12 @@
 let Chunk = {
 
   cast(data){
-    console.log(data);
+
     data = data.map(arr => {
-      if(arr instanceof Array){ return arr }
 
-      let newArr = [];
+      return (Array.isArray(arr)) ? arr : Object.keys(arr).map(k => arr[k]);
 
-      Object.keys(arr).forEach(ob => {
-        newArr.push(arr[ob]);
-      });
-
-      return newArr;
     });
-
     return data;
   },
   add(into , data){
@@ -21,6 +14,18 @@ let Chunk = {
     if(crr.length < 3){ crr.push(data); return; }
 
     into.push([data]);
+  },
+  flat(Group){
+
+    let all = [];
+
+    Group.forEach(g => {
+      g.forEach(v => {
+        all.push(v);
+      });
+    });
+
+    return all;
   }
 }
 

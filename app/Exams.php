@@ -15,7 +15,7 @@ class Exams extends Model
    */
   protected $fillable = [
       'title', 'discription',  'user_id' , 'published' , 'questions',
-       'minutes' , 'points'
+       'minutes' , 'points' , 'stage_id' , 'heading' , 'monthly'
   ];
 
   protected $casts = [

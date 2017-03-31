@@ -3,6 +3,7 @@
 return [
 
   'username' => 'أسم المستخدم',
+  'emailOrPhone'   => 'البريد الالكترونى - رقم الهاتف',
   'password' => 'كلمة السر',
   'email'    => 'البريد اﻻلكترونى',
   'phone_number' => 'رقم الهاتف',
@@ -14,6 +15,7 @@ return [
   'intouch' => 'أﻻشتراك',
   'intouch_success' => "تم ألاشتراك بنجاح",
   'about_us' => 'عن دروسك',
+  'stage' => 'المرحلة',
 
   'messages'=>[
     'title' => 'محادثات فورية',

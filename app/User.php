@@ -29,7 +29,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'username', 'email', 'password' , 'type_id' , 'cv_src' , 'balance'
-        , 'phone_number' , 'phone_code' , 'mail_code' , 'profile_pic' , 'about'
+        , 'phone_number' , 'phone_code' , 'mail_code' , 'profile_pic' , 'about' , 'stage_id'
     ];
 
     /**
@@ -96,5 +96,14 @@ class User extends Authenticatable
     {
 
       return $this->videos()->where('live' , 1)->count();
+    }
+
+    public function channels()
+    {
+      $channels = ['broadcast' , 'database'];
+
+      if(!empty($this->email)) $channels[] = 'mail';
+
+      return $channels;
     }
 }

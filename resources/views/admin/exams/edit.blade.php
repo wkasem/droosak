@@ -4,5 +4,6 @@
 
 @section('content')
 
-<Exam data='{{ json_encode($exam) }}' t="{{ Lang::get('exams.'.$exam->title)}}"></Exam>
+<Exam data='{{ json_encode($exam) }}' t="{{ Lang::get('exams.'.$exam->title)}}"
+      locked='{{ $locked }}'></Exam>
 @endsection

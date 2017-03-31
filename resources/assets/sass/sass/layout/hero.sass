@@ -60,9 +60,6 @@
   .nav
     background: none
     box-shadow: 0 1px 0 rgba($border, 0.3)
-  .tabs
-    ul
-      border-bottom: none
   // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)
@@ -84,12 +81,8 @@
       a.nav-item,
       .nav-item a:not(.button)
         color: rgba($color-invert, 0.7)
-        &:hover,
-        &.is-active
-          color: $color-invert
       .tabs
         a
-          color: $color-invert
           opacity: 0.9
           &:hover
             opacity: 1
@@ -99,15 +92,12 @@
         &.is-boxed,
         &.is-toggle
           a
-            color: $color-invert
             &:hover
               background-color: rgba($black, 0.1)
           li.is-active a
             &,
             &:hover
-              background-color: $color-invert
-              border-color: $color-invert
-              color: $color
+              background-color: rgba(249, 249, 249, 0.7)
       // Modifiers
       &.is-bold
         $gradient-top-left: darken(saturate(adjust-hue($color, -10deg), 10%), 10%)

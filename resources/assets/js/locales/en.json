@@ -46,6 +46,8 @@
 
    "empty_comment" : "Please Type Some Text..",
 
+    "exam_locked" : "Some Student is Taking Exam Right now , you can't cahnge anything",
+
    "liveNow" : "Is Live Now",
    "liveBtn" : "Watch",
    "liveCancel" : "Cancel",

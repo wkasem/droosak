@@ -31,9 +31,61 @@
 </div>
 </div>
 <hr v-if='playlist.show'>
+
 <div class="columns">
   <div class="column section">
+    <div class="tabs is-boxed">
+      <ul>
+        <li class="is-active"><a href="#playlists">Playlists</a></li>
+        <li ><a href="#videos">Videos</a></li>
+        <li><a href="#documents">Documents</a></li>
+      </ul>
+    </div>
   <div class="container">
+
+   <div id="playlists">
+     <playlists :data='playlist.playlists' v-if='playlist.playlists'
+                :parent='playlist'>
+      </playlists>
+   </div>
+
+    <div id="documents">
+      <div class="heading">
+        <h1 class="title">{{ Locale.get('documents')}}<span class="tag" v-if='playlist.documents'>{{ playlist.documents.length }}</span></h1>
+        <div class="is-file ">
+          <input type="file" name="file" @change='uploadDocument($event)'>
+            <a class="button ">
+              <span class="icon">
+                <i class="fa fa-file-text-o"></i>
+              </span>
+              <span>{{ Locale.get('new_document')}} </span>
+            </a>
+        </div>
+      </div>
+      <div class="box" v-for='(document , index) in playlist.documents'>
+        <article class="media">
+          <div class="media-left">
+            <figure class="image is-64x64" v-html='Document.img(document.src)'> </figure>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <p> {{ document.name }} </p>
+            </div>
+          </div>
+          <div class="media-right">
+            <a  :href="'/documents/'+ document.id +'/download'"  target="_blank" class="button">
+              {{ Locale.get('download') }}
+            </a>
+            <a href="#document_delete"class="button is-danger modal-trigger" @click.prevent='setCurrent(0 , index)'>
+              {{ Locale.get('delete') }}
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+
+    <div id="videos">
   <div class="heading">
     <h1 class="title">{{ Locale.get('videos')}}<span class="tag">{{ videos_count }}</span></h1>
     <a href="#video_add" class="modal-trigger button">
@@ -80,46 +132,8 @@
     </div>
   </div>
 </div>
-</div>
-</div>
 
-<!--books -->
-<hr v-if='!isPromo()'>
-<div class="columns" v-if='!isPromo()'>
-  <div class="column section">
-  <div class="container">
-  <div class="heading">
-    <h1 class="title">{{ Locale.get('documents')}}<span class="tag" v-if='playlist.documents'>{{ playlist.documents.length }}</span></h1>
-    <div class="is-file ">
-      <input type="file" name="file" @change='uploadDocument($event)'>
-        <a class="button ">
-          <span class="icon">
-            <i class="fa fa-file-text-o"></i>
-          </span>
-          <span>{{ Locale.get('new_document')}} </span>
-        </a>
-    </div>
-  </div>
-  <div class="box" v-for='(document , index) in playlist.documents'>
-    <article class="media">
-      <div class="media-left">
-        <figure class="image is-64x64" v-html='Document.img(document.src)'> </figure>
-      </div>
-      <div class="media-content">
-        <div class="content">
-          <p> {{ document.name }} </p>
-        </div>
-      </div>
-      <div class="media-right">
-        <a  :href="'/documents/'+ document.id +'/download'"  target="_blank" class="button">
-          {{ Locale.get('download') }}
-        </a>
-        <a href="#document_delete"class="button is-danger modal-trigger" @click.prevent='setCurrent(0 , index)'>
-          {{ Locale.get('delete') }}
-        </a>
-      </div>
-    </article>
-  </div>
+
 </div>
 </div>
 </div>
@@ -268,7 +282,7 @@
 <script>
 
     export default {
-        props : ['data' , 'data2' , 'data3'],
+        props : ['data' , 'data2' , 'data3' , 'stages'],
 
         data(){
           return {
@@ -477,7 +491,10 @@
         },
 
         mounted() {
-          this.playlist = JSON.parse(this.data);
+          let data = JSON.parse(this.data);
+          data.playlists = JSON.stringify(data.playlists);
+          this.playlist = data;
+
           this.teachers = JSON.parse(this.data2);
           this.playlists = JSON.parse(this.data3);
 

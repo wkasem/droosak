@@ -21,6 +21,7 @@ class CreatePlaylistsVideosTable extends Migration
             $table->string('title');
             $table->text('discription')->nullable();
             $table->integer('by')->nullable();
+            $table->integer('created_by')->nullable();
             $table->integer('stream_id')->nullable();
             $table->integer('live')->default(0);
             $table->integer('points')->default(0);

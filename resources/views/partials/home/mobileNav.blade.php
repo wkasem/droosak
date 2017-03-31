@@ -9,11 +9,13 @@
   <span></span>
 </span>
 <div class="nav-mobile nav-menu is-hidden-desktop">
-  <a href="{{ route('home.index')}}"
-     class="nav-item is-tab {{ active()->output('is-active')->route('home.index') }}">
-     <i class="fa fa-home" aria-hidden="true"></i>
-     @lang('nav.home')
-   </a>
+  @if(teacher())
+    <a href="{{ route('home.index')}}"
+       class="nav-item is-tab {{ active()->output('is-active')->route('home.index') }}">
+       <i class="fa fa-home" aria-hidden="true"></i>
+       @lang('nav.home')
+     </a>
+  @endif
    <a href="{{ route('messages')}}"
       class="nav-item is-tab {{ active()->output('is-active')->route('messages') }}">
       <i class="fa fa-inbox" aria-hidden="true"></i>

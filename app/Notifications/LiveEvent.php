@@ -15,9 +15,9 @@ use Illuminate\Notifications\Messages\NexmoMessage;
 
 class LiveEvent extends Notification implements ShouldQueue
 {
-    use Queueable , InteractsWithSockets;
+    use Queueable;
 
-    public $id;
+    public $video;
 
     public $user;
 
@@ -28,7 +28,7 @@ class LiveEvent extends Notification implements ShouldQueue
      */
     public function __construct($id , $user)
     {
-        $this->id = $id;
+        $this->video = \droosak\Videos::where('video_id', $id )->first();
         $this->user = $user;
     }
 
@@ -40,7 +40,7 @@ class LiveEvent extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['broadcast' , 'nexmo'];
+        return $notifiable->channels();
     }
 
     /**
@@ -51,7 +51,12 @@ class LiveEvent extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)->view('mails.live');
+        return (new MailMessage)
+                 ->subject('فى بث حى الان' . $this->user->username)
+                 ->view('mail.live',[
+                   'user' => $this->user,
+                   'video'=> $this->video
+                 ]);
     }
 
     /**
@@ -77,7 +82,7 @@ class LiveEvent extends Notification implements ShouldQueue
     {
         return [
           'user' => $this->user,
-          'id' => $this->id
+          'video' => $this->video
         ];
     }
 

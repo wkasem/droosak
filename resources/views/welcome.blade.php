@@ -34,12 +34,50 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
         <script src="js/ddscrollspy.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Supermercado+One" rel="stylesheet">
+<link href="{{ asset('css/intlTelInput.css') }}" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
 
 
-<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+<script  src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+<script  src="{{ asset('js/intlTelInput.min.js') }}"></script>
 
+@foreach($fonts as $font)
+ <style>
+   @font-face {
+     font-family: "{{ $font->id }}";
+     src: url({{ "/fonts/$font->src" }});
+   }
+ </style>
+@endforeach
 
+@if($font = $welcome->fonts['main_english'] && en())
+ <style>
+   body{
+     font-family: "{{ $font }}" !important;
+   }
+  </style>
+  @endif
+
+@if($font = $welcome->fonts['main_arabic'] && !en())
+ <style>
+   body{
+     direction: rtl;
+     font-family: "{{ $font }}" !important;
+   }
+   .label{text-align: right !important;}
+   .button{float: right;}
+  </style>
+  @elseif(!en() && !$font)
+  <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+     <style>
+      body{
+        direction: rtl;
+        font-family: 'Cairo', sans-serif;
+      }
+      .label{text-align: right !important;}
+      .button{float: right;}
+     </style>
+  @endif
         <script>
           function showLogin(){
             $('.modal-login').addClass('is-active');
@@ -49,6 +87,30 @@
           }
 
          $(function(){
+
+
+           $("#phone").intlTelInput({
+             initialCountry: "auto",
+             utilsScript: "/js/utils.js",
+             geoIpLookup: function(callback) {
+                $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+                  window.countryCode = (resp && resp.country) ? resp.country : "";
+                  var c = $.fn.intlTelInput.getCountryData().filter(function(c){
+                    return c.iso2 == window.countryCode.toLowerCase();
+                  })[0].dialCode;
+
+                  $("input[name = 'login_mobile_code']").val(c);
+                  callback(window.countryCode);
+                });
+              }
+           });
+
+
+           $('#phone').change(function(){
+
+            $("input[name = 'phone_number']")
+              .val($("#phone").intlTelInput('getNumber'));
+           });
 
            $(document).on('scroll',function(){
              if($(this).scrollTop() > 5){
@@ -127,6 +189,9 @@
            color: #fff;
            font-family: 'Supermercado One', cursive;
 
+         }
+         .highlight:not(:last-child) {
+           margin-bottom: 0 !important;
          }
          .inView{
            position: absolute;
@@ -250,17 +315,7 @@
         }
         </style>
 
-        @if(!en())
-        <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">       <style>
-           <style>
-            body{
-              direction: rtl;
-              font-family: 'Cairo', sans-serif;
-            }
-            .label{text-align: right !important;}
-            .button{float: right;}
-           </style>
-        @endif
+
     </head>
     <body>
 

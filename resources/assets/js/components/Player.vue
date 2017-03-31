@@ -79,7 +79,7 @@
             </div>
           </article>
         </div>
-        <div class="box" v-if='streamOff && authUser().id == video.published_by.id'>
+        <div class="box" v-if='!streamOff && authUser().id == video.published_by.id'>
           <article class="media">
             <div class="media-content">
               <div class="content">
@@ -501,6 +501,7 @@ export default {
        this.video.comments = this.video.comments.reverse();
        this.hasMoreComments = (this.video.comments_count > 5);
 
+
        if(this.video.live == 3){
          this.streamOff = true;
        }
@@ -540,7 +541,9 @@ export default {
       });
     },
     updated(){
-
+      $('.is-file .button').click(function(){
+        $(this).parent().find('input').click();
+      });
       Modal.activate();
     }
 }

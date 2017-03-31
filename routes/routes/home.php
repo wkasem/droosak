@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/home' , 'HomeController@index')->name('home.index');
+Route::get('/notifications' , 'HomeController@notifications')->name('home.notifications');
 Route::get('/validation' , 'HomeController@validation')->name('errors.validation');
 Route::post('/validation/phone' , 'HomeController@validatePhone')->name('validation.phone');
 Route::post('/validation/email' , 'HomeController@validateEmail')->name('validation.email');

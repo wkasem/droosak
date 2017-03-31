@@ -27,6 +27,7 @@ class CreateWelcomesTable extends Migration
             $table->text('email')->nullable();
             $table->text('map')->nullable();
             $table->text('logo');
+            $table->json('fonts');
             $table->timestamps();
         });
     }

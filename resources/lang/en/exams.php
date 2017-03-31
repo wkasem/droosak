@@ -36,6 +36,8 @@ return [
   'fineartsarchitecture' => 'Faculty of Fine Arts Department of Architecture',
   'arteducation' => 'Faculty of Art Education',
 
+  'create' => 'Add Exam',
+
     '1' => 'Janaury',
     '2' => 'February',
     '3' => 'March',

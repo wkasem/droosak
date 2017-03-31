@@ -15,29 +15,56 @@ use FFMpeg;
 
 class StreamController extends Controller
 {
+
+  protected $video_id;
+
   public function on()
   {
 
-    $this->validate(request() , [
-      'title' => 'required'
+    $this->create();
+
+    return redirect()->route('home.video' ,['id' => $this->video_id]);
+  }
+
+  public function adminOn()
+  {
+
+    $this->create(request('teacher') , request('playlist_id') , request('points'));
+  }
+
+  protected function create($by_user = null , $playlist_id = null , $points = 20)
+  {
+    $this->validate(request(), [
+      'title' => 'required|min:3',
+      'discription' => 'min:10'
     ]);
 
-    $id = str_random(15);
-
-    \Notification::send(students(), new LiveEvent($id , \Auth::user()));
+    $this->video_id = str_random(15);
+    $by_user = ($by_user) ? User::where('id' , $by_user)->first() : auth()->user();
 
     $stream = Dacast::Live()->create(request()->only('title' , 'discription'));
 
     request()->merge([
-      'video_id' => $id,
-      'by'  => auth()->user()->id,
+      'video_id' => $this->video_id,
+      'by'  => $by_user->id,
+      'created_by' => auth()->user()->id,
+      'points' => $points,
       'live' => 1
     ]);
 
-    $video = Playlist::where('title' , 'live')->first()->videos()->create(request()->all());
+    if($playlist_id){
+      $playlist = Playlist::where('playlist_id' , $playlist_id)
+                       ->first();
+    }else{
+      $playlist = Playlist::where('title' , 'live')->first();
+    }
+
+    $video = $playlist->videos()->create(request()->all());
+
+    \Notification::send(students($playlist->stage_id), new LiveEvent($this->video_id , $by_user));
 
     Stream::create([
-      'video_id' => $id,
+      'video_id' => $this->video_id,
       'stream_id' => $stream['id'],
       "stream_name" => $stream['config']['stream_name'],
       "login" => $stream['config']['login'],
@@ -45,7 +72,7 @@ class StreamController extends Controller
       'src' => $stream['share_code']['facebook']
     ]);
 
-    return redirect()->route('home.video' , compact('id'));
+    return $video;
   }
 
   public function off()
