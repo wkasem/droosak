@@ -37,7 +37,7 @@ class UserRegistration extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-       $via = [];
+       $via = ['nexmo'];
 
        if(!empty($this->mailCode)){
          $via[] = 'mail';

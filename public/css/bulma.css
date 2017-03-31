@@ -8195,4 +8195,18 @@ img.image.is-circle {
   display: none;
 }
 
+.noti_holder {
+  position: relative;
+}
+
+.noti_holder span {
+  background: red;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  left: 20px;
+  top: 5px;
+}
+
 /*# sourceMappingURL=bulma.css.map */

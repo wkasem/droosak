@@ -30,6 +30,12 @@
 
     <hr />
   @endforeach
+
+  @if(!$notifications->count())
+  <h4 class="has-text-centered">
+    @lang('notifications.empty')
+  </h4>
+  @endif
 </article>
 
 @endsection

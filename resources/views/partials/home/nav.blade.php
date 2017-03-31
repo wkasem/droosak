@@ -81,6 +81,13 @@
          {{ auth()->user()->username }}
      </a>
     @endif
+  @if(student())
+    <a href="{{ route('home.notifications')}}"
+       class="nav-item noti_holder is-tab {{ active()->output('is-active')->route('home.notifications') }}">
+       <i class="fa fa-globe" aria-hidden="true"></i>
+       <span class="noti_count" style="display : {{ $notis->count() ? 'block' : 'none' }}"></span>
+     </a>
+    @endif
   <a href="{{ route('settings')}}"  class="nav-item is-tab"> @lang('nav.settings') </a>
   <a class="nav-item is-tab is-danger"
      onclick="javascript: document.getElementsByName('logout')[0].submit();"> @lang('nav.logout') </a>

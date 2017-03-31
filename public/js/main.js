@@ -38,8 +38,14 @@ $(function(){
 });
 
 
+function showNoti(){
+
+  $('.noti_count').show();
+}
+
 Echo.private("notifications." + user.id)
     .notification(function(notification){
+        showNoti();
         switch (notification.type) {
           case "droosak\\Notifications\\LiveEvent":
           swal({

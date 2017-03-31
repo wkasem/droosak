@@ -63,7 +63,9 @@ class AppServiceProvider extends ServiceProvider
 
           $isLive = \droosak\Videos::where(['by' => \Auth::id() , 'live' => 1])->first();
 
-          $view->with(compact('isLive'));
+          $notis = auth()->user()->notifications;
+
+          $view->with(compact('isLive' , 'notis'));
         });
     }
 

@@ -21,6 +21,8 @@ return [
  'schedule' => 'جدول المواعيد',
  'documents' => 'المراجع',
 
+ 'notifications' => 'الاشعارات',
+
  'download' => 'تنزيل',
 
 

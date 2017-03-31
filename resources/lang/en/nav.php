@@ -22,6 +22,8 @@ return [
  'schedule' => 'Schedule',
  'documents' => 'Documents',
 
+ 'notifications' => 'Notifications',
+ 
  'download' => 'Download',
 
  'previous' => 'Previous',

@@ -12591,3 +12591,15 @@ Parse error: syntax error, unexpected 'title_english' (T_STRING) in /home/vagran
 [2017-03-31 19:16:39] Processed: droosak\Notifications\LiveEvent
 [2017-03-31 19:16:43] Processed: droosak\Notifications\LiveEvent
 [2017-03-31 19:16:44] Processed: Illuminate\Notifications\Events\BroadcastNotificationCreated
+
+                                                              
+  [Symfony\Component\Debug\Exception\FatalThrowableError]     
+  Parse error: syntax error, unexpected '$view' (T_VARIABLE)  
+                                                              
+
+
+                                                              
+  [Symfony\Component\Debug\Exception\FatalThrowableError]     
+  Parse error: syntax error, unexpected '$view' (T_VARIABLE)  
+                                                              
+
