@@ -88,7 +88,7 @@ class RegisterController extends Controller
             'ip' => request()->ip()
         ]);
 
-        Notification::send($user, new UserRegistration($phoneCode , $mailCode));
+        // Notification::send($user, new UserRegistration($phoneCode , $mailCode));
 
        return $user;
     }

@@ -4,7 +4,7 @@
        <div class="container">
          <div class="nav-left">
            <a class="nav-item">
-             <img src="{{ asset('imgs/logo.png')}}" alt="Droosak">
+             <img src="/imgs/{{ $welcome->logo }}" alt="Droosak">
            </a>
          </div>
          <span class="nav-toggle">
