@@ -10,6 +10,13 @@ session(['locale' => $locale]);
 return redirect('/');
 });
 
+Route::get('/logout', function () {
+
+\Auth::logout();
+
+return redirect('/');
+});
+
 Route::get('v/{id}/getThumb' , 'VideoController@getThumb');
 Route::get('/p/{id}' , 'SettingsController@getPic');
 
