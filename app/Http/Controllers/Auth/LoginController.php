@@ -56,6 +56,7 @@ class LoginController extends Controller
       if($user){
         if($user->type_id == 3){
            $request->merge(['ip' => $request->ip()]);
+
            return $request->only($this->authedWith, 'password' , 'ip');
         }
       }

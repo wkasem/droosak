@@ -110,8 +110,6 @@
                   var c = $.fn.intlTelInput.getCountryData().filter(function(c){
                     return c.iso2 == window.countryCode.toLowerCase();
                   })[0].dialCode;
-
-                  $("input[name = 'login_mobile_code']").val(c);
                   callback(window.countryCode);
                 });
               }
