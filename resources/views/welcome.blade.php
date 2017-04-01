@@ -205,6 +205,15 @@
          .nav-item img{
            max-height: 2.75rem !important;
          }
+
+         .mobile-nav{
+           height: 65vh;
+          overflow-x: hidden;
+          overflow-y: auto;
+         }
+         .hero-body .container{
+           padding-top: 20px;
+         }
          .highlight:not(:last-child) {
            margin-bottom: 0 !important;
          }
