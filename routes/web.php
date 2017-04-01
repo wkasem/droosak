@@ -7,7 +7,7 @@ Route::get('lang/{locale}', function ($locale) {
 
 session(['locale' => $locale]);
 
-return back();
+return redirect('/');
 });
 
 Route::get('v/{id}/getThumb' , 'VideoController@getThumb');

@@ -89,6 +89,18 @@
          $(function(){
 
 
+             $('.nav .nav-toggle').click(function(){
+
+              $('.mobile-nav').slideToggle();
+             });
+             $('.nav-menu a').click(function(){
+               $('.mobile-nav').slideUp();
+             });
+             $(window).on('resize' , function(){
+
+               $('.mobile-nav').slideUp();
+             });
+
            $("#phone").intlTelInput({
              initialCountry: "auto",
              utilsScript: "/js/utils.js",

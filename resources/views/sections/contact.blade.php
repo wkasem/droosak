@@ -2,7 +2,7 @@
   <div class="container">
     <div class="columns">
       <div class="column">
-        <iframe src="{{ $welcome->map }}" width="600" height="300" frameborder="0" style="border:0"></iframe>
+        <iframe src="{{ $welcome->map }}" height="300" frameborder="0" style="width:100%;border:0"></iframe>
       </div>
       <div class="column">
         <label class="label">@lang('welcome.intouch')</label>

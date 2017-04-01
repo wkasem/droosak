@@ -13,7 +13,7 @@
              </p>
            @endif
            @if(!en())
-             <p style=" {{ loadFontStyle($welcome , 'arabic_english') }}">
+             <p style=" {{ loadFontStyle($welcome , 'about_arabic') }}">
                <i class="fa fa-quote-left " aria-hidden="true"></i>
                {{ $welcome->about_arabic}}
                <i class="fa fa-quote-right" aria-hidden="true"></i>

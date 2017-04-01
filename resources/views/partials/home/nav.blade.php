@@ -97,6 +97,6 @@
   </a>
 
   <form method="post" action="{{ route('logout') }}" name="logout">
-    {{ csrf_field() }}
+    
   </form>
 </div>

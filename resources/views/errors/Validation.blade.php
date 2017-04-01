@@ -66,7 +66,7 @@
             <ul>
               <li>
                 <form method="post" action="{{ route('logout') }}" name="logout">
-                  {{ csrf_field() }}
+                  
                 </form>
                 <a class="button is-danger is-outlined" onclick="javascript: document.getElementsByName('logout')[0].submit();">
                   <span class="icon">

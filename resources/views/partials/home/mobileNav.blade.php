@@ -81,7 +81,7 @@
    </a>
 
    <form method="post" action="{{ route('logout') }}" name="logout">
-     {{ csrf_field() }}
+
    </form>
     <form action="{{ route('search') }}" class="nav-item control has-addons">
         <span class="select">
