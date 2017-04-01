@@ -202,6 +202,9 @@
            font-family: 'Supermercado One', cursive;
 
          }
+         .nav-item img{
+           max-height: 2.75rem !important;
+         }
          .highlight:not(:last-child) {
            margin-bottom: 0 !important;
          }
