@@ -62,6 +62,13 @@
          }
         </style>
       @endif
+
+      <style>
+       .hero{
+         background-repeat: no-repeat;
+         background-size: cover;
+       }
+      </style>
     @yield('styles')
   </head>
   <body >

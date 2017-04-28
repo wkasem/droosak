@@ -6,6 +6,7 @@ Route::post('/revenueChart' , 'adminController@getRevenueChart');
 Route::post('/subscribers' , 'adminController@getSubscribers');
 Route::post('/live' , 'adminController@live');
 Route::post('/introSave' , 'adminController@introSave');
+Route::post('/adsSave' , 'adminController@adsSave');
 Route::post('/logo' , 'adminController@logoSave');
 Route::post('/font/upload' , 'adminController@uploadFont');
 

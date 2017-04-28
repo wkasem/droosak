@@ -1,4 +1,5 @@
-<section class="hero is-warning is-bold is-fullheight">
+<section class="hero  is-fullheight"
+         style="background-color : {{ $welcome->home['bgColor'] }}">
   <div class="hero-head" dir="{{ en() ? 'ltr' : 'rtl'}}">
     <header class="nav  has-shadow">
       <div class="container">

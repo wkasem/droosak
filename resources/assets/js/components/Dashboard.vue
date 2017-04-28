@@ -4,12 +4,40 @@
       <div class="tabs is-boxed">
         <ul>
           <li ><a href="#live">{{ Locale.get('live') }}</a></li>
-          <li class="is-active"><a href="#metrics">metrics</a></li>
+          <li ><a href="#metrics">metrics</a></li>
           <li ><a href="#landpage">Land Page</a></li>
+          <li class="is-active"><a href="#ads">Ads</a></li>
           <li><a href="#settings">Settings</a></li>
         </ul>
       </div>
     <div class="container">
+      <div id='ads'>
+        <form class="media-content" @submit.prevent='adsSave($event)'v-if="welcome">
+          <div class="title">
+            <button class="button is-success">{{ Locale.get('save') }}</button>
+            <div class="is-file">
+              <input type="file" @change='newAd($event)'>
+              <a class="button">new Ad</a>
+            </div>
+          </div>
+          <div class="content">
+            <div class="columns" v-for='(ad , index) in welcome.ads'>
+              <div class="column is-5">
+                <div class="card">
+                  <div class="card-image">
+                    <figure class="image is-4by3">
+                      <img :src="ad.localImg" alt="Image">
+                    </figure>
+                  </div>
+                </div>
+              </div>
+              <div class="column is-2 is-offset-5">
+                <a class="button" @click.prevent='deleteAd(index)'>Delete</a>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
       <div id='live' >
         <a href="#newLive" class="button is-danger modal-trigger">{{ Locale.get('live') }}</a>
         <hr>
@@ -191,27 +219,123 @@
         <hr>
         <form @submit.prevent='introSave($event)' class="media-content" v-if='welcome'>
           <span class="title"> <button class="button is-success">{{ Locale.get('save')}}</button></span>
-          <div class="columns">
-            <div class="column">
-              <img src="/imgs/welcome3.png" class="image">
+          <a class="button" @click.prevent='addIntroSection()'>Add Section</a>
+          <p class="control">
+            <span class="select">
+              <select v-model='sectionType'>
+                <option value="0">Two Sections</option>
+                <option value="1">Full Section</option>
+              </select>
+            </span>
+          </p>
+          <hr>
+
+          <div  v-for='(sec, index) in welcome.sections' :style="{ backgroundColor : sec.bgColor}">
+            <div class="columns">
+              <div class="column is-1">
+                <input class="button" type="color" v-model='welcome.sections[index].bgColor'>
+              </div>
+              <div class="column">
+                <div class="field has-addons">
+                  <p class="control is-expanded">
+                    <input class="input" type="text" v-model='welcome.sections[index].title'>
+                  </p>
+                  <p class="control">
+                    <a class="button" @click.prevent='removeSection(index)'>Remove Section</a>
+                  </p>
+                </div>
+              </div>
             </div>
-            <div class="column" >
-              <label class="label">{{ Locale.get('about_arabic')}}</label>
-              <p class="control">
-                <textarea class="textarea" name="about_arabic"
-                :style="{ fontFamily: loadFont('about_arabic') }"
-                v-on:contextmenu.prevent="changeFont($event , 'about_arabic')"
-                 >{{ welcome.about_arabic}}</textarea>
-              </p>
-              <label class="label">{{ Locale.get('about_english')}}</label>
-              <p class="control">
-                <textarea class="textarea" name="about_english"
-                :style="{ fontFamily: loadFont('about_english') }"
-                v-on:contextmenu.prevent="changeFont($event , 'about_english')"
-                >{{ welcome.about_english}}</textarea>
-              </p>
+            <div class="columns is-gapless" >
+            <div :class="'column' + [(sec.wide) ? ' is-12' : '']"
+                 :style="{ backgroundColor : welcome.sections[index].first.bgColor}">
+              <div class="card">
+                <div :class="'card-image' +  [(welcome.sections[index].first.img) ? '' :' flexable']">
+                  <figure class="image is-4by3" v-if='welcome.sections[index].first.img'>
+                    <img :src="welcome.sections[index].first.localImg" alt="Image">
+                  </figure>
+                  <p v-text='welcome.sections[index].first.enText'
+                     :style="{color : welcome.sections[index].first.textColor}"
+                     v-if='!welcome.sections[index].first.img'
+                  ></p>
+                </div>
+                <div class="card-content">
+                  <div class="content" :style="{color : welcome.sections[index].first.textColor}">
+                    <label class="label">BgColor</label>
+                    <p class="control">
+                      <input class="button" type="color" v-model='welcome.sections[index].first.bgColor'>
+                      <a class="button is-danger" v-if="welcome.sections[index].first.bgColor != 'transparent'"
+                         @click.prevent='removeBgColor(welcome.sections[index].first)'>
+                        Remove BgColor
+                      </a>
+                    </p>
+                    <label class="label">Text Color</label>
+                    <p class="control">
+                      <input class="button" type="color" v-model='welcome.sections[index].first.textColor'>
+                    </p>
+                    <label class="label">image</label>
+                    <p class="control">
+                      <div class="is-file">
+                        <input type="file" @change='addSectionImg($event , welcome.sections[index].first)'>
+                        <a class="button">Select Img</a>
+                      </div>
+                      <a class="button is-danger" v-if='welcome.sections[index].first.img' @click.prevent='removeSectionImg(welcome.sections[index].first)'>Remove Img</a>
+                    </p>
+                    <label class="label">{{ Locale.get('about_english')}}</label>
+                    <p class="control">
+                      <textarea class="textarea"
+                      v-model='welcome.sections[index].first.enText'
+                      ></textarea>
+                    </p>
+                    <label class="label">{{ Locale.get('about_english')}}</label>
+                    <p class="control">
+                      <textarea class="textarea"
+                      v-model='welcome.sections[index].first.arText'
+                      ></textarea>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column" v-if='!sec.wide' :style="{ backgroundColor : welcome.sections[index].second.bgColor}">
+              <div class="card">
+                <div :class="'card-image' +  [(welcome.sections[index].second.img) ? '' :' flexable']">
+                  <figure class="image is-4by3" v-if='welcome.sections[index].second.img'>
+                    <img :src="welcome.sections[index].second.localImg" alt="Image">
+                  </figure>
+                  <p v-text='welcome.sections[index].second.enText'
+                     :style="{color : welcome.sections[index].second.textColor}"
+                     v-if='!welcome.sections[index].second.img'
+                  ></p>
+                </div>
+                <div class="card-content">
+                  <div class="content" :style="{color : welcome.sections[index].second.textColor}">
+                    <label class="label">BgColor</label>
+                    <p class="control">
+                      <input type="color" v-model='welcome.sections[index].second.bgColor'>
+                    </p>
+                    <label class="label">Text Color</label>
+                    <p class="control">
+                      <input type="color" v-model='welcome.sections[index].second.textColor'>
+                    </p>
+                    <label class="label">image</label>
+                    <p class="control">
+                      <input class="button" type="file" @change='addSectionImg($event , welcome.sections[index].second)'>
+                      <a class="button" v-if='welcome.sections[index].second.img' @click.prevent='removeSectionImg(welcome.sections[index].second)'>Remove Img</a>
+                    </p>
+                    <label class="label">{{ Locale.get('about_english')}}</label>
+                    <p class="control">
+                      <textarea class="textarea"
+                      v-model='welcome.sections[index].second.enText'
+                      ></textarea>
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+          <hr>
+        </div>
           <hr>
           <div class="columns">
             <div class="column">
@@ -267,7 +391,29 @@
           </div>
         </article>
       </div>
-<hr>
+      <hr>
+      <div class="columns">
+        <div class="column"> Background </div>
+      </div>
+             <div class="columns" v-if='welcome'>
+               <div class="column">
+                 <p class="control">
+                   <label class="label">Background Color</label>
+                   <input type="color" class="button"
+                          v-model='welcome.home.bgColor'>
+                 </p>
+                 <p class="control">
+                   <label class="label">Background image</label>
+                   <div class="is-file">
+                     <input type="file" @change='changeBgImage($event)'>
+                     <button class="button">Select</button>
+                   </div>
+                   <button class="button is-danger" @click='removeBgImage()'>Remove bg</button>
+                 </p>
+
+               </div>
+             </div>
+        <hr>
 
        <div class="columns">
          <div class="column is-11">
@@ -360,6 +506,7 @@ props : ['data' , 'tdir' , 'data2'],
       welcome : null,
       fonts:null,
       Locale :window.Locale,
+      sectionType : '0',
       fontMenueSettings : {
         top : 20,
         left : 20,
@@ -381,8 +528,124 @@ props : ['data' , 'tdir' , 'data2'],
      return Chunk.flat(this.live.videos);
    }
  },
+ watch: {
+   'welcome.home.bgColor' : function(){
+     $('.hero').css({ backgroundColor : this.welcome.home.bgColor});
+   }
+ },
   methods :{
 
+    changeBgImage(event){
+
+      let img = event.target.files[0];
+      let reader = new FileReader();
+
+
+      reader.onload = (img => {
+        return e  => {
+          $('.hero').css('background-image' , `url(${e.target.result})`);
+          this.welcome.home.bgImage = img;
+          this.$forceUpdate();
+        };
+      })(img);
+      reader.readAsDataURL(img);
+    },
+    removeBgImage(){
+      this.welcome.home.bgImage = "";
+      this.$forceUpdate();
+
+      $('.hero').css('background-image' , '');
+      $('.hero').css('background-color' , this.welcome.home.bgColor);
+    },
+    addIntroSection(){
+
+      if(parseInt(this.sectionType)){
+        this.welcome.sections.unshift({
+          first :{
+            bgColor : 'transparent',
+            textColor : '#000000',
+            arText : '',
+            enText : '',
+            localImg : null,
+            img : null
+          },
+          wide : true,
+          bgColor : '#ffffff',
+          title : 'New Section'
+        });
+        return;
+      }
+
+      this.welcome.sections.unshift({
+        first : {
+          bgColor : 'transparent',
+          textColor : '#000000',
+          arText : '',
+          enText : '',
+          localImg : null,
+          img : null
+        },
+        second: {
+          bgColor : 'transparent',
+          textColor : '#000000',
+          arText : '',
+          enText : '',
+          localImg : null,
+          img : null
+        },
+        wide : false,
+        bgColor : '#ffffff',
+        title : 'New Section'
+      });
+    },
+    removeSection(i){
+
+      this.welcome.sections.splice(i,1);
+    },
+    removeBgColor(section){
+      section.bgColor = 'transparent';
+    },
+    addSectionImg(event , section){
+
+      let img = event.target.files[0];
+      let reader = new FileReader();
+
+
+      reader.onload = (img => {
+        return e  => {
+          section.localImg = e.target.result;
+          section.img      = img;
+        };
+      })(img);
+      reader.readAsDataURL(img);
+
+    },
+    removeSectionImg(section){
+      section.img = null;
+    },
+    newAd(event){
+
+      let img = event.target.files[0];
+      let reader = new FileReader();
+
+
+
+      reader.onload = (img => {
+        return e  => {
+          let tempAd = {};
+          tempAd.localImg = e.target.result;
+          tempAd.img      = img;
+          this.welcome.ads.push(tempAd);
+        };
+      })(img);
+      reader.readAsDataURL(img);
+
+
+    },
+    deleteAd(index){
+
+      this.welcome.ads.splice(index,1);
+    },
     updateFont(f){
       this.welcome.fonts[this.fontMenueSettings.el] = f;
     },
@@ -469,9 +732,53 @@ props : ['data' , 'tdir' , 'data2'],
 
      data.append('fonts' , JSON.stringify(this.welcome.fonts));
 
+
+     let sections = this.welcome.sections.map(section => {
+
+       if(section.first.img && typeof section.first.img != 'string')
+          data.append('imgs[]' , section.first.img);
+
+       if(section.img){
+         delete section.second.localImg;
+          if(section.second.img && typeof section.second.img != 'string')
+             data.append('imgs[]' , section.second.img);
+
+       }
+
+       delete section.first.localImg;
+
+       return section;
+     });
+
+
+     data.append('sections' , JSON.stringify(sections));
+
      Progressbar.self($(e.target).find('button'));
 
      this.$http.post('admin/introSave' , data).then(res => {
+
+       Progressbar.end($(e.target).find('button'));
+       Alert.updated();
+     });
+    },
+    adsSave(e){
+     let data = new FormData();
+
+     let ads = this.welcome.ads.map(ad => {
+
+       delete ad.localImg;
+
+       if(typeof ad.img != 'string')
+          data.append('imgs[]' , ad.img);
+
+       return ad;
+     });
+
+     data.append('ads' , JSON.stringify(this.welcome.ads));
+
+     Progressbar.self($(e.target).find('button'));
+
+     this.$http.post('admin/adsSave' , data).then(res => {
 
        Progressbar.end($(e.target).find('button'));
        Alert.updated();
@@ -586,6 +893,17 @@ props : ['data' , 'tdir' , 'data2'],
     this.welcome = JSON.parse(this.data);
     this.fonts = JSON.parse(this.data2);
 
+    this.welcome.sections.map(section => {
+      section.first.localImg = `imgs/${section.first.img}`;
+      if(section.second)
+         section.second.localImg = `imgs/${section.second.img}`;
+      return section;
+    });
+    this.welcome.ads.map(ad => {
+      ad.localImg = `imgs/${ad.img}`;
+      return ad;
+    });
+
     this.LoadData();
     $(window).on('resize' , () => {
       this.usersChartGraph();
@@ -610,5 +928,17 @@ props : ['data' , 'tdir' , 'data2'],
 .subscribers,.live_panel{
   position: relative;
   height: 235px;
+}
+.flexable{
+  min-height: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card{
+  background: none;
+}
+.label{
+ color: inherit;
 }
 </style>

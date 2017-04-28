@@ -83,11 +83,10 @@
             $('.modal-login').addClass('is-active');
           }
           function hideLogin(){
-            $('.modal-login').removeClass('is-active');
+            $('.modal').removeClass('is-active');
           }
 
          $(function(){
-
 
              $('.nav .nav-toggle').click(function(){
 
@@ -141,7 +140,7 @@
            $('.nav-menu').ddscrollSpy();
 
            $('.button-login').click(showLogin);
-           $('.modal-background').click(hideLogin);
+           $('.modal-background , .modal-close').click(hideLogin);
 
 
            $('.courses').slick({
@@ -358,6 +357,18 @@
 
       @include('sections.contact')
 
+
+      @if($ad)
+        <div class="modal ad is-active">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <p class="image is-4by3">
+              <img src="/imgs/{{ $ad['img'] }}">
+            </p>
+          </div>
+          <button class="modal-close"></button>
+        </div>
+       @endif
 
     </body>
 </html>

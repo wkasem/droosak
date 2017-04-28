@@ -51,12 +51,15 @@ class AppServiceProvider extends ServiceProvider
         'partials.footer' , 'mail.layout','layout' , 'admin.index' , 'welcome'
       ], function ($view) {
 
-        $welcome = \Cache::get('welcome' , function(){
-                    return \droosak\Welcome::first();
-        });
+        $welcome = \droosak\Welcome::first();
+
+        $ad = null;
+        
+        if($adCount = count($welcome->ads))
+           $ad = $welcome->ads[rand(0,($adCount - 1))];
 
         $fonts = \droosak\Font::all();
-        $view->with(compact('welcome' , 'fonts'));
+        $view->with(compact('welcome' , 'fonts' , 'ad'));
       });
 
         View::composer(['partials.home.nav' , 'partials.home.mobileNav'], function ($view) {

@@ -14,6 +14,9 @@
            <div class="columns">
 
             <div class="column has-text-centered">
+              <figure class="image is-128x128">
+                <img src="/imgs/{{ $welcome->logo }}" alt="Droosak">
+              </figure>
               @if(en())
                 <h2 class="title is-1 is-white"
                     style=" {{ loadFontStyle($welcome , 'title_english') }}">

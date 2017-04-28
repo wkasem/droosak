@@ -12603,3 +12603,12 @@ Parse error: syntax error, unexpected 'title_english' (T_STRING) in /home/vagran
   Parse error: syntax error, unexpected '$view' (T_VARIABLE)  
                                                               
 
+[2017-04-14 23:06:26] Processed: droosak\Notifications\LiveEvent
+
+                                                                               
+  [Symfony\Component\Process\Exception\ProcessTimedOutException]               
+  The process "'/usr/bin/php7.0' 'artisan' queue:work '' --once --queue='defa  
+  ult' --delay=0 --memory=128 --sleep=3 --tries=0" exceeded the timeout of 60  
+   seconds.                                                                    
+                                                                               
+

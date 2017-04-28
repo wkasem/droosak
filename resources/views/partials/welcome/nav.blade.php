@@ -1,8 +1,3 @@
-<div class="nav-left is-hidden-touch">
-  <a class="nav-item">
-    <img src="/imgs/{{ $welcome->logo }}" alt="Droosak">
-  </a>
-</div>
 <div class="nav-right nav-menu is-hidden-touch">
   <a href="#joinus" class="nav-item">
     @lang('welcome.nav.joinus')

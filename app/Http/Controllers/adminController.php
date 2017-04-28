@@ -116,9 +116,39 @@ class adminController extends Controller
     {
 
       $fonts = json_decode(request('fonts'));
-      request()->merge(compact('fonts'));
+      $sections = json_decode(request('sections'));
+      $imgs = request()->file('imgs');
 
-      Welcome::first()->update(request()->all());
+      array_map(function($section) use ($imgs){
+
+        if(! is_null($section->first->img) && ! is_string($section->first->img))
+          $section->first->img = basename( array_shift( $imgs ) ->store('imgs' , 'public'));
+
+        if(property_exists($section , 'second'))
+          if(! is_null($section->second->img) && ! is_string($section->second->img))
+            $section->second->img = basename( array_shift( $imgs ) ->store('imgs' , 'public'));
+
+
+      },$sections);
+
+      request()->merge(compact('fonts' , 'sections'));
+
+      Welcome::first()->update(request()->except('imgs'));
+    }
+    public function adsSave()
+    {
+
+      $imgs = request()->file('imgs');
+      $ads = json_decode(request('ads'));
+
+      array_map(function($ad) use ($imgs){
+
+        if(! is_string($ad->img))
+          $ad->img = basename( array_shift( $imgs ) ->store('imgs' , 'public'));
+
+      },$ads);
+
+      Welcome::first()->update(compact('ads'));
     }
 
 

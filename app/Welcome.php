@@ -9,6 +9,9 @@ class Welcome extends Model
   protected $guarded = [];
 
   protected $casts = [
-    'fonts' => 'array'
+    'fonts' => 'array',
+    'sections' => 'array',
+    'ads' => 'array',
+    'home' => 'array'
   ];
 }
