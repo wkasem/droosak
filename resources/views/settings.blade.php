@@ -65,6 +65,34 @@
         </div>
       </form>
         <hr />
+
+        @if(student())
+          <h3 class="subtitle">{{ Lang::get('auth.stage')}}</h3>
+
+          <form method="post" action="{{ route('settings.stage')}}">
+            {{ csrf_field()}}
+          <div class="control is-grouped">
+            <p class="control is-expanded">
+              <span class="select">
+                <select name="stage_id" style="width:100%;">
+                  @foreach($stages as $stage)
+                    <option value="{{ $stage->id }}"
+                           {{ ($stage->id == auth()->user()->stage_id) ? "selected" : ""}}>
+                      {{ $stage->title }}
+                    </option>
+                  @endforeach
+                </select>
+              </span>
+            </p>
+            <p class="control">
+              <button class="button is-info">
+                {{ Lang::get('auth.change')}}
+              </button>
+            </p>
+          </div>
+        </form>
+          <hr />
+        @endif
         <h3 class="subtitle">{{ Lang::get('auth.password-change')}}</h3>
         <form method="post" action="/password/reset">
           {{ csrf_field() }}

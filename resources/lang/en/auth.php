@@ -24,6 +24,8 @@ return [
     "latest_videos" => "Latest Lessons",
     "download_cv" => "Download CV",
 
+    "stage" => "Stage",
+
 
     'badges' => [
        'teacher' =>'Teacher',
@@ -31,6 +33,8 @@ return [
         'admin'  => 'Admin'
     ],
 
+    "showallcourses" => "Show All Courses",
+    
     "no-messages" => "No Messages",
     "watch" => "watch",
     "title" => "Title",

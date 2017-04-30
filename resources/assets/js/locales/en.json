@@ -1,4 +1,17 @@
 {
+
+  "removeSection" : "Remove Section",
+  "bgColor" : "Background Color",
+  "removeBgColor" : "Remove Bg Color",
+  "textColor" : "Text Color",
+  "bgImage" : "Background Image",
+  "selectImage" : "Select Image",
+  "removeImage" : "Remove Image",
+  "english" : "English",
+  "arabic" : "Arabic",
+  "addSection" : "Add Section",
+  "twoSections" : "Two Sections",
+  "fullSection" : "Full Section",
   "hour" : "hr",
   "min" : "min",
   "sec" : "sec",

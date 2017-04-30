@@ -219,12 +219,14 @@
         <hr>
         <form @submit.prevent='introSave($event)' class="media-content" v-if='welcome'>
           <span class="title"> <button class="button is-success">{{ Locale.get('save')}}</button></span>
-          <a class="button" @click.prevent='addIntroSection()'>Add Section</a>
+          <a class="button" @click.prevent='addIntroSection()'>
+            {{ Locale.get('addSection')}}
+          </a>
           <p class="control">
             <span class="select">
               <select v-model='sectionType'>
-                <option value="0">Two Sections</option>
-                <option value="1">Full Section</option>
+                <option value="0">{{ Locale.get('twoSections')}}</option>
+                <option value="1">{{ Locale.get('fullSection')}}</option>
               </select>
             </span>
           </p>
@@ -241,7 +243,9 @@
                     <input class="input" type="text" v-model='welcome.sections[index].title'>
                   </p>
                   <p class="control">
-                    <a class="button" @click.prevent='removeSection(index)'>Remove Section</a>
+                    <a class="button" @click.prevent='removeSection(index)'>
+                      {{ Locale.get('removeSection')}}
+                    </a>
                   </p>
                 </div>
               </div>
@@ -261,33 +265,35 @@
                 </div>
                 <div class="card-content">
                   <div class="content" :style="{color : welcome.sections[index].first.textColor}">
-                    <label class="label">BgColor</label>
+                    <label class="label">{{ Locale.get('bgColor')}}</label>
                     <p class="control">
                       <input class="button" type="color" v-model='welcome.sections[index].first.bgColor'>
                       <a class="button is-danger" v-if="welcome.sections[index].first.bgColor != 'transparent'"
                          @click.prevent='removeBgColor(welcome.sections[index].first)'>
-                        Remove BgColor
+                        {{ Locale.get('removebgColor')}}
                       </a>
                     </p>
-                    <label class="label">Text Color</label>
+                    <label class="label">{{ Locale.get('textColor')}}</label>
                     <p class="control">
                       <input class="button" type="color" v-model='welcome.sections[index].first.textColor'>
                     </p>
-                    <label class="label">image</label>
+                    <label class="label">{{ Locale.get('bgImage')}}</label>
                     <p class="control">
                       <div class="is-file">
                         <input type="file" @change='addSectionImg($event , welcome.sections[index].first)'>
-                        <a class="button">Select Img</a>
+                        <a class="button">{{ Locale.get('selectImage')}}</a>
                       </div>
-                      <a class="button is-danger" v-if='welcome.sections[index].first.img' @click.prevent='removeSectionImg(welcome.sections[index].first)'>Remove Img</a>
+                      <a class="button is-danger" v-if='welcome.sections[index].first.img' @click.prevent='removeSectionImg(welcome.sections[index].first)'>
+                        {{ Locale.get('removeImage')}}
+                      </a>
                     </p>
-                    <label class="label">{{ Locale.get('about_english')}}</label>
+                    <label class="label">{{ Locale.get('english')}}</label>
                     <p class="control">
                       <textarea class="textarea"
                       v-model='welcome.sections[index].first.enText'
                       ></textarea>
                     </p>
-                    <label class="label">{{ Locale.get('about_english')}}</label>
+                    <label class="label">{{ Locale.get('arabic')}}</label>
                     <p class="control">
                       <textarea class="textarea"
                       v-model='welcome.sections[index].first.arText'
@@ -310,23 +316,38 @@
                 </div>
                 <div class="card-content">
                   <div class="content" :style="{color : welcome.sections[index].second.textColor}">
-                    <label class="label">BgColor</label>
+                    <label class="label">{{ Locale.get('bgColor')}}</label>
                     <p class="control">
-                      <input type="color" v-model='welcome.sections[index].second.bgColor'>
+                      <input class="button" type="color" v-model='welcome.sections[index].second.bgColor'>
+                      <a class="button is-danger" v-if="welcome.sections[index].second.bgColor != 'transparent'"
+                         @click.prevent='removeBgColor(welcome.sections[index].second)'>
+                        {{ Locale.get('removebgColor')}}
+                      </a>
                     </p>
-                    <label class="label">Text Color</label>
+                    <label class="label">{{ Locale.get('textColor')}}</label>
                     <p class="control">
-                      <input type="color" v-model='welcome.sections[index].second.textColor'>
+                      <input class="button" type="color" v-model='welcome.sections[index].second.textColor'>
                     </p>
-                    <label class="label">image</label>
+                    <label class="label">{{ Locale.get('bgImage')}}</label>
                     <p class="control">
-                      <input class="button" type="file" @change='addSectionImg($event , welcome.sections[index].second)'>
-                      <a class="button" v-if='welcome.sections[index].second.img' @click.prevent='removeSectionImg(welcome.sections[index].second)'>Remove Img</a>
+                      <div class="is-file">
+                        <input type="file" @change='addSectionImg($event , welcome.sections[index].second)'>
+                        <a class="button">{{ Locale.get('selectImage')}}</a>
+                      </div>
+                      <a class="button is-danger" v-if='welcome.sections[index].second.img' @click.prevent='removeSectionImg(welcome.sections[index].second)'>
+                        {{ Locale.get('removeImage')}}
+                      </a>
                     </p>
-                    <label class="label">{{ Locale.get('about_english')}}</label>
+                    <label class="label">{{ Locale.get('english')}}</label>
                     <p class="control">
                       <textarea class="textarea"
                       v-model='welcome.sections[index].second.enText'
+                      ></textarea>
+                    </p>
+                    <label class="label">{{ Locale.get('arabic')}}</label>
+                    <p class="control">
+                      <textarea class="textarea"
+                      v-model='welcome.sections[index].second.arText'
                       ></textarea>
                     </p>
                   </div>

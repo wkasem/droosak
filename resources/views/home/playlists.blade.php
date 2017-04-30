@@ -5,6 +5,15 @@
 
 @section('content')
 
+
+@if(!$filter && $playlists->count())
+  <div class="columns">
+    <div class="column">
+       <a href="?filter=all" class="button">@lang('auth.showallcourses')</a>
+    </div>
+  </div>
+@endif
+
 @foreach($playlists as $playlists_group)
 <div class="columns" >
   @foreach($playlists_group as $playlist)
@@ -42,6 +51,13 @@
 <section class="section" dir="{{ tdir() }}">
   <div class="container">
     <div class="content">
+      @if(!$filter)
+        <div class="columns">
+          <div class="column">
+             <a href="?filter=all" class="button">@lang('auth.showallcourses')</a>
+          </div>
+        </div>
+      @endif
       <h1 class="title">@lang('auth.playlists.error.title')</h1>
        <p>
          @lang('auth.playlists.error.subtitle')

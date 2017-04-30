@@ -1,4 +1,14 @@
 {
+  "removeSection" : "أزالة",
+  "bgColor" : "لون الخلفية",
+  "removeBgColor" : "أزالة لون الخلفية",
+  "textColor" : "لون الخط",
+  "bgImage" : "صورة الخلفية",
+  "selectImage" : "أختيار الخلفية",
+  "removeImage" : "أزالة الخلفية",
+  "english" : "أنجليزى",
+  "arabic" : "عربى",
+
   "hour" : "ساعة",
   "min" : "دقيقة",
   "sec" : "ثانية",

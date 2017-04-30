@@ -15,27 +15,27 @@ class Stages extends Seeder
         $stages = [
           [
             'stage_id' => 1,
-            'title' => 'primary.1.arabic'
+            'title' => 'preparatory.1.arabic'
           ],
           [
             'stage_id' => 1,
-            'title' => 'primary.1.english'
+            'title' => 'preparatory.1.english'
           ],
           [
             'stage_id' => 2,
-            'title' => 'primary.2.arabic'
+            'title' => 'preparatory.2.arabic'
           ],
           [
             'stage_id' => 2,
-            'title' => 'primary.2.english'
+            'title' => 'preparatory.2.english'
           ],
           [
             'stage_id' => 3,
-            'title' => 'primary.3.arabic'
+            'title' => 'preparatory.3.arabic'
           ],
           [
             'stage_id' => 3,
-            'title' => 'primary.3.english'
+            'title' => 'preparatory.3.english'
           ],
           [
             'stage_id' => 4,

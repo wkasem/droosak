@@ -4,14 +4,19 @@ namespace droosak\Http\Controllers;
 
 use Illuminate\Http\Request;
 use droosak\User;
+use droosak\Stage;
 use Image;
 
 class SettingsController extends Controller
 {
   public function index()
   {
+    $stages = Stage::all()->map(function($s){
+      $s->title = \Lang::get('exams.'.$s->title);
+      return $s;
+    });
 
-    return view('settings');
+    return view('settings' , compact('stages'));
   }
 
   public function getPic($id)
@@ -81,6 +86,15 @@ class SettingsController extends Controller
     ]);
 
     auth()->user()->username = request('username');
+
+    auth()->user()->save();
+
+    return back()->with('updated' , true);
+  }
+  public function stage()
+  {
+
+    auth()->user()->stage_id = request('stage_id');
 
     auth()->user()->save();
 

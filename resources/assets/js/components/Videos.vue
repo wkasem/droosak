@@ -191,7 +191,7 @@
             <div class="content ">
               <h1 class="title is-dark">{{ Locale.get('new_video') }}</h1>
               <p class="control">
-                <input type="file" name="video" accept='video/*' >
+                <input type="file" name="video" accept='video/*' id="video_browse" >
               </p>
               <div v-if='!isPromo()'>
                 <label class="label">{{ Locale.get('badges_teacher')}}</label>
@@ -280,6 +280,7 @@
 </template>
 
 <script>
+  var Resumable = require('../helpers/resumable');
 
     export default {
         props : ['data' , 'data2' , 'data3' , 'stages'],
@@ -293,7 +294,8 @@
             teachers : [],
             playlists : [],
             Document : window.Document,
-            videos_count : 0
+            videos_count : 0,
+            Resumable  : null,
           }
         },
         methods :{
@@ -350,41 +352,53 @@
           },
           addVideo(e){
 
-           let data = new FormData($(e.target)[0]);
+            let data = {};
 
-           if(this.isPromo()){
-             let num = this.playlist.videos.length + 1;
+            $.each($(e.target).serializeArray() , (i , input) => {
+              data[input.name] = input.value;
+            });
 
-             data.set('title' , `Droosak${num}`)
-           }
+            if(this.isPromo()){
+              let num = this.playlist.videos.length + 1;
 
-           var url = '/admin/courses/' + this.playlist.playlist_id + '/upload';
+              data['title'] = `Droosak${num}`;
+             }
 
-            this.$http.post( url, data , {
-              before : e => {
-                Progressbar.show();
-              },
-              progress : pe => {
+             this.Resumable.opts.query = data;
+             this.Resumable.opts.headers = {
+                 'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+             };
 
-              let percent = (pe.loaded / pe.total) * 100;
 
-              Progressbar.update(percent);
-              }
-            }).then(res => {
 
-              Progressbar.hide();
-              Modal.close('video_add');
-              Validator.reset();
-              Validator.wipeInputs();
+             this.Resumable.on('complete' , (res) => {
 
-              this.videos_count++;
+               Progressbar.hide();
+               Modal.close('video_add');
+               Validator.reset();
+               Validator.wipeInputs();
 
-              Chunk.add(this.playlist.videos , res.body);
-            } ,res => {
-              Progressbar.hide();
+               this.videos_count++;
+console.log(res);
+               Chunk.add(this.playlist.videos , res.body);
+             });
 
-              Validator.errors(res.body);
-          });
+             this.Resumable.on('error' , (res ,f) => {
+               Progressbar.hide();
+
+               Validator.errors(res.body);
+             });
+
+             Progressbar.show();
+             this.Resumable.on('progress', () => {
+
+               let percent = this.Resumable.progress() * 100;
+
+               Progressbar.update(percent);
+             });
+
+             this.Resumable.upload();
+
 
         },
         uploadPoster(e){
@@ -502,6 +516,12 @@
           this.videos_count = this.playlist.videos.length;
 
           this.playlist.videos = Chunk.cast(this.playlist.videos);
+
+
+           this.Resumable =  new Resumable({
+              target:`/admin/courses/${this.playlist.playlist_id}/upload`
+            });
+            this.Resumable.assignBrowse(document.getElementById('video_browse'));
 
         },
         updated(){

@@ -2,32 +2,32 @@
 
 return [
 
-  'primary'=>[
+  'preparatory'=>[
     '1' =>[
-      'arabic' => 'Primary School 1 - Arabic',
-      'english' => 'Primary School 1 - English',
+      'arabic' => 'Preparatory School 1 - Arabic',
+      'english' => 'Preparatory School 1 - Languages',
     ],
     '2' =>[
-      'arabic' => 'Primary School 2 - Arabic',
-      'english' => 'Primary School 2 - English',
+      'arabic' => 'Preparatory School 2 - Arabic',
+      'english' => 'Preparatory School 2 - Languages',
     ],
     '3' =>[
-      'arabic' => 'Primary School 3 - Arabic',
-      'english' => 'Primary School 3 - English',
+      'arabic' => 'Preparatory School 3 - Arabic',
+      'english' => 'Preparatory School 3 - Languages',
     ]
   ],
   'secondary'=>[
     '1' =>[
       'arabic' => 'Secondary School 1 - Arabic',
-      'english' => 'Secondary School 1 - English',
+      'english' => 'Secondary School 1 - Languages',
     ],
     '2' =>[
       'arabic' => 'Secondary School 2 - Arabic',
-      'english' => 'Secondary School 2 - English',
+      'english' => 'Secondary School 2 - Languages',
     ],
     '3' =>[
       'arabic' => 'Secondary School 3 - Arabic',
-      'english' => 'Secondary School 3 - English',
+      'english' => 'Secondary School 3 - Languages',
     ]
   ],
 

@@ -11,9 +11,14 @@ use droosak\User;
 
 use FFMpeg;
 use Storage;
+use File;
 use Streamer;
 use Points;
 use droosak\Stage;
+
+use Dilab\Network\SimpleRequest;
+use Dilab\Network\SimpleResponse;
+use Dilab\Resumable;
 
 class VideoController extends Controller
 {
@@ -162,39 +167,84 @@ class VideoController extends Controller
   public function uploadVideo($id)
   {
 
-      $this->validate(request(), [
-        'title' => 'required|min:3',
-        'discription' => 'min:10',
-        'video' => 'required|file|mimes:flv,mp4'
-      ]);
 
-      $filesrc  = basename(request()->file('video')->store("playlists/$id/_videos"));
-      //$filename = pathinfo(request()->file('video')->getClientOriginalName() , PATHINFO_FILENAME);
+            $tmpPath    = storage_path().'/tmp';
+            $uploadPath = storage_path('app')."/playlists/$id/_videos";
+            if(!File::exists($tmpPath)) {
+                File::makeDirectory($tmpPath, $mode = 0777, true, true);
+            }
+
+            if(!File::exists($uploadPath)) {
+                File::makeDirectory($uploadPath, $mode = 0777, true, true);
+            }
+
+            $simpleRequest              = new SimpleRequest();
+            $simpleResponse             = new SimpleResponse();
+
+            $resumable                  = new Resumable($simpleRequest, $simpleResponse);
+            $resumable->tempFolder      = $tmpPath;
+            $resumable->uploadFolder    = $uploadPath;
+
+
+            $result = $resumable->process();
+
+            switch($result) {
+                case 200:
+                    return response([
+                        'message' => 'OK',
+                    ], 200);
+                    break;
+                case 201:
+                    $video = $this->persistVideo($uploadPath);
+                    return response(compact('video'), 200);
+                    break;
+                case 204:
+                    return response([
+                        'message' => 'Chunk not found',
+                    ], 204);
+                    break;
+                default:
+                    return response([
+                        'message' => 'An error occurred',
+                    ], 404);
+            }
+
+
+  }
+
+  public function persistVideo($uploadPath)
+  {
+
+      $name = request('resumableFilename');
+      $fileExt  = pathinfo($name , PATHINFO_EXTENSION);
+      $filename = md5($name).'.'.$fileExt;
+
+      File::move($uploadPath.'/'.$name , $uploadPath.'/'.$filename);
+
       $thumb    = sprintf("%s.png" , str_random(40));
 
-      FFMpeg::open("playlists/$id/_videos/$filesrc")
-          ->getFrameFromSeconds(1)
-          ->export()
-          ->toDisk("local")
-          ->save("playlists/$id/_thumbs/$thumb");
-
-      $videoID = str_random(5);
-
-      $video  = Playlist::where('playlist_id' , $id)->first()->videos()->create([
-                  'video_id'     => $videoID,
-                  'src'          => $filesrc,
-                  'thumb_src'    => $thumb,
-                  'title'        => request()->input('title'),
-                  'discription'  => request()->input('discription'),
-                  'by'           => request()->input('published_by') ?? 1,
-                  'points'       => request()->input('points') ?? 0
-                ]);
-
-    $video->load(['published_by' , 'views']);
-    $video->video_id = $videoID;
-
-    return $video;
-
+    //   FFMpeg::open("playlists/$id/_videos/$filename")
+    //       ->getFrameFromSeconds(1)
+    //       ->export()
+    //       ->toDisk("local")
+    //       ->save("playlists/$id/_thumbs/$thumb");
+    //
+    //   $videoID = str_random(5);
+    //
+    //   $video  = Playlist::where('playlist_id' , $id)->first()->videos()->create([
+    //               'video_id'     => $videoID,
+    //               'src'          => $filesrc,
+    //               'thumb_src'    => $thumb,
+    //               'title'        => request('title'),
+    //               'discription'  => request('discription'),
+    //               'by'           => request('published_by') ?? 1,
+    //               'points'       => request('points') ?? 0
+    //             ]);
+    //
+    // $video->load(['published_by' , 'views']);
+    // $video->video_id = $videoID;
+    //
+    // return $video;
   }
 
   public function updateVideo()

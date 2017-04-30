@@ -30,13 +30,17 @@ return [
         'admin'  => 'مدير '
     ],
 
+    "stage" => "المرحلة",
+
     "no-messages" => "لا توجد رسائل",
 
     "watch" => "مشاهدة",
 
+    "showallcourses" => "تصفح الكورسات للمراحل الاخرى",
+
     "latest_videos" => "أخر الدروس",
     "download_cv" => "السيرة الذاتية",
-    
+
     'playlists' =>[
       'error' => [
         'title' => 'عذرا لا تتوافر اى كورسات الان',

@@ -30,5 +30,6 @@ Route::get('/settings' , 'SettingsController@index')->name('settings');
 Route::get('/pic/{id}' , 'SettingsController@getPic')->name('profilePic');
 Route::post('/settings/pic' , 'SettingsController@uploadPic')->name('settings.pic');
 Route::post('/settings/username' , 'SettingsController@username')->name('settings.username');
+Route::post('/settings/stage' , 'SettingsController@stage')->name('settings.stage');
 
 Route::get('/search' , 'HomeController@search')->name('search');

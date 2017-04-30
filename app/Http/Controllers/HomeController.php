@@ -34,6 +34,8 @@ class HomeController extends Controller
     {
       $notifications = auth()->user()->notifications()->get();
 
+      auth()->user()->unreadNotifications->markAsRead();
+
       return view('home.notifications' , compact('notifications'));
     }
 
@@ -145,10 +147,15 @@ class HomeController extends Controller
 
     public function playlists()
     {
+      $playlists = Playlist::show()->noParent()->withCount(['videos']);
 
-      $playlists = Playlist::show()->noParent()->withCount(['videos'])->get()->chunk(3);
+      if($filter = request()->has('filter')){
+        $playlists = $playlists->where('stage_id' , auth()->user()->stage_id);
+      }
 
-      return view('home.playlists' , compact('playlists'));
+      $playlists = $playlists->get()->chunk(3);
+
+      return view('home.playlists' , compact('playlists' , 'filter'));
     }
 
 

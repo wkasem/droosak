@@ -20,7 +20,7 @@ Route::group(['prefix' => '/courses'],function(){
 
   Route::get('/' , 'VideoController@index')->name('admin.playlists');
   Route::get('/{id}/videos' , 'VideoController@getPlaylist');
-  Route::post('/{id}/upload' , 'VideoController@uploadVideo');
+  Route::match(['get', 'post'] , '/{id}/upload' , 'VideoController@uploadVideo');
   Route::post('/{id}/edit' , 'VideoController@updateVideo');
   Route::post('/{id}/delete' , 'VideoController@deleteVideo');
   Route::post('/add-playlist' , 'VideoController@addPlaylist');
