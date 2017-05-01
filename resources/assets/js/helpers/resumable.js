@@ -124,6 +124,7 @@
     $.fire = function(){
       // `arguments` is an object, not array, in FF, so:
       var args = [];
+
       for (var i=0; i<arguments.length; i++) args.push(arguments[i]);
       // Find event listeners, and support pseudo-event `catchAll`
       var event = args[0].toLowerCase();
@@ -704,6 +705,7 @@
         var doneHandler = function(e){
           var status = $.status();
           if(status=='success'||status=='error') {
+            console.log(status);
             $.callback(status, $.message());
             $.resumableObj.uploadNextChunk();
           } else {

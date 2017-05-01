@@ -370,18 +370,16 @@
              };
 
 
-
-             this.Resumable.on('complete' , (res) => {
-
+             this.Resumable.on('fileSuccess', (file, video) => {
                Progressbar.hide();
                Modal.close('video_add');
                Validator.reset();
                Validator.wipeInputs();
 
                this.videos_count++;
-console.log(res);
-               Chunk.add(this.playlist.videos , res.body);
-             });
+
+               Chunk.add(this.playlist.videos , JSON.parse(video).video);
+               });
 
              this.Resumable.on('error' , (res ,f) => {
                Progressbar.hide();

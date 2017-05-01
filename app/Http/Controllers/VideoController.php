@@ -195,7 +195,7 @@ class VideoController extends Controller
                     ], 200);
                     break;
                 case 201:
-                    $video = $this->persistVideo($uploadPath);
+                    $video = $this->persistVideo($uploadPath , $id);
                     return response(compact('video'), 200);
                     break;
                 case 204:
@@ -212,7 +212,7 @@ class VideoController extends Controller
 
   }
 
-  public function persistVideo($uploadPath)
+  public function persistVideo($uploadPath , $id)
   {
 
       $name = request('resumableFilename');
@@ -223,28 +223,28 @@ class VideoController extends Controller
 
       $thumb    = sprintf("%s.png" , str_random(40));
 
-    //   FFMpeg::open("playlists/$id/_videos/$filename")
-    //       ->getFrameFromSeconds(1)
-    //       ->export()
-    //       ->toDisk("local")
-    //       ->save("playlists/$id/_thumbs/$thumb");
-    //
-    //   $videoID = str_random(5);
-    //
-    //   $video  = Playlist::where('playlist_id' , $id)->first()->videos()->create([
-    //               'video_id'     => $videoID,
-    //               'src'          => $filesrc,
-    //               'thumb_src'    => $thumb,
-    //               'title'        => request('title'),
-    //               'discription'  => request('discription'),
-    //               'by'           => request('published_by') ?? 1,
-    //               'points'       => request('points') ?? 0
-    //             ]);
-    //
-    // $video->load(['published_by' , 'views']);
-    // $video->video_id = $videoID;
-    //
-    // return $video;
+      FFMpeg::open("playlists/$id/_videos/$filename")
+          ->getFrameFromSeconds(1)
+          ->export()
+          ->toDisk("local")
+          ->save("playlists/$id/_thumbs/$thumb");
+
+      $videoID = str_random(5);
+
+      $video  = Playlist::where('playlist_id' , $id)->first()->videos()->create([
+                  'video_id'     => $videoID,
+                  'src'          => $filename,
+                  'thumb_src'    => $thumb,
+                  'title'        => request('title'),
+                  'discription'  => request('discription'),
+                  'by'           => request('published_by') ?? 1,
+                  'points'       => request('points') ?? 0
+                ]);
+
+    $video->load(['published_by' , 'views']);
+    $video->video_id = $videoID;
+
+    return $video;
   }
 
   public function updateVideo()
