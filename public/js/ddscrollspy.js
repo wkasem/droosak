@@ -144,12 +144,7 @@ if (!Array.prototype.filter){
 						curtarget.$menuitem.addClass(o.highlightclass)// highlight its menu item
 
           $(curtarget.$menuitem.attr('href')).find('.column').each(function(i , r){
-            var crr = curtarget.$menuitem.attr('href');
-            if(crr == '#courses' || crr == '#teachers'){
-              setTimeout(function(){ $(r).addClass('animated zoomIn');} , (i * 100));
-            }else if(crr == '#joinus' || crr == '#about' || crr == '#messages' || crr == '#exams'){
-              setTimeout(function(){ $(r).addClass('animated fadeIn');} , (i * 300));
-            }
+            $(r).addClass('animated fadeIn');
 
           });
 					if (curtarget.index >= cantscrollpastindex && scrolltop >= (spyscrollheight - spyheight)){ // if we're at target that can't be scrolled past and we're at end of document

@@ -240,7 +240,10 @@
               <div class="column">
                 <div class="field has-addons">
                   <p class="control is-expanded">
-                    <input class="input" type="text" v-model='welcome.sections[index].title'>
+                    <input class="input" type="text" v-model='welcome.sections[index].enTitle'>
+                  </p>
+                  <p class="control is-expanded">
+                    <input class="input" type="text" v-model='welcome.sections[index].arTitle'>
                   </p>
                   <p class="control">
                     <a class="button" @click.prevent='removeSection(index)'>
@@ -253,7 +256,7 @@
             <div class="columns is-gapless" >
             <div :class="'column' + [(sec.wide) ? ' is-12' : '']"
                  :style="{ backgroundColor : welcome.sections[index].first.bgColor}">
-              <div class="card">
+              <div class="card no-back">
                 <div :class="'card-image' +  [(welcome.sections[index].first.img) ? '' :' flexable']">
                   <figure class="image is-4by3" v-if='welcome.sections[index].first.img'>
                     <img :src="welcome.sections[index].first.localImg" alt="Image">
@@ -270,7 +273,7 @@
                       <input class="button" type="color" v-model='welcome.sections[index].first.bgColor'>
                       <a class="button is-danger" v-if="welcome.sections[index].first.bgColor != 'transparent'"
                          @click.prevent='removeBgColor(welcome.sections[index].first)'>
-                        {{ Locale.get('removebgColor')}}
+                        {{ Locale.get('removeBgColor')}}
                       </a>
                     </p>
                     <label class="label">{{ Locale.get('textColor')}}</label>
@@ -304,7 +307,7 @@
               </div>
             </div>
             <div class="column" v-if='!sec.wide' :style="{ backgroundColor : welcome.sections[index].second.bgColor}">
-              <div class="card">
+              <div class="card no-back">
                 <div :class="'card-image' +  [(welcome.sections[index].second.img) ? '' :' flexable']">
                   <figure class="image is-4by3" v-if='welcome.sections[index].second.img'>
                     <img :src="welcome.sections[index].second.localImg" alt="Image">
@@ -321,7 +324,7 @@
                       <input class="button" type="color" v-model='welcome.sections[index].second.bgColor'>
                       <a class="button is-danger" v-if="welcome.sections[index].second.bgColor != 'transparent'"
                          @click.prevent='removeBgColor(welcome.sections[index].second)'>
-                        {{ Locale.get('removebgColor')}}
+                        {{ Locale.get('removeBgColor')}}
                       </a>
                     </p>
                     <label class="label">{{ Locale.get('textColor')}}</label>
@@ -356,8 +359,7 @@
             </div>
           </div>
           <hr>
-        </div>
-          <hr>
+          </div>
           <div class="columns">
             <div class="column">
               <img src="/imgs/welcome2.png" class="image">
@@ -400,11 +402,11 @@
         <div class="box" v-if='welcome'>
         <article class="media">
           <div class="media-content">
-            <figure class="image ">
+            <figure class="image is-2by1">
               <img :src="'/imgs/'+welcome.logo" alt="Image" id="logo">
             </figure>
               <div class="is-file ">
-                <input type="file" name="logo" @change='updateLogo($event)'>
+                <input type="file" name="logo" @change.stop='updateLogo($event)'>
                   <a class="button ">
                     <span>{{ Locale.get('update')}} </span>
                   </a>
@@ -592,7 +594,8 @@ props : ['data' , 'tdir' , 'data2'],
           },
           wide : true,
           bgColor : '#ffffff',
-          title : 'New Section'
+          enTitle : 'New Section',
+          arTitle : 'جزء جديد'
         });
         return;
       }
@@ -616,8 +619,18 @@ props : ['data' , 'tdir' , 'data2'],
         },
         wide : false,
         bgColor : '#ffffff',
-        title : 'New Section'
+        enTitle : 'New Section',
+        arTitle : 'جزء جديد'
       });
+
+      setTimeOut(function(){
+
+        $('.is-file .button').click(function(){
+          $(this).parent().find('input').click();
+        });
+      },2000)
+
+
     },
     removeSection(i){
 
@@ -956,7 +969,8 @@ props : ['data' , 'tdir' , 'data2'],
   justify-content: center;
   align-items: center;
 }
-.card{
+
+.card.no-back{
   background: none;
 }
 .label{

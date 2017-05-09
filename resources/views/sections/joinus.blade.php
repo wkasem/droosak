@@ -14,7 +14,7 @@
            <div class="columns">
 
             <div class="column has-text-centered">
-              <figure class="image is-128x128">
+              <figure class="image is-2by1">
                 <img src="/imgs/{{ $welcome->logo }}" alt="Droosak">
               </figure>
               @if(en())
@@ -65,8 +65,7 @@
 
                 <label class="label">@lang('welcome.phone_number')</label>
                 <p class="control">
-                  <input id="phone" class="input {{ ($errors->has('phone_number')) ? 'is-danger' : '' }}" type="text" value="{{ old('phone_number')}}">
-                  <input type="hidden" name="phone_number" value="{{ old('phone_number')}}" />
+                  <input id="phone" name="phone_number" class="input {{ ($errors->has('phone_number')) ? 'is-danger' : '' }}" type="text" value="{{ old('phone_number')}}">
                   @if($errors->has('phone_number'))
                     <span class="help is-danger">{{ $errors->first('phone_number') }}</span>
                   @endif

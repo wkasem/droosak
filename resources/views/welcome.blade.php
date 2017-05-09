@@ -347,13 +347,11 @@
 
       @include('sections.courses')
 
-      @include('sections.message')
 
-      @include('sections.exams')
+      @each('sections.template', $welcome->sections, 'section')
+
 
       @include('sections.teachers')
-
-      @include('sections.about')
 
       @include('sections.contact')
 

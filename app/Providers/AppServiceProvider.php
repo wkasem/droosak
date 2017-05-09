@@ -54,11 +54,12 @@ class AppServiceProvider extends ServiceProvider
         $welcome = \droosak\Welcome::first();
 
         $ad = null;
-        
+
         if($adCount = count($welcome->ads))
            $ad = $welcome->ads[rand(0,($adCount - 1))];
 
         $fonts = \droosak\Font::all();
+
         $view->with(compact('welcome' , 'fonts' , 'ad'));
       });
 

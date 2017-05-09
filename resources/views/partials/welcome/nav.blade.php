@@ -6,20 +6,15 @@
     @lang('welcome.nav.courses')
 
   </a>
-  <a href="#messages" class="nav-item">
-    @lang('welcome.nav.messages')
 
-  </a>
-  <a href="#exams" class="nav-item">
-    @lang('welcome.nav.exams')
+  @foreach($welcome->sections as $section)
+    <a href="#{{ camel_case($section['enTitle']) }}" class="nav-item">
+      {{ (en()) ? $section['enTitle'] : $section['arTitle'] }}
+    </a>
+  @endforeach
 
-  </a>
   <a href="#teachers" class="nav-item">
     @lang('welcome.nav.teachers')
-
-  </a>
-  <a href="#about" class="nav-item">
-    @lang('welcome.nav.about')
 
   </a>
   <a href="#contact" class="nav-item">
