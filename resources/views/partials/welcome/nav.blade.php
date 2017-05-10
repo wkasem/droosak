@@ -2,21 +2,22 @@
   <a href="#joinus" class="nav-item">
     @lang('welcome.nav.joinus')
   </a>
-  <a href="#courses" class="nav-item">
-    @lang('welcome.nav.courses')
-
-  </a>
-
-  @foreach($welcome->sections as $section)
-    <a href="#{{ camel_case($section['enTitle']) }}" class="nav-item">
-      {{ (en()) ? $section['enTitle'] : $section['arTitle'] }}
+  @if($playlists)
+    <a href="#courses" class="nav-item">
+      @lang('welcome.nav.courses')
     </a>
-  @endforeach
+  @endif
+
 
   <a href="#teachers" class="nav-item">
     @lang('welcome.nav.teachers')
 
   </a>
+  @foreach($welcome->sections as $section)
+  <a href="#{{ camel_case($section['enTitle']) }}" class="nav-item">
+    {{ (en()) ? $section['enTitle'] : $section['arTitle'] }}
+  </a>
+  @endforeach
   <a href="#contact" class="nav-item">
     @lang('welcome.nav.contact')
 

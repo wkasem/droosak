@@ -1,4 +1,3 @@
-@if($playlists)
 <section class="hero hide-courses" id="courses">
   <div class="hero-body">
     <div class="container">
@@ -72,4 +71,3 @@
   @endif
 
 </section>
-@endif

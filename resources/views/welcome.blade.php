@@ -345,14 +345,15 @@
 
       @include('sections.joinus')
 
-      @include('sections.courses')
-
-
-      @each('sections.template', $welcome->sections, 'section')
+      @if($playlists)
+         @include('sections.courses')
+      @endif
 
 
       @include('sections.teachers')
 
+      @each('sections.template', $welcome->sections, 'section')
+      
       @include('sections.contact')
 
 

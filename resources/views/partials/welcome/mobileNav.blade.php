@@ -12,8 +12,14 @@
     <a href="#joinus" class="nav-item">
       @lang('welcome.nav.joinus')
     </a>
-    <a href="#courses" class="nav-item">
-      @lang('welcome.nav.courses')
+    @if($playlists)
+      <a href="#courses" class="nav-item">
+        @lang('welcome.nav.courses')
+      </a>
+    @endif
+
+    <a href="#teachers" class="nav-item">
+      @lang('welcome.nav.teachers')
 
     </a>
 
@@ -22,11 +28,7 @@
         {{ (en()) ? $section['enTitle'] : $section['arTitle'] }}
       </a>
     @endforeach
-
-    <a href="#teachers" class="nav-item">
-      @lang('welcome.nav.teachers')
-
-    </a>
+    
     <a href="#contact" class="nav-item">
       @lang('welcome.nav.contact')
 
