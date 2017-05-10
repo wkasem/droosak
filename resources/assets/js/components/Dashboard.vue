@@ -623,12 +623,12 @@ props : ['data' , 'tdir' , 'data2'],
         arTitle : 'جزء جديد'
       });
 
-      setTimeOut(function(){
+      setTimeout(function(){
 
         $('.is-file .button').click(function(){
           $(this).parent().find('input').click();
         });
-      },2000)
+      },2000);
 
 
     },
