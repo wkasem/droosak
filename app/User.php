@@ -100,9 +100,9 @@ class User extends Authenticatable
 
     public function channels()
     {
-      $channels = ['broadcast' , 'database' , 'nexmo'];
+      $channels = ['broadcast' , 'database'];
 
-      if(!empty($this->email)) $channels[] = 'mail';
+      // if(!empty($this->email)) $channels[] = 'mail';
 
       return $channels;
     }

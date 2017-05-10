@@ -14,7 +14,7 @@ class ExamesSeeder extends Seeder
 
         $exames = [
           [
-            'title' => 'primary.1.arabic',
+            'title' => 'preparatory.1.arabic',
             'minutes' => '30',
             'published' => false,
             'questions' => json_encode([]),
@@ -22,7 +22,7 @@ class ExamesSeeder extends Seeder
             'stage_id' => 1
           ],
           [
-            'title' => 'primary.2.arabic',
+            'title' => 'preparatory.2.arabic',
             'minutes' => '30',
             'published' => false,
             'questions' => json_encode([]),
@@ -30,7 +30,7 @@ class ExamesSeeder extends Seeder
             'stage_id' => 2
           ],
           [
-            'title' => 'primary.3.arabic',
+            'title' => 'preparatory.3.arabic',
             'minutes' => '30',
             'published' => false,
             'questions' => json_encode([]),
@@ -38,7 +38,7 @@ class ExamesSeeder extends Seeder
             'stage_id' => 3
           ],
           [
-            'title' => 'primary.1.english',
+            'title' => 'preparatory.1.english',
             'minutes' => '30',
             'published' => false,
             'questions' => json_encode([]),
@@ -46,7 +46,7 @@ class ExamesSeeder extends Seeder
             'stage_id' => 4
           ],
           [
-            'title' => 'primary.2.english',
+            'title' => 'preparatory.2.english',
             'minutes' => '30',
             'published' => false,
             'questions' => json_encode([]),
@@ -54,7 +54,7 @@ class ExamesSeeder extends Seeder
             'stage_id' => 5
           ],
           [
-            'title' => 'primary.3.english',
+            'title' => 'preparatory.3.english',
             'minutes' => '30',
             'published' => false,
             'questions' => json_encode([]),

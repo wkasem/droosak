@@ -33,16 +33,6 @@ class UsersTableSeeder extends Seeder
             'stage_id' => 0,
             'created_at' => \Carbon\Carbon::today(),
             'ip' => '192.168.10.1'
-          ],
-          [
-            'username' => 'waleedk2',
-            'password'   => bcrypt('1234'),
-            'email'      => 'student@droosak.com',
-            'phone_number' => '2010997584',
-            'type_id'    => 3,
-            'stage_id' => 1,
-            'created_at' => \Carbon\Carbon::today(),
-            'ip' => '192.168.10.1'
           ]
 
         ];

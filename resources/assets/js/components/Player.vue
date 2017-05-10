@@ -513,18 +513,20 @@ export default {
        let that = this;
 
        $(function(){
-         videojs('promotion', {}, function(){
-           this.on('loadedmetadata', function(){
-             let p = setInterval(() => {
-                      that.promoInterval -= 1;
-                      (that.promoInterval) ? null : clearInterval(p);
-                     },1000);
-           });
+         if(that.promo){
+           videojs('promotion', {}, function(){
+             this.on('loadedmetadata', function(){
+               let p = setInterval(() => {
+                 that.promoInterval -= 1;
+                 (that.promoInterval) ? null : clearInterval(p);
+               },1000);
+             });
 
-           this.on('ended', function() {
-              that.skipPromo();
-            });
-         });
+             this.on('ended', function() {
+               that.skipPromo();
+             });
+           });
+         }
          videojs('lesson-player');
        });
 
