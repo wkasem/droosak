@@ -2,7 +2,7 @@
   <a href="#joinus" class="nav-item">
     @lang('welcome.nav.joinus')
   </a>
-  @if($playlists)
+  @if(count($playlists))
     <a href="#courses" class="nav-item">
       @lang('welcome.nav.courses')
     </a>
